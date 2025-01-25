@@ -34,6 +34,8 @@ directories/dch_directory={
 "world_character": "res://Timelines/world_character.dch"
 }
 directories/dtl_directory={
+"chosemug1": "res://Timelines/chosemug1.dtl",
+"chosemug2": "res://Timelines/chosemug2.dtl",
 "coffee_options_dialogue": "res://Timelines/coffee_options_dialogue.dtl",
 "laundry_day1": "res://Timelines/laundry_day1.dtl",
 "laundry_day1_1": "res://Timelines/laundry_day1_1.dtl",
