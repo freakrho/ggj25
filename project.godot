@@ -26,6 +26,8 @@ SessionManager="*res://scripts/session/session_manager.gd"
 
 directories/dch_directory={
 "oficinista1": "res://Timelines/oficinista1.dch",
+"oficinista2": "res://Timelines/oficinista2.dch",
+"oficinista3": "res://Timelines/oficinista3.dch",
 "oldlady": "res://Timelines/oldlady.dch",
 "playercharacter": "res://Timelines/playercharacter.dch",
 "ui_character": "res://Timelines/ui_character.dch",

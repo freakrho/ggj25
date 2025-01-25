@@ -1,2 +1,22 @@
-oldlady: Good morning darlin'
-playercharacter: Ssup
+# al entrar a la lavandería
+oldlady: Good morning darling!
+playercharacter: Ssup.
+# Al interactuar con oldlady por 1ra vez
+oldlady: Nice to see you again, sweet heart! How was your day?
+playercharacter: (I hate small talk...)
+- (...)
+- (...)
+- (...)
+oldlady: Bless your heart, Sugar. You may take any washing machine.
+# termina el diálogo. el jugador puede moverse si quiere o volver a hablar con ella.
+oldlady: You know I'll be here if there's anything you need.
+oldlady: Magazines, cigarettes, change for the machines, a new haircut...,
+oldlady: ...some elderly advice, a honeydrop, my notorious matchmaking services...
+# le mostras el monedero
+playercharacter: I have these coins...
+oldlady: Oh my! You will need change, again. \
+I already told you to bring small coins!
+oldlady: Here you go, Honey.
+# terminas el minijuego
+oldlady: See you soon!
+# te vas al apto
