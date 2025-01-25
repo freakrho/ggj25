@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://co3iibkqsyrdj"]
+
+[ext_resource type="Script" path="res://scripts/global_dialogue_settings.gd" id="1_xd581"]
+[ext_resource type="Resource" uid="uid://5qe64811own5" path="res://Timelines/Style_dialogue.tres" id="2_2cl2m"]
+
+[node name="GlobalDialogueSettings" type="Node"]
+script = ExtResource("1_xd581")
+dialogue_style = ExtResource("2_2cl2m")

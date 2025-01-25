@@ -2,6 +2,8 @@ class_name Player extends CharacterBody2D
 
 @export var move_speed: float = 300
 @export var nav_agent: NavigationAgent2D
+@export var dialogue_character: DialogicCharacter
+@export var dialogue_marker: Node2D
 
 var moving := false
 var interactables: Array[Interactable] = []

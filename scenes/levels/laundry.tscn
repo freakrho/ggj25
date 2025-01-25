@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3bgbc0ry8hkr"]
+[gd_scene load_steps=17 format=3 uid="uid://d3bgbc0ry8hkr"]
 
 [ext_resource type="Script" path="res://scripts/levels/level.gd" id="1_p33rd"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="2_3471r"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" path="res://scripts/map.gd" id="4_2d4og"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="5_5s6ab"]
 [ext_resource type="PackedScene" uid="uid://70ntrpgvha3s" path="res://scenes/washing_machine.tscn" id="6_2k7sd"]
+[ext_resource type="Script" path="res://scripts/dialogue_settings.gd" id="7_us8la"]
+[ext_resource type="Resource" path="res://Timelines/office_timeline.dtl" id="8_8hhyx"]
+[ext_resource type="Script" path="res://scripts/character_pair.gd" id="9_rqk5x"]
+[ext_resource type="Resource" path="res://Timelines/oficinista1.dch" id="10_pt3jr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_flylw"]
 vertices = PackedVector2Array(1854.93, 638.977, 15.1797, 638.008, 115.227, 494.953, 1716.5, 481.031)
@@ -27,10 +31,11 @@ size = Vector2(455, 254)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47rg2"]
 size = Vector2(274, 518)
 
-[node name="Laundry" type="Node2D" node_paths=PackedStringArray("map", "minigames")]
+[node name="Laundry" type="Node2D" node_paths=PackedStringArray("map", "minigames", "start_dialogue")]
 script = ExtResource("1_p33rd")
 map = NodePath("Map")
 minigames = [NodePath("WashingMachine")]
+start_dialogue = NodePath("DialogueSettings")
 
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map")]
 script = ExtResource("4_2d4og")
@@ -85,7 +90,20 @@ shape = SubResource("RectangleShape2D_47rg2")
 [node name="DefaultPosition" type="Node2D" parent="Map/WashingMachine"]
 position = Vector2(1, 167)
 
+[node name="ReceptionistMarker" type="Marker2D" parent="Map"]
+position = Vector2(574, 557)
+
 [node name="WashingMachine" parent="." instance=ExtResource("6_2k7sd")]
 visible = false
+
+[node name="DialogueSettings" type="Node" parent="." node_paths=PackedStringArray("characters")]
+script = ExtResource("7_us8la")
+dialogue = ExtResource("8_8hhyx")
+characters = [NodePath("Receptionist")]
+
+[node name="Receptionist" type="Node" parent="DialogueSettings" node_paths=PackedStringArray("node")]
+script = ExtResource("9_rqk5x")
+character = ExtResource("10_pt3jr")
+node = NodePath("../../Map/ReceptionistMarker")
 
 [connection signal="Interaction" from="Map/WashingMachine" to="WashingMachine" method="start_minigame"]

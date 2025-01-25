@@ -54,12 +54,11 @@ shape = SubResource("RectangleShape2D_7ft7d")
 position = Vector2(487, 964)
 
 [node name="OutWay" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position")]
-position = Vector2(1007, 827)
+position = Vector2(1798, 810)
 script = ExtResource("5_5um0u")
 default_position = NodePath("DefaultPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/OutWay"]
-position = Vector2(877, -8)
 shape = SubResource("RectangleShape2D_vcr2h")
 
 [node name="DefaultPosition" type="Node2D" parent="Map/OutWay"]

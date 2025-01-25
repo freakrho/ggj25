@@ -2,6 +2,7 @@ class_name Level extends Node2D
 
 @export var map: Map
 @export var minigames: Array[Minigame]
+@export var start_dialogue: DialogueSettings
 
 func _ready():
     GameManager.current_level = self
@@ -9,6 +10,8 @@ func _ready():
         minigame.hide()
         minigame.get_parent().remove_child(minigame)
         minigame.connect("Ended", ended_minigame)
+    if start_dialogue != null:
+        start_dialogue.start_dialogue()
 
 func ended_minigame(minigame: Minigame):
     close_minigame(minigame)

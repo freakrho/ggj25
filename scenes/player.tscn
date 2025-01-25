@@ -1,15 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dew2tkovfm4td"]
+[gd_scene load_steps=5 format=3 uid="uid://dew2tkovfm4td"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8ohr1"]
 [ext_resource type="Texture2D" uid="uid://be07it6s721a0" path="res://addons/dialogic/Example Assets/portraits/Jane/pl3 sad.png" id="2_03s5i"]
+[ext_resource type="Resource" path="res://Timelines/playercharacter.dch" id="2_cvvrb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5yfg6"]
 radius = 40.3113
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "dialogue_marker")]
 position = Vector2(256, 198)
 script = ExtResource("1_8ohr1")
 nav_agent = NodePath("NavigationAgent2D")
+dialogue_character = ExtResource("2_cvvrb")
+dialogue_marker = NodePath("Marker2D")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
@@ -22,3 +25,6 @@ texture = ExtResource("2_03s5i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5yfg6")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(82, -382)
