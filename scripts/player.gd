@@ -25,6 +25,7 @@ func _input(event: InputEvent) -> void:
         return
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+            target_interactable = null
             set_target(event.position)
             
 func set_target(target: Vector2):

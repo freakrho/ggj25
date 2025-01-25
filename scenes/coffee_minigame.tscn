@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://boyvlj5d00fvw"]
+
+[ext_resource type="Script" path="res://scripts/minigame.gd" id="1_gh2j6"]
+[ext_resource type="Texture2D" uid="uid://b2drdfwq51qe" path="res://Assets/sketch fondos/oficina.jpg" id="2_fbwkt"]
+[ext_resource type="Script" path="res://scripts/choose_cup_condition.gd" id="3_5wyyl"]
+[ext_resource type="Script" path="res://scripts/area_selectable.gd" id="4_djsoj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mgrav"]
+radius = 106.075
+
+[node name="CoffeeMinigame" type="Node2D" node_paths=PackedStringArray("sorted_conditions")]
+script = ExtResource("1_gh2j6")
+sorted_conditions = [NodePath("ChooseCupCondition")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-981, 768)
+scale = Vector2(2.64565, 2.64565)
+texture = ExtResource("2_fbwkt")
+
+[node name="ChooseCupCondition" type="Node" parent="." node_paths=PackedStringArray("choices")]
+script = ExtResource("3_5wyyl")
+choices = [NodePath("../Cups/Cup1"), NodePath("../Cups/Cup2"), NodePath("../Cups/Cup3"), NodePath("../Cups/Cup4")]
+
+[node name="Cups" type="Node2D" parent="."]
+
+[node name="Cup1" type="Area2D" parent="Cups"]
+position = Vector2(539, 109)
+script = ExtResource("4_djsoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cups/Cup1"]
+shape = SubResource("CircleShape2D_mgrav")
+
+[node name="Cup2" type="Area2D" parent="Cups"]
+position = Vector2(795, 148)
+script = ExtResource("4_djsoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cups/Cup2"]
+shape = SubResource("CircleShape2D_mgrav")
+
+[node name="Cup3" type="Area2D" parent="Cups"]
+position = Vector2(1048, 163)
+script = ExtResource("4_djsoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cups/Cup3"]
+shape = SubResource("CircleShape2D_mgrav")
+
+[node name="Cup4" type="Area2D" parent="Cups"]
+position = Vector2(1274, 128)
+script = ExtResource("4_djsoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cups/Cup4"]
+shape = SubResource("CircleShape2D_mgrav")

@@ -1,19 +1,23 @@
-class_name Draggable extends RigidBody2D
+class_name Draggable extends Area2D
+
+signal dropped()
 
 var dragging: bool = false
 var rel_position: Vector2
+var initial_parent: Node
+var initial_position: Vector2
 
 func _ready() -> void:
-    connect("input_event", _on_input_event)
+    initial_parent = get_parent()
+    initial_position = position
+    input_event.connect(_on_input_event)
 
 func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
     if event is InputEventMouseButton:
         if event.button_index != MOUSE_BUTTON_LEFT:
             return
-            
         if event.pressed and not dragging:
             _start_dragging(event.position)
-            
         elif not event.pressed and dragging:
             _end_dragging()
         
@@ -34,3 +38,12 @@ func _start_dragging(mouse_pos: Vector2):
 
 func _end_dragging():
     dragging = false
+    dropped.emit()
+
+func reset():
+    if get_parent() != initial_parent:
+        if get_parent() == null:
+            initial_parent.add_child(self)
+        else:
+            reparent(initial_parent)
+    position = initial_position

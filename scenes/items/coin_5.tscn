@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://chdvw1ijd7yin"]
+
+[ext_resource type="PackedScene" uid="uid://c08qxm8mq7phf" path="res://scenes/items/coin_1.tscn" id="1_g62l4"]
+[ext_resource type="Texture2D" uid="uid://gf8oefrgsmut" path="res://Assets/Sprites/Moneda 5.png" id="2_pue7e"]
+
+[node name="Coin5" instance=ExtResource("1_g62l4")]
+value = 5
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_pue7e")

@@ -1,10 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://70ntrpgvha3s"]
 
 [ext_resource type="Script" path="res://scripts/minigame.gd" id="1_5olix"]
-[ext_resource type="Script" path="res://scripts/draggable.gd" id="2_u2cnk"]
+[ext_resource type="Script" path="res://scripts/load_exact_money_condition.gd" id="3_5kqop"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="3_d0fgr"]
-[ext_resource type="Texture2D" uid="uid://dcm3eo5syiln0" path="res://addons/dialogic/Example Assets/portraits/rpg_portraits/base4.png" id="3_w1wbf"]
-[ext_resource type="Script" path="res://scripts/drag_object_to_target_condition.gd" id="4_r5nlh"]
+[ext_resource type="PackedScene" uid="uid://bn730ru38cghs" path="res://scenes/items/coin_2.tscn" id="4_cya4m"]
+[ext_resource type="PackedScene" uid="uid://chdvw1ijd7yin" path="res://scenes/items/coin_5.tscn" id="4_xhln6"]
+[ext_resource type="PackedScene" uid="uid://c08qxm8mq7phf" path="res://scenes/items/coin_1.tscn" id="5_57m65"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okpda"]
 size = Vector2(44, 324)
@@ -18,17 +19,17 @@ gradient = SubResource("Gradient_kfjhb")
 width = 44
 height = 324
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h42ai"]
-radius = 103.16
-
 [node name="WashingMachine" type="Node2D" node_paths=PackedStringArray("independent_conditions")]
 script = ExtResource("1_5olix")
-independent_conditions = [NodePath("DraggObjectToTargetCondition")]
+independent_conditions = [NodePath("LoadExactMoneyCondition")]
 
-[node name="DraggObjectToTargetCondition" type="Node" parent="." node_paths=PackedStringArray("draggable", "target")]
-script = ExtResource("4_r5nlh")
-draggable = NodePath("../Coin")
-target = NodePath("../CoinSlit")
+[node name="LoadExactMoneyCondition" type="Node" parent="." node_paths=PackedStringArray("drop_area", "coin_positions")]
+script = ExtResource("3_5kqop")
+drop_area = NodePath("../CoinSlit")
+coin_positions = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4"), NodePath("../Marker2D5"), NodePath("../Marker2D6"), NodePath("../Marker2D7")]
+coin_1 = ExtResource("5_57m65")
+coin_2 = ExtResource("4_cya4m")
+coin_5 = ExtResource("4_xhln6")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-8503, -5741)
@@ -45,15 +46,41 @@ shape = SubResource("RectangleShape2D_okpda")
 [node name="Sprite2D" type="Sprite2D" parent="CoinSlit"]
 texture = SubResource("GradientTexture2D_bfrl4")
 
-[node name="Coin" type="RigidBody2D" parent="."]
-position = Vector2(1663, 902)
-input_pickable = true
-gravity_scale = 0.0
-script = ExtResource("2_u2cnk")
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1823, 893)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
-shape = SubResource("CircleShape2D_h42ai")
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(1621, 764)
 
-[node name="Sprite2D" type="Sprite2D" parent="Coin"]
-scale = Vector2(3.12, 3.12)
-texture = ExtResource("3_w1wbf")
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(1467, 953)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(1338, 711)
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(1207, 986)
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+position = Vector2(1507, 560)
+
+[node name="Marker2D7" type="Marker2D" parent="."]
+position = Vector2(1867, 610)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 32.0
+offset_right = 202.0
+offset_bottom = 118.0
+text = "Back"
+
+[connection signal="pressed" from="Control/Button" to="." method="close_minigame"]

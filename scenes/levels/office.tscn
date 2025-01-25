@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddin5jv8ogfjb"]
+[gd_scene load_steps=12 format=3 uid="uid://ddin5jv8ogfjb"]
 
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_6c0ec"]
 [ext_resource type="Script" path="res://scripts/levels/office.gd" id="1_vmnrm"]
 [ext_resource type="Texture2D" uid="uid://b2drdfwq51qe" path="res://Assets/sketch fondos/oficina.jpg" id="1_xg8lp"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="3_17ymn"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="4_3m7wp"]
+[ext_resource type="AudioStream" uid="uid://dy2t4o4pxmice" path="res://Assets/audio/music/office.ogg" id="6_bjbm3"]
+[ext_resource type="PackedScene" uid="uid://boyvlj5d00fvw" path="res://scenes/coffee_minigame.tscn" id="7_as3so"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ypo5t"]
 vertices = PackedVector2Array(1882.88, 632, -19.0312, 632, -19.2812, 494, 1881.58, 494)
@@ -62,3 +64,9 @@ shape = SubResource("RectangleShape2D_7nw2c")
 
 [node name="DefaultPos" type="Node2D" parent="Map/EspressoMachine"]
 position = Vector2(-13, 103)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_bjbm3")
+autoplay = true
+
+[node name="CoffeeMinigame" parent="." instance=ExtResource("7_as3so")]

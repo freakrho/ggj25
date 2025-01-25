@@ -14,11 +14,11 @@ func _process(delta: float) -> void:
     for condition in sorted_conditions:
         if condition.completed:
             continue
-        if condition.condition_met():
+        if condition.can_complete():
             condition.complete()
         break
     for condition in independent_conditions:
-        if not condition.completed and condition.condition_met():
+        if not condition.completed and condition.can_complete():
             condition.complete()
             
     if all_conditions_completed():
@@ -37,3 +37,6 @@ func all_conditions_completed() -> bool:
 func start_minigame():
     ended = false
     GameManager.current_level.open_minigame(self)
+
+func close_minigame():
+    GameManager.current_level.close_minigame(self)
