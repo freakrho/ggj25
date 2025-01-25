@@ -36,6 +36,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "chosemug1": "res://Timelines/chosemug1.dtl",
 "chosemug2": "res://Timelines/chosemug2.dtl",
+"chosemug3": "res://Timelines/chosemug3.dtl",
 "coffee_options_dialogue": "res://Timelines/coffee_options_dialogue.dtl",
 "laundry_day1": "res://Timelines/laundry_day1.dtl",
 "laundry_day1_1": "res://Timelines/laundry_day1_1.dtl",
@@ -50,7 +51,7 @@ layout/style_list=["res://Timelines/Style_dialogue.tres", "res://Timelines/Style
 layout/default_style="res://Timelines/Style_dialogue.tres"
 glossary/default_case_sensitive=true
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.04
+text/letter_speed=0.025
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
