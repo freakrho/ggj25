@@ -11,11 +11,16 @@ func _ready() -> void:
     nav_agent.velocity_computed.connect(Callable(_on_velocity_computed))
     nav_agent.max_speed = move_speed
     GameManager.player = self
-    
+
+func input_enabled() -> bool:
+    return Dialogic.current_timeline == null
+
 func set_navigation_map(map: RID):
     nav_agent.set_navigation_map(map)
 
 func _input(event: InputEvent) -> void:
+    if !input_enabled():
+        return
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
             set_target(event.position)
@@ -50,6 +55,9 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
     #global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
 
 func _physics_process(delta: float) -> void:
+    if !input_enabled():
+        return
+    
     # Interaction
     if Input.is_action_just_pressed("interact"):
         for interactable in interactables:

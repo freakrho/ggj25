@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/minigame.gd" id="1_5olix"]
 [ext_resource type="Script" path="res://scripts/draggable.gd" id="2_u2cnk"]
-[ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://sketch fondos/lavanderia.jpg" id="3_d0fgr"]
+[ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="3_d0fgr"]
 [ext_resource type="Texture2D" uid="uid://dcm3eo5syiln0" path="res://addons/dialogic/Example Assets/portraits/rpg_portraits/base4.png" id="3_w1wbf"]
 [ext_resource type="Script" path="res://scripts/drag_object_to_target_condition.gd" id="4_r5nlh"]
 
