@@ -1,25 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://dew2tkovfm4td"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8ohr1"]
+[ext_resource type="Texture2D" uid="uid://be07it6s721a0" path="res://addons/dialogic/Example Assets/portraits/Jane/pl3 sad.png" id="2_03s5i"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jsofe"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jfqgb"]
-size = Vector2(10, 30)
+[sub_resource type="CircleShape2D" id="CircleShape2D_5yfg6"]
+radius = 40.3113
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
-position = Vector2(243, 216)
+position = Vector2(256, 198)
 script = ExtResource("1_8ohr1")
 nav_agent = NodePath("NavigationAgent2D")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_jsofe")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
 radius = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 1)
-texture = SubResource("PlaceholderTexture2D_jfqgb")
+position = Vector2(6, -239)
+scale = Vector2(0.847656, 0.847656)
+texture = ExtResource("2_03s5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5yfg6")

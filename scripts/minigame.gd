@@ -1,9 +1,16 @@
 class_name Minigame extends Node2D
 
+signal Ended(minigame: Minigame)
+
 @export var sorted_conditions: Array[MinigameCondition]
 @export var independent_conditions: Array[MinigameCondition]
 
+var ended: bool
+
 func _process(delta: float) -> void:
+    if ended:
+        return
+    
     for condition in sorted_conditions:
         if condition.completed:
             continue
@@ -15,7 +22,8 @@ func _process(delta: float) -> void:
             condition.complete()
             
     if all_conditions_completed():
-        print("ENDED")
+        ended = true
+        Ended.emit(self)
 
 func all_conditions_completed() -> bool:
     for condition in sorted_conditions:
@@ -27,4 +35,5 @@ func all_conditions_completed() -> bool:
     return true
 
 func start_minigame():
+    ended = false
     GameManager.current_level.open_minigame(self)

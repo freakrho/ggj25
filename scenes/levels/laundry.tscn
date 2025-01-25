@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://d3bgbc0ry8hkr"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_p33rd"]
+[ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://sketch fondos/lavanderia.jpg" id="2_3471r"]
+[ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="3_nurqy"]
+[ext_resource type="Script" path="res://scripts/map.gd" id="4_2d4og"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="5_5s6ab"]
+[ext_resource type="PackedScene" uid="uid://70ntrpgvha3s" path="res://scenes/washing_machine.tscn" id="6_2k7sd"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_flylw"]
+vertices = PackedVector2Array(1854.93, 638.977, 15.1797, 638.008, 115.227, 494.953, 1716.5, 481.031)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-4, 648, 110, 485, 1721, 471, 1877, 649)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nh42"]
+size = Vector2(1979, 955)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmrd2"]
+size = Vector2(2097, 253)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jf1ot"]
+size = Vector2(396.067, 139)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0ai3"]
+size = Vector2(455, 254)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47rg2"]
+size = Vector2(274, 518)
+
+[node name="Laundry" type="Node2D" node_paths=PackedStringArray("map", "minigames")]
+script = ExtResource("1_p33rd")
+map = NodePath("Map")
+minigames = [NodePath("WashingMachine")]
+
+[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map")]
+script = ExtResource("4_2d4og")
+player = NodePath("Player")
+nav_map = NodePath("NavigationRegion2D")
+
+[node name="Background" type="Sprite2D" parent="Map"]
+texture = ExtResource("2_3471r")
+centered = false
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
+position = Vector2(32, 428)
+navigation_polygon = SubResource("NavigationPolygon_flylw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map/NavigationRegion2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D"]
+position = Vector2(910.5, 6.5)
+shape = SubResource("RectangleShape2D_7nh42")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Map/NavigationRegion2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D2"]
+position = Vector2(896.5, 768.5)
+shape = SubResource("RectangleShape2D_gmrd2")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Map/NavigationRegion2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D3"]
+position = Vector2(-12.1729, 550.902)
+rotation = -0.925238
+shape = SubResource("RectangleShape2D_jf1ot")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Map/NavigationRegion2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D4"]
+position = Vector2(1898, 491)
+rotation = 0.863548
+shape = SubResource("RectangleShape2D_m0ai3")
+
+[node name="Player" parent="Map" instance=ExtResource("3_nurqy")]
+position = Vector2(803, 986)
+
+[node name="Interactable" type="Area2D" parent="Map"]
+script = ExtResource("5_5s6ab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Interactable"]
+position = Vector2(1012, 834)
+shape = SubResource("RectangleShape2D_47rg2")
+
+[node name="WashingMachine" parent="." instance=ExtResource("6_2k7sd")]
+visible = false
+
+[connection signal="Interaction" from="Map/Interactable" to="WashingMachine" method="start_minigame"]

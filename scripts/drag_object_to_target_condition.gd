@@ -1,4 +1,4 @@
-extends MinigameCondition
+class_name DraggObjectToTargetCondition extends MinigameCondition
 
 @export var draggable: Draggable
 @export var slideable: Slideable

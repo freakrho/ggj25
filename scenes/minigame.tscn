@@ -89,5 +89,4 @@ target = NodePath("../Area2D")
 position = Vector2(866, 481)
 shape = SubResource("CircleShape2D_5nn02")
 
-[connection signal="input_event" from="Draggable" to="Draggable" method="_on_input_event"]
 [connection signal="input_event" from="Slideable/Knob" to="Slideable" method="_on_knob_input_event"]

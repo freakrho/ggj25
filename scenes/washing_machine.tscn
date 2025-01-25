@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://70ntrpgvha3s"]
+
+[ext_resource type="Script" path="res://scripts/minigame.gd" id="1_5olix"]
+[ext_resource type="Script" path="res://scripts/draggable.gd" id="2_u2cnk"]
+[ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://sketch fondos/lavanderia.jpg" id="3_d0fgr"]
+[ext_resource type="Texture2D" uid="uid://dcm3eo5syiln0" path="res://addons/dialogic/Example Assets/portraits/rpg_portraits/base4.png" id="3_w1wbf"]
+[ext_resource type="Script" path="res://scripts/drag_object_to_target_condition.gd" id="4_r5nlh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okpda"]
+size = Vector2(44, 324)
+
+[sub_resource type="Gradient" id="Gradient_kfjhb"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bfrl4"]
+gradient = SubResource("Gradient_kfjhb")
+width = 44
+height = 324
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h42ai"]
+radius = 103.16
+
+[node name="WashingMachine" type="Node2D" node_paths=PackedStringArray("independent_conditions")]
+script = ExtResource("1_5olix")
+independent_conditions = [NodePath("DraggObjectToTargetCondition")]
+
+[node name="DraggObjectToTargetCondition" type="Node" parent="." node_paths=PackedStringArray("draggable", "target")]
+script = ExtResource("4_r5nlh")
+draggable = NodePath("../Coin")
+target = NodePath("../CoinSlit")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-8503, -5741)
+scale = Vector2(9.18011, 9.18011)
+texture = ExtResource("3_d0fgr")
+centered = false
+
+[node name="CoinSlit" type="Area2D" parent="."]
+position = Vector2(1626, 321)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinSlit"]
+shape = SubResource("RectangleShape2D_okpda")
+
+[node name="Sprite2D" type="Sprite2D" parent="CoinSlit"]
+texture = SubResource("GradientTexture2D_bfrl4")
+
+[node name="Coin" type="RigidBody2D" parent="."]
+position = Vector2(1663, 902)
+input_pickable = true
+gravity_scale = 0.0
+script = ExtResource("2_u2cnk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
+shape = SubResource("CircleShape2D_h42ai")
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin"]
+scale = Vector2(3.12, 3.12)
+texture = ExtResource("3_w1wbf")

@@ -7,10 +7,23 @@ func _ready():
     GameManager.current_level = self
     for minigame in minigames:
         minigame.hide()
+        set_pause_subtree(minigame, true)
+        minigame.connect("Ended", ended_minigame)
+
+func ended_minigame(minigame: Minigame):
+    close_minigame(minigame)
 
 func open_minigame(minigame: Minigame):
-    minigame.show()
     set_pause_subtree(map, true)
+    map.hide_map()
+    set_pause_subtree(minigame, false)
+    minigame.show()
+
+func close_minigame(minigame: Minigame):
+    set_pause_subtree(map, false)
+    map.show_map()
+    set_pause_subtree(minigame, true)
+    minigame.hide()
 
 func set_pause_subtree(root: Node, pause: bool) -> void:
     var process_setters = [
