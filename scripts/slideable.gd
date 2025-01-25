@@ -1,7 +1,8 @@
 class_name Slideable extends Node2D
 
 @export var path: Path2D
-@export var knob: StaticBody2D
+@export var knob: RigidBody2D
+@export var max_delta: float = 20
 
 var dragging: bool = false
 var rel_position: Vector2
@@ -27,13 +28,14 @@ func _input(event: InputEvent) -> void:
     elif event is InputEventMouseMotion:
         # Find closest point in path
         var point = event.position - rel_position
+        path.curve.get
         point = path.to_global(path.curve.get_closest_point(path.to_local(point)))
-        knob.global_position = point
+        if (point - knob.global_position).length_squared() <= max_delta * max_delta:
+            knob.global_position = point
 
 func _start_dragging(mouse_pos: Vector2):
     dragging = true
     rel_position = knob.global_position - mouse_pos
-    print("START DRAGGING")
 
 func _end_dragging():
     dragging = false

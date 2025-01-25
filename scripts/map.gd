@@ -1,4 +1,4 @@
-extends Node2D
+class_name Map extends Node2D
 
 @export var player: Player
 @export var nav_map: NavigationRegion2D

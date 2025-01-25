@@ -1,4 +1,4 @@
-class_name Draggable extends StaticBody2D
+class_name Draggable extends RigidBody2D
 
 var dragging: bool = false
 var rel_position: Vector2

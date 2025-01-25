@@ -1,7 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs5neku7u1j3e"]
+[gd_scene load_steps=14 format=3 uid="uid://bs5neku7u1j3e"]
 
 [ext_resource type="Script" path="res://scripts/draggable.gd" id="1_0e3gc"]
+[ext_resource type="Script" path="res://scripts/minigame.gd" id="1_l17rx"]
 [ext_resource type="Script" path="res://scripts/slideable.gd" id="2_vmcd2"]
+[ext_resource type="Texture2D" uid="uid://1es1ixchfied" path="res://addons/dialogic/Example Assets/portraits/rpg_portraits/base1.png" id="3_qlqll"]
+[ext_resource type="Script" path="res://scripts/minigame_condition.gd" id="4_1lu1q"]
+[ext_resource type="Texture2D" uid="uid://vtajb1cdcso" path="res://addons/dialogic/Example Assets/portraits/rpg_portraits/base3.png" id="5_674ps"]
+[ext_resource type="Script" path="res://scripts/drag_object_to_target_condition.gd" id="5_snlul"]
 
 [sub_resource type="Gradient" id="Gradient_73m6r"]
 offsets = PackedFloat32Array(0, 0.55102, 1)
@@ -14,28 +19,31 @@ fill_from = Vector2(0, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_7lgfr"]
 radius = 75.9539
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tge7i"]
-size = Vector2(100, 100)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ns8sl"]
 radius = 80.65
 
 [sub_resource type="Curve2D" id="Curve2D_l28xa"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -7, -1, 0, 0, 0, 0, 429, -1)
+"points": PackedVector2Array(0, 0, 0, 0, -7, -1, 0, 0, 0, 0, 242, -91, 0, 0, 0, 0, 376, -6, 0, 0, 0, 0, 664, -78, 0, 0, 0, 0, 768, 172, 0, 0, 0, 0, 639, 276)
 }
-point_count = 2
+point_count = 6
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5nn02"]
+radius = 152.895
+
+[node name="Minigame" type="Node2D" node_paths=PackedStringArray("independent_conditions")]
+script = ExtResource("1_l17rx")
+independent_conditions = [NodePath("DragObjectToTargetCondition")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(575, 325)
 scale = Vector2(18.4688, 10.625)
 texture = SubResource("GradientTexture2D_3a4g1")
 
-[node name="Draggable" type="StaticBody2D" parent="."]
+[node name="Draggable" type="RigidBody2D" parent="."]
 position = Vector2(653, 357)
 input_pickable = true
+gravity_scale = 0.0
 script = ExtResource("1_0e3gc")
 metadata/_edit_group_ = true
 
@@ -43,26 +51,43 @@ metadata/_edit_group_ = true
 shape = SubResource("CircleShape2D_7lgfr")
 
 [node name="Sprite2D" type="Sprite2D" parent="Draggable"]
-texture = SubResource("PlaceholderTexture2D_tge7i")
+texture = ExtResource("3_qlqll")
 
 [node name="Slideable" type="Node2D" parent="." node_paths=PackedStringArray("path", "knob")]
 position = Vector2(263, 176)
 script = ExtResource("2_vmcd2")
 path = NodePath("Path2D")
 knob = NodePath("Knob")
+max_delta = 150.0
 metadata/_edit_group_ = true
 
-[node name="Knob" type="StaticBody2D" parent="Slideable"]
+[node name="Knob" type="RigidBody2D" parent="Slideable"]
 input_pickable = true
+gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slideable/Knob"]
 shape = SubResource("CircleShape2D_ns8sl")
 
 [node name="Sprite2D" type="Sprite2D" parent="Slideable/Knob"]
-texture = SubResource("PlaceholderTexture2D_tge7i")
+texture = ExtResource("5_674ps")
 
 [node name="Path2D" type="Path2D" parent="Slideable"]
 curve = SubResource("Curve2D_l28xa")
+
+[node name="MinigameCondition" type="Node" parent="."]
+script = ExtResource("4_1lu1q")
+
+[node name="DragObjectToTargetCondition" type="Node" parent="." node_paths=PackedStringArray("draggable", "slideable", "target")]
+script = ExtResource("5_snlul")
+draggable = NodePath("../Draggable")
+slideable = NodePath("../Slideable")
+target = NodePath("../Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(866, 481)
+shape = SubResource("CircleShape2D_5nn02")
 
 [connection signal="input_event" from="Draggable" to="Draggable" method="_on_input_event"]
 [connection signal="input_event" from="Slideable/Knob" to="Slideable" method="_on_knob_input_event"]

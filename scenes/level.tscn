@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvpi5h3xshqbm"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_6i0x7"]
+[ext_resource type="PackedScene" uid="uid://bsr5w0eln7wpt" path="res://scenes/map.tscn" id="2_ac4xf"]
+[ext_resource type="PackedScene" uid="uid://bs5neku7u1j3e" path="res://scenes/minigame.tscn" id="3_ell46"]
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("map", "minigames")]
+script = ExtResource("1_6i0x7")
+map = NodePath("Map")
+minigames = [NodePath("Minigame")]
+
+[node name="Map" parent="." instance=ExtResource("2_ac4xf")]
+
+[node name="Minigame" parent="." instance=ExtResource("3_ell46")]
+position = Vector2(494, 115)
+scale = Vector2(0.27, 0.27)
+
+[connection signal="Interaction" from="Map/Area2D" to="Minigame" method="start_minigame"]
+
+[editable path="Map"]

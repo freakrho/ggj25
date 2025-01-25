@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 @export var nav_agent: NavigationAgent2D
 
 var moving := false
+var interactables: Array[Interactable] = []
 
 func _ready() -> void:
     nav_agent.velocity_computed.connect(Callable(_on_velocity_computed))
@@ -45,6 +46,12 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
     #global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
 
 func _physics_process(delta: float) -> void:
+    # Interaction
+    if Input.is_action_just_pressed("interact"):
+        for interactable in interactables:
+            interactable.interact()
+    
+    # Movement
     if moving:
         process_navigation(delta)
     
@@ -54,3 +61,11 @@ func _physics_process(delta: float) -> void:
         velocity = movement * move_speed
     
     move_and_slide()
+
+func interactable_entered(interactable: Interactable):
+    interactables.append(interactable)
+
+func interactable_exited(interactable: Interactable):
+    for i in range(interactables.size() - 1, -1, -1):
+        if interactables[i] == interactable:
+            interactables.remove_at(i)

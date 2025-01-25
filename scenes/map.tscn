@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsr5w0eln7wpt"]
+[gd_scene load_steps=9 format=3 uid="uid://bsr5w0eln7wpt"]
 
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_p610a"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="2_riasd"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="3_tvkm2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_n6qp5"]
 vertices = PackedVector2Array(1129, 620.93, 29.7969, 618.062, 483, 331, 1129, 20.0781, 346, 331, 25.1875, 23.9062, 346, 173, 483, 173)
@@ -13,6 +14,11 @@ agent_radius = 25.0
 size = Vector2(87, 108)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l5dbu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7e28k"]
+radius = 82.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d2yfu"]
 
 [node name="Map" type="Node2D" node_paths=PackedStringArray("player", "nav_map")]
 script = ExtResource("1_p610a")
@@ -37,3 +43,18 @@ shape = SubResource("RectangleShape2D_xhbpx")
 position = Vector2(34.5, 44.5)
 scale = Vector2(85, 107)
 texture = SubResource("PlaceholderTexture2D_l5dbu")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(788, 329)
+script = ExtResource("3_tvkm2")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7e28k")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(52.5, 27.5)
+texture = SubResource("PlaceholderTexture2D_d2yfu")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
