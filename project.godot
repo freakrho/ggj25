@@ -32,11 +32,11 @@ directories/dtl_directory={
 "morning": "res://Timelines/morning.dtl",
 "office_timeline": "res://Timelines/office_timeline.dtl"
 }
-layout/style_list=["res://Timelines/Style_dialogue.tres", "res://Timelines/Style_ui.tres", "res://Timelines/Style_world.tres"]
+layout/style_list=["res://Timelines/Style_dialogue.tres", "res://Timelines/Style_ui.tres", "res://Timelines/Style_world.tres", "res://Timelines/Style_pruebaui.tres", "res://Timelines/A.tres", "res://Timelines/B.tres"]
 layout/default_style="res://Timelines/Style_UI.tres"
 glossary/default_case_sensitive=true
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.01
+text/letter_speed=0.04
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
@@ -55,6 +55,8 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
+text/autocolor_names=false
+variables={}
 
 [display]
 
