@@ -3,6 +3,7 @@ class_name Level extends Node2D
 @export var map: Map
 @export var minigames: Array[Minigame]
 @export var start_dialogue: DialogueSettings
+@export var characters: Array[CharacterPair]
 
 func _ready():
     GameManager.current_level = self

@@ -1,13 +1,16 @@
-[gd_scene load_steps=24 format=3 uid="uid://d3bgbc0ry8hkr"]
+[gd_scene load_steps=28 format=3 uid="uid://d3bgbc0ry8hkr"]
 
-[ext_resource type="Script" path="res://scripts/levels/level.gd" id="1_p33rd"]
+[ext_resource type="Script" path="res://scripts/laundry.gd" id="1_s8yjg"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="2_3471r"]
+[ext_resource type="PackedScene" uid="uid://bkg03mctf2jdw" path="res://scenes/levels/room.tscn" id="2_x4j86"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="3_nurqy"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="4_2d4og"]
+[ext_resource type="Resource" path="res://Timelines/laundry_day1_1.dtl" id="4_rh3bo"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="5_5s6ab"]
+[ext_resource type="Resource" path="res://Timelines/laundry_day1_4.dtl" id="5_n3xal"]
 [ext_resource type="PackedScene" uid="uid://70ntrpgvha3s" path="res://scenes/washing_machine.tscn" id="6_2k7sd"]
+[ext_resource type="Resource" path="res://Timelines/laundry_day1_5.dtl" id="6_km5qi"]
 [ext_resource type="Script" path="res://scripts/dialogue_settings.gd" id="7_us8la"]
-[ext_resource type="Resource" path="res://Timelines/laundry_day1.dtl" id="8_w0fx6"]
 [ext_resource type="Script" path="res://scripts/character_pair.gd" id="9_rqk5x"]
 [ext_resource type="Resource" path="res://Timelines/oldlady.dch" id="10_tmehj"]
 [ext_resource type="Texture2D" uid="uid://covcfxohmsth4" path="res://Assets/Sprites/Monedero.png" id="11_i2uyy"]
@@ -44,11 +47,18 @@ radius = 139.74
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c81yn"]
 size = Vector2(166, 238)
 
-[node name="Laundry" type="Node2D" node_paths=PackedStringArray("map", "minigames", "start_dialogue")]
-script = ExtResource("1_p33rd")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05y7j"]
+size = Vector2(194, 905)
+
+[node name="Laundry" type="Node2D" node_paths=PackedStringArray("door", "washing_machine_minigame", "map", "minigames", "start_dialogue", "characters")]
+script = ExtResource("1_s8yjg")
+door = NodePath("Map/Door")
+washing_machine_minigame = NodePath("WashingMachine")
+room = ExtResource("2_x4j86")
 map = NodePath("Map")
 minigames = [NodePath("WashingMachine")]
 start_dialogue = NodePath("Map/Dialogues/StartDialogue")
+characters = [NodePath("Map/Characters/Receptionist")]
 
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
 script = ExtResource("4_2d4og")
@@ -58,15 +68,17 @@ interactable_area = NodePath("InteractableArea")
 
 [node name="Dialogues" type="Node" parent="Map"]
 
-[node name="StartDialogue" type="Node" parent="Map/Dialogues" node_paths=PackedStringArray("characters")]
+[node name="StartDialogue" type="Node" parent="Map/Dialogues"]
 script = ExtResource("7_us8la")
-dialogue = ExtResource("8_w0fx6")
-characters = [NodePath("../../Characters/Receptionist")]
+dialogue = ExtResource("4_rh3bo")
 
-[node name="DialogueWithPurse" type="Node" parent="Map/Dialogues" node_paths=PackedStringArray("characters")]
+[node name="DialogueWithPurse" type="Node" parent="Map/Dialogues"]
 script = ExtResource("7_us8la")
-dialogue = ExtResource("8_w0fx6")
-characters = [NodePath("../../Characters/Receptionist")]
+dialogue = ExtResource("5_n3xal")
+
+[node name="GoodBye" type="Node" parent="Map/Dialogues"]
+script = ExtResource("7_us8la")
+dialogue = ExtResource("6_km5qi")
 
 [node name="Characters" type="Node" parent="Map"]
 
@@ -160,8 +172,22 @@ position = Vector2(-168, 416)
 script = ExtResource("13_56rco")
 coins = Array[int]([1, 1, 1, 1, 1])
 
+[node name="Door" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position", "dialogue")]
+position = Vector2(-11, 1079)
+script = ExtResource("5_5s6ab")
+default_position = NodePath("Marker2D")
+dialogue = NodePath("../Dialogues/GoodBye")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Door"]
+position = Vector2(87, -442.5)
+shape = SubResource("RectangleShape2D_05y7j")
+
+[node name="Marker2D" type="Marker2D" parent="Map/Door"]
+position = Vector2(191, -61)
+
 [node name="WashingMachine" parent="." instance=ExtResource("6_2k7sd")]
 visible = false
 
 [connection signal="Interaction" from="Map/WashingMachine" to="WashingMachine" method="start_minigame"]
 [connection signal="Interaction" from="Map/InteractWithPurse" to="Map/InteractWithPurse/SetCoinsAction" method="set_coins"]
+[connection signal="Interaction" from="Map/Door" to="." method="_on_door_interaction"]

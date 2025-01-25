@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bn730ru38cghs" path="res://scenes/items/coin_2.tscn" id="4_cya4m"]
 [ext_resource type="PackedScene" uid="uid://chdvw1ijd7yin" path="res://scenes/items/coin_5.tscn" id="4_xhln6"]
 [ext_resource type="PackedScene" uid="uid://c08qxm8mq7phf" path="res://scenes/items/coin_1.tscn" id="5_57m65"]
-[ext_resource type="Texture2D" uid="uid://dw6kmme2m2ks3" path="res://Assets/sketch fondos/Fondo minigame lavanderia.jpg" id="6_e381j"]
+[ext_resource type="Texture2D" uid="uid://buu1lnyxtveca" path="res://Assets/sketch fondos/Fondo minigame lavanderia.jpg" id="6_e381j"]
 [ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="7_e27t5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okpda"]
