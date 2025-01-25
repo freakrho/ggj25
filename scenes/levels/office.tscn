@@ -1,12 +1,24 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddin5jv8ogfjb"]
+[gd_scene load_steps=25 format=3 uid="uid://ddin5jv8ogfjb"]
 
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_6c0ec"]
 [ext_resource type="Script" path="res://scripts/levels/office.gd" id="1_vmnrm"]
 [ext_resource type="Texture2D" uid="uid://b2drdfwq51qe" path="res://Assets/sketch fondos/oficina.jpg" id="1_xg8lp"]
+[ext_resource type="Script" path="res://scripts/dialogue_settings.gd" id="2_4732g"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="3_17ymn"]
+[ext_resource type="Resource" path="res://Timelines/office_timeline.dtl" id="3_hjkwb"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="4_3m7wp"]
+[ext_resource type="Resource" path="res://Timelines/chosemug1.dtl" id="4_exakh"]
+[ext_resource type="Script" path="res://scripts/character_pair.gd" id="4_rjyj8"]
+[ext_resource type="Resource" path="res://Timelines/chosemug2.dtl" id="5_7maev"]
+[ext_resource type="Resource" path="res://Timelines/oficinista1.dch" id="5_fb3b3"]
 [ext_resource type="AudioStream" uid="uid://dy2t4o4pxmice" path="res://Assets/audio/music/office.ogg" id="6_bjbm3"]
+[ext_resource type="Resource" path="res://Timelines/chosemug3.dtl" id="6_eby6i"]
+[ext_resource type="Resource" path="res://Timelines/oficinista2.dch" id="6_xjkgk"]
+[ext_resource type="Resource" path="res://Timelines/oficinista3.dch" id="7_4sbuf"]
 [ext_resource type="PackedScene" uid="uid://boyvlj5d00fvw" path="res://scenes/coffee_minigame.tscn" id="7_as3so"]
+[ext_resource type="Texture2D" uid="uid://bfkpn7mrd786b" path="res://addons/dialogic/Example Assets/portraits/Antonio/pl5.png" id="10_enh8s"]
+[ext_resource type="Texture2D" uid="uid://s2jsr1aqiu84" path="res://addons/dialogic/Example Assets/portraits/Antonio/pl5 blink.png" id="12_4b06i"]
+[ext_resource type="Texture2D" uid="uid://djqit26f4be4f" path="res://addons/dialogic/Example Assets/portraits/Princess/princess_blank.png" id="13_p1vpi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ypo5t"]
 vertices = PackedVector2Array(1882.88, 632, -19.0312, 632, -19.2812, 494, 1881.58, 494)
@@ -19,15 +31,52 @@ size = Vector2(1979, 955)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxw57"]
 size = Vector2(2097, 253)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs267"]
-size = Vector2(1978, 299)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nw2c"]
 size = Vector2(382, 678)
 
-[node name="Office" type="Node2D" node_paths=PackedStringArray("minigames")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs267"]
+size = Vector2(1978, 299)
+
+[node name="Office" type="Node2D" node_paths=PackedStringArray("cup_1_dialogue", "cup_2_dialogue", "cup_3_dialogue", "map", "minigames", "start_dialogue", "characters")]
 script = ExtResource("1_vmnrm")
+cup_1_dialogue = NodePath("Cup1Dialogue")
+cup_2_dialogue = NodePath("Cup2Dialogue")
+cup_3_dialogue = NodePath("Cup3Dialogue")
+map = NodePath("Map")
 minigames = [NodePath("CoffeeMinigame")]
+start_dialogue = NodePath("StartDialogue")
+characters = [NodePath("Oficinista1"), NodePath("Oficinista2"), NodePath("Oficinista3")]
+
+[node name="StartDialogue" type="Node" parent="."]
+script = ExtResource("2_4732g")
+dialogue = ExtResource("3_hjkwb")
+
+[node name="Cup1Dialogue" type="Node" parent="."]
+script = ExtResource("2_4732g")
+dialogue = ExtResource("4_exakh")
+
+[node name="Cup2Dialogue" type="Node" parent="."]
+script = ExtResource("2_4732g")
+dialogue = ExtResource("5_7maev")
+
+[node name="Cup3Dialogue" type="Node" parent="."]
+script = ExtResource("2_4732g")
+dialogue = ExtResource("6_eby6i")
+
+[node name="Oficinista1" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("4_rjyj8")
+character = ExtResource("5_fb3b3")
+node = NodePath("../Map/OfficeWorker1/Marker2D")
+
+[node name="Oficinista2" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("4_rjyj8")
+character = ExtResource("6_xjkgk")
+node = NodePath("../Map/OfficeWorker2/Marker2D")
+
+[node name="Oficinista3" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("4_rjyj8")
+character = ExtResource("7_4sbuf")
+node = NodePath("../Map/OfficeWorker3/Marker2D")
 
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
 script = ExtResource("1_6c0ec")
@@ -55,15 +104,6 @@ shape = SubResource("RectangleShape2D_t143l")
 position = Vector2(896.5, 768.5)
 shape = SubResource("RectangleShape2D_nxw57")
 
-[node name="InteractableArea" type="Area2D" parent="Map"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/InteractableArea"]
-position = Vector2(979, 951.5)
-shape = SubResource("RectangleShape2D_vs267")
-
-[node name="Player" parent="Map" instance=ExtResource("3_17ymn")]
-position = Vector2(59, 986)
-
 [node name="EspressoMachine" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position")]
 position = Vector2(1721, 894)
 script = ExtResource("4_3m7wp")
@@ -76,6 +116,39 @@ shape = SubResource("RectangleShape2D_7nw2c")
 [node name="DefaultPos" type="Node2D" parent="Map/EspressoMachine"]
 position = Vector2(-13, 103)
 
+[node name="InteractableArea" type="Area2D" parent="Map"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/InteractableArea"]
+position = Vector2(979, 951.5)
+shape = SubResource("RectangleShape2D_vs267")
+
+[node name="OfficeWorker1" type="Sprite2D" parent="Map"]
+position = Vector2(536.667, 666)
+scale = Vector2(0.822917, 0.822917)
+texture = ExtResource("12_4b06i")
+
+[node name="Marker2D" type="Marker2D" parent="Map/OfficeWorker1"]
+position = Vector2(55, -256)
+
+[node name="OfficeWorker2" type="Sprite2D" parent="Map"]
+position = Vector2(1060, 692)
+scale = Vector2(0.373712, 0.373712)
+texture = ExtResource("13_p1vpi")
+
+[node name="Marker2D" type="Marker2D" parent="Map/OfficeWorker2"]
+position = Vector2(104.358, -719.806)
+
+[node name="OfficeWorker3" type="Sprite2D" parent="Map"]
+position = Vector2(766, 659)
+scale = Vector2(0.822917, 0.822917)
+texture = ExtResource("10_enh8s")
+
+[node name="Marker2D" type="Marker2D" parent="Map/OfficeWorker3"]
+position = Vector2(55, -256)
+
+[node name="Player" parent="Map" instance=ExtResource("3_17ymn")]
+position = Vector2(59, 986)
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_bjbm3")
 autoplay = true
@@ -83,4 +156,5 @@ autoplay = true
 [node name="CoffeeMinigame" parent="." instance=ExtResource("7_as3so")]
 visible = false
 
-[connection signal="Interaction" from="Map/EspressoMachine" to="." method="go_to_laundry"]
+[connection signal="Interaction" from="Map/EspressoMachine" to="CoffeeMinigame" method="start_minigame"]
+[connection signal="Ended" from="CoffeeMinigame" to="." method="_on_coffee_minigame_ended"]

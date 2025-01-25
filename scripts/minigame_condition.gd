@@ -1,12 +1,14 @@
 class_name MinigameCondition extends Node
 
+signal on_complete()
+
 @export var depends_on: Array[MinigameCondition]
 
 var completed: bool
 
 func complete():
     completed = true
-    print("COMPLETED %s" % name)
+    on_complete.emit()
 
 func dependency_complete() -> bool:
     for dep in depends_on:

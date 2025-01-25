@@ -1,14 +1,22 @@
 class_name Slideable extends Node2D
 
+signal dropped()
+
 @export var path: Path2D
-@export var knob: RigidBody2D
+@export var knob: Area2D
 @export var max_delta: float = 20
 
 var dragging: bool = false
 var rel_position: Vector2
+var init_pos: Vector2
 
+func _ready() -> void:
+    knob.input_event.connect(_on_knob_input_event)
+    init_pos = knob.position
 
 func _on_knob_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+    if !GameManager.input_enabled():
+        return
     if event is InputEventMouseButton:
         if event.button_index != MOUSE_BUTTON_LEFT:
             return
@@ -39,3 +47,8 @@ func _start_dragging(mouse_pos: Vector2):
 
 func _end_dragging():
     dragging = false
+    dropped.emit()
+
+func reset():
+    knob.position = init_pos
+    
