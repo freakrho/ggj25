@@ -34,7 +34,13 @@ directories/dch_directory={
 "world_character": "res://Timelines/world_character.dch"
 }
 directories/dtl_directory={
+"coffee_options_dialogue": "res://Timelines/coffee_options_dialogue.dtl",
 "laundry_day1": "res://Timelines/laundry_day1.dtl",
+"laundry_day1_1": "res://Timelines/laundry_day1_1.dtl",
+"laundry_day1_2": "res://Timelines/laundry_day1_2.dtl",
+"laundry_day1_3": "res://Timelines/laundry_day1_3.dtl",
+"laundry_day1_4": "res://Timelines/laundry_day1_4.dtl",
+"laundry_day1_5": "res://Timelines/laundry_day1_5.dtl",
 "morning": "res://Timelines/morning.dtl",
 "office_timeline": "res://Timelines/office_timeline.dtl"
 }
