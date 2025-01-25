@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6mhvxe0em0cy"
-path="res://.godot/imported/lavanderia.jpg-a3350961a21af1bcb000a91402eb7155.ctex"
+uid="uid://ibevue2dku5e"
+path="res://.godot/imported/BAILE.jpg-0dc83ef5ec245044563afd558aed08e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sketch fondos/lavanderia.jpg"
-dest_files=["res://.godot/imported/lavanderia.jpg-a3350961a21af1bcb000a91402eb7155.ctex"]
+source_file="res://Assets/sketch fondos/BAILE.jpg"
+dest_files=["res://.godot/imported/BAILE.jpg-0dc83ef5ec245044563afd558aed08e2.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ibevue2dku5e"
-path="res://.godot/imported/BAILE.jpg-ebdfc3f6abc01eb2208fe61bc60764cd.ctex"
+uid="uid://j4iueldvyma6"
+path="res://.godot/imported/onepeso.png-bc514c1110f0813e42833d6ee4b25046.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sketch fondos/BAILE.jpg"
-dest_files=["res://.godot/imported/BAILE.jpg-ebdfc3f6abc01eb2208fe61bc60764cd.ctex"]
+source_file="res://Assets/Sprites/onepeso.png"
+dest_files=["res://.godot/imported/onepeso.png-bc514c1110f0813e42833d6ee4b25046.ctex"]
 
 [params]
 

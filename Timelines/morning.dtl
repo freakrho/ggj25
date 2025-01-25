@@ -1,5 +1,4 @@
 world_character: *alarm sounds*
 ui_character: Use any button.
-[wait_input hide_text="false"]
 world_character: A regular day in a regular city.
 world_character: We're all slaves to corporate work.

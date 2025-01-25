@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2drdfwq51qe"
-path="res://.godot/imported/oficina.jpg-9abf11215c900e2f67b9fee3df596978.ctex"
+uid="uid://ciuo8o82e08ou"
+path="res://.godot/imported/fivepeso.png-bc68e37af6d63ae03403a20c8f0bf490.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sketch fondos/oficina.jpg"
-dest_files=["res://.godot/imported/oficina.jpg-9abf11215c900e2f67b9fee3df596978.ctex"]
+source_file="res://Assets/Sprites/fivepeso.png"
+dest_files=["res://.godot/imported/fivepeso.png-bc68e37af6d63ae03403a20c8f0bf490.ctex"]
 
 [params]
 
