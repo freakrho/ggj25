@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsr5w0eln7wpt"]
+
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_p610a"]
+[ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="2_riasd"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_n6qp5"]
+vertices = PackedVector2Array(1129, 620.93, 29.7969, 618.062, 483, 331, 1129, 20.0781, 346, 331, 25.1875, 23.9062, 346, 173, 483, 173)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(4, 1, 5, 6), PackedInt32Array(6, 5, 3, 7), PackedInt32Array(3, 2, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(5, 643, 1154, 646, 1154, -5, 0, -1)])
+agent_radius = 25.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhbpx"]
+size = Vector2(87, 108)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l5dbu"]
+
+[node name="Map" type="Node2D" node_paths=PackedStringArray("player", "nav_map")]
+script = ExtResource("1_p610a")
+player = NodePath("Player")
+nav_map = NodePath("NavigationRegion2D")
+
+[node name="Player" parent="." instance=ExtResource("2_riasd")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-1, 0)
+navigation_polygon = SubResource("NavigationPolygon_n6qp5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(381, 208)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(33.5, 44)
+shape = SubResource("RectangleShape2D_xhbpx")
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(34.5, 44.5)
+scale = Vector2(85, 107)
+texture = SubResource("PlaceholderTexture2D_l5dbu")
