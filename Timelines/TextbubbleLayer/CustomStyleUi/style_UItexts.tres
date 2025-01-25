@@ -71,7 +71,7 @@ overrides = {}
 
 [resource]
 script = ExtResource("11_qkb2l")
-name = "A"
+name = "style_UItexts"
 layer_list = Array[String](["10", "11", "12", "13", "14", "15", "16", "17"])
 layer_info = {
 "": SubResource("Resource_cgeu1"),
