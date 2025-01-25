@@ -1,5 +1,6 @@
 oficinista2: Gooooood morning!!
-playercharacter: Hmmm...
+[wait time="0.2"]
+playercharacter: ...
 oficinista2: How was your weekend?
 playercharacter: <Empty Text Event>
 - Why do you care?
@@ -16,4 +17,6 @@ playercharacter: Yes, sir.
 oficinista3: Forgot again, heh?
 oficinista3: I heard that time of the month makes women even more forgetful...
 playercharacter: Excuse me?
-oficinista3: Gosh don't get all cranky!!! It's a jooooooke.
+oficinista3: Gosh don't get all cranky!!! It's a [i]jooooooke.[i]
+playercharacter: (Do you know what I need ASAP?)
+playercharacter: (Some coffee. Before I end someone)
