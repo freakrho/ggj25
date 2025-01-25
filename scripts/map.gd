@@ -2,6 +2,7 @@ class_name Map extends Node2D
 
 @export var player: Player
 @export var nav_map: NavigationRegion2D
+@export var interactable_area: Area2D
 
 var map: RID
 
@@ -10,6 +11,7 @@ func _ready() -> void:
     map = NavigationServer2D.map_create()
     NavigationServer2D.map_set_active(map, true)
     set_map()
+    interactable_area.input_event.connect(player.world_input_event)
 
 func set_map():
     NavigationServer2D.region_set_map(nav_map, map)

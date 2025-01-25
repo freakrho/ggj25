@@ -7,6 +7,7 @@ extends MinigameCondition
 @export var coin_1: PackedScene
 @export var coin_2: PackedScene
 @export var coin_5: PackedScene
+@export var label: Label
 
 var initial_coins: Array[Coin] = []
 var taken_coins: Array[Coin] = []
@@ -78,6 +79,9 @@ func _validate_value():
         # reset puzzle
         for coin in taken_coins:
             coin.reset()
+        label.text = "00"
+    else:
+        label.text = "%02d" % value
 
 func condition_met() -> bool:
     return value_loaded() == expected_amount

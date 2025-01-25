@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3bgbc0ry8hkr"]
+[gd_scene load_steps=24 format=3 uid="uid://d3bgbc0ry8hkr"]
 
 [ext_resource type="Script" path="res://scripts/levels/level.gd" id="1_p33rd"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="2_3471r"]
@@ -6,11 +6,14 @@
 [ext_resource type="Script" path="res://scripts/map.gd" id="4_2d4og"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="5_5s6ab"]
 [ext_resource type="PackedScene" uid="uid://70ntrpgvha3s" path="res://scenes/washing_machine.tscn" id="6_2k7sd"]
-[ext_resource type="Script" path="res://scripts/dialogue_interactable.gd" id="6_lt6st"]
 [ext_resource type="Script" path="res://scripts/dialogue_settings.gd" id="7_us8la"]
 [ext_resource type="Resource" path="res://Timelines/laundry_day1.dtl" id="8_w0fx6"]
 [ext_resource type="Script" path="res://scripts/character_pair.gd" id="9_rqk5x"]
 [ext_resource type="Resource" path="res://Timelines/oldlady.dch" id="10_tmehj"]
+[ext_resource type="Texture2D" uid="uid://covcfxohmsth4" path="res://Assets/Sprites/Monedero.png" id="11_i2uyy"]
+[ext_resource type="Script" path="res://scripts/draggable_with_target.gd" id="12_b43f5"]
+[ext_resource type="Script" path="res://scripts/interactable_with_item.gd" id="12_rlqwm"]
+[ext_resource type="Script" path="res://scripts/set_coins_action.gd" id="13_56rco"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_flylw"]
 vertices = PackedVector2Array(1854.93, 638.977, 15.1797, 638.008, 115.227, 494.953, 1716.5, 481.031)
@@ -29,22 +32,48 @@ size = Vector2(396.067, 139)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0ai3"]
 size = Vector2(455, 254)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3sem"]
+size = Vector2(1993, 588)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47rg2"]
 size = Vector2(274, 518)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_afl5u"]
-size = Vector2(182, 510)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0joxp"]
+radius = 139.74
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c81yn"]
+size = Vector2(166, 238)
 
 [node name="Laundry" type="Node2D" node_paths=PackedStringArray("map", "minigames", "start_dialogue")]
 script = ExtResource("1_p33rd")
 map = NodePath("Map")
 minigames = [NodePath("WashingMachine")]
-start_dialogue = NodePath("DialogueSettings")
+start_dialogue = NodePath("Map/Dialogues/StartDialogue")
 
-[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map")]
+[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
 script = ExtResource("4_2d4og")
 player = NodePath("Player")
 nav_map = NodePath("NavigationRegion2D")
+interactable_area = NodePath("InteractableArea")
+
+[node name="Dialogues" type="Node" parent="Map"]
+
+[node name="StartDialogue" type="Node" parent="Map/Dialogues" node_paths=PackedStringArray("characters")]
+script = ExtResource("7_us8la")
+dialogue = ExtResource("8_w0fx6")
+characters = [NodePath("../../Characters/Receptionist")]
+
+[node name="DialogueWithPurse" type="Node" parent="Map/Dialogues" node_paths=PackedStringArray("characters")]
+script = ExtResource("7_us8la")
+dialogue = ExtResource("8_w0fx6")
+characters = [NodePath("../../Characters/Receptionist")]
+
+[node name="Characters" type="Node" parent="Map"]
+
+[node name="Receptionist" type="Node" parent="Map/Characters" node_paths=PackedStringArray("node")]
+script = ExtResource("9_rqk5x")
+character = ExtResource("10_tmehj")
+node = NodePath("../../ReceptionistMarker")
 
 [node name="Background" type="Sprite2D" parent="Map"]
 texture = ExtResource("2_3471r")
@@ -80,6 +109,12 @@ position = Vector2(1898, 491)
 rotation = 0.863548
 shape = SubResource("RectangleShape2D_m0ai3")
 
+[node name="InteractableArea" type="Area2D" parent="Map"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/InteractableArea"]
+position = Vector2(986.5, 814)
+shape = SubResource("RectangleShape2D_m3sem")
+
 [node name="Player" parent="Map" instance=ExtResource("3_nurqy")]
 position = Vector2(161, 1011)
 
@@ -97,29 +132,36 @@ position = Vector2(1, 167)
 [node name="ReceptionistMarker" type="Marker2D" parent="Map"]
 position = Vector2(574, 557)
 
-[node name="DialogueInteractable" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position")]
-position = Vector2(577, 721)
-script = ExtResource("6_lt6st")
-timeline = ExtResource("8_w0fx6")
-default_position = NodePath("DefaultPos")
+[node name="Purse" type="Area2D" parent="Map" node_paths=PackedStringArray("target")]
+position = Vector2(1770, 152)
+script = ExtResource("12_b43f5")
+target = NodePath("../InteractWithPurse")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/DialogueInteractable"]
-shape = SubResource("RectangleShape2D_afl5u")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Purse"]
+shape = SubResource("CircleShape2D_0joxp")
 
-[node name="DefaultPos" type="Node2D" parent="Map/DialogueInteractable"]
-position = Vector2(-196, 274)
+[node name="Sprite2D" type="Sprite2D" parent="Map/Purse"]
+texture = ExtResource("11_i2uyy")
+
+[node name="InteractWithPurse" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position", "dialogue")]
+position = Vector2(569, 565)
+script = ExtResource("12_rlqwm")
+default_position = NodePath("Node2D")
+dialogue = NodePath("../Dialogues/DialogueWithPurse")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/InteractWithPurse"]
+position = Vector2(6, 23)
+shape = SubResource("RectangleShape2D_c81yn")
+
+[node name="Node2D" type="Marker2D" parent="Map/InteractWithPurse"]
+position = Vector2(-168, 416)
+
+[node name="SetCoinsAction" type="Node" parent="Map/InteractWithPurse"]
+script = ExtResource("13_56rco")
+coins = Array[int]([1, 1, 1, 1, 1])
 
 [node name="WashingMachine" parent="." instance=ExtResource("6_2k7sd")]
 visible = false
 
-[node name="DialogueSettings" type="Node" parent="." node_paths=PackedStringArray("characters")]
-script = ExtResource("7_us8la")
-dialogue = ExtResource("8_w0fx6")
-characters = [NodePath("Receptionist")]
-
-[node name="Receptionist" type="Node" parent="DialogueSettings" node_paths=PackedStringArray("node")]
-script = ExtResource("9_rqk5x")
-character = ExtResource("10_tmehj")
-node = NodePath("../../Map/ReceptionistMarker")
-
 [connection signal="Interaction" from="Map/WashingMachine" to="WashingMachine" method="start_minigame"]
+[connection signal="Interaction" from="Map/InteractWithPurse" to="Map/InteractWithPurse/SetCoinsAction" method="set_coins"]

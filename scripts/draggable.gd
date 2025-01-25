@@ -13,6 +13,8 @@ func _ready() -> void:
     input_event.connect(_on_input_event)
 
 func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+    if !GameManager.input_enabled():
+        return
     if event is InputEventMouseButton:
         if event.button_index != MOUSE_BUTTON_LEFT:
             return

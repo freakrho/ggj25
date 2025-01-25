@@ -4,6 +4,7 @@ var current: Session
 
 func new_session():
     current = Session.new()
+    #current.coins = [ 1, 2, 1 ]
     current.coins = [ 5 ]
 
 func _init() -> void:

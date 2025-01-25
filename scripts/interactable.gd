@@ -3,6 +3,7 @@ class_name Interactable extends Area2D
 signal Interaction
 
 @export var default_position: Node2D
+@export var dialogue: DialogueSettings
 
 func _ready() -> void:
     connect("body_entered", _on_body_entered)
@@ -28,4 +29,18 @@ func _on_body_exited(body: Node2D) -> void:
 
 
 func interact():
+    if dialogue == null:
+        do_interaction()
+    else:
+        dialogue.start_dialogue()
+        Dialogic.timeline_ended.connect(ended_dialoge)
+
+
+func do_interaction():
     Interaction.emit()
+
+
+func ended_dialoge():
+    Dialogic.timeline_ended.disconnect(ended_dialoge)
+    do_interaction()
+    

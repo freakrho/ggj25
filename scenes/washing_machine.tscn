@@ -1,71 +1,61 @@
-[gd_scene load_steps=10 format=3 uid="uid://70ntrpgvha3s"]
+[gd_scene load_steps=9 format=3 uid="uid://70ntrpgvha3s"]
 
 [ext_resource type="Script" path="res://scripts/minigame.gd" id="1_5olix"]
 [ext_resource type="Script" path="res://scripts/load_exact_money_condition.gd" id="3_5kqop"]
-[ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="3_d0fgr"]
 [ext_resource type="PackedScene" uid="uid://bn730ru38cghs" path="res://scenes/items/coin_2.tscn" id="4_cya4m"]
 [ext_resource type="PackedScene" uid="uid://chdvw1ijd7yin" path="res://scenes/items/coin_5.tscn" id="4_xhln6"]
 [ext_resource type="PackedScene" uid="uid://c08qxm8mq7phf" path="res://scenes/items/coin_1.tscn" id="5_57m65"]
+[ext_resource type="Texture2D" uid="uid://dw6kmme2m2ks3" path="res://Assets/sketch fondos/Fondo minigame lavanderia.jpg" id="6_e381j"]
+[ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="7_e27t5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okpda"]
-size = Vector2(44, 324)
-
-[sub_resource type="Gradient" id="Gradient_kfjhb"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bfrl4"]
-gradient = SubResource("Gradient_kfjhb")
-width = 44
-height = 324
+size = Vector2(168, 178)
 
 [node name="WashingMachine" type="Node2D" node_paths=PackedStringArray("independent_conditions")]
 script = ExtResource("1_5olix")
 independent_conditions = [NodePath("LoadExactMoneyCondition")]
 
-[node name="LoadExactMoneyCondition" type="Node" parent="." node_paths=PackedStringArray("drop_area", "coin_positions")]
+[node name="LoadExactMoneyCondition" type="Node" parent="." node_paths=PackedStringArray("drop_area", "coin_positions", "label")]
 script = ExtResource("3_5kqop")
+accepted_coins = Array[int]([1, 2, 5])
+expected_amount = 3
 drop_area = NodePath("../CoinSlit")
 coin_positions = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4"), NodePath("../Marker2D5"), NodePath("../Marker2D6"), NodePath("../Marker2D7")]
 coin_1 = ExtResource("5_57m65")
 coin_2 = ExtResource("4_cya4m")
 coin_5 = ExtResource("4_xhln6")
+label = NodePath("../Label")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(-8503, -5741)
-scale = Vector2(9.18011, 9.18011)
-texture = ExtResource("3_d0fgr")
+texture = ExtResource("6_e381j")
 centered = false
 
 [node name="CoinSlit" type="Area2D" parent="."]
-position = Vector2(1626, 321)
+position = Vector2(1586, 423)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoinSlit"]
 shape = SubResource("RectangleShape2D_okpda")
 
-[node name="Sprite2D" type="Sprite2D" parent="CoinSlit"]
-texture = SubResource("GradientTexture2D_bfrl4")
-
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(1823, 893)
+position = Vector2(1715, 957)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(1621, 764)
+position = Vector2(1586, 845)
 
 [node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(1467, 953)
+position = Vector2(1493, 966)
 
 [node name="Marker2D4" type="Marker2D" parent="."]
-position = Vector2(1338, 711)
+position = Vector2(1373, 848)
 
 [node name="Marker2D5" type="Marker2D" parent="."]
 position = Vector2(1207, 986)
 
 [node name="Marker2D6" type="Marker2D" parent="."]
-position = Vector2(1507, 560)
+position = Vector2(1494, 693)
 
 [node name="Marker2D7" type="Marker2D" parent="."]
-position = Vector2(1867, 610)
+position = Vector2(1788, 776)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -82,5 +72,19 @@ offset_top = 32.0
 offset_right = 202.0
 offset_bottom = 118.0
 text = "Back"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 292.0
+offset_top = 335.0
+offset_right = 546.0
+offset_bottom = 525.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.8, 0.8, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("7_e27t5")
+theme_override_font_sizes/font_size = 156
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Control/Button" to="." method="close_minigame"]

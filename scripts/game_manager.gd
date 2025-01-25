@@ -8,3 +8,6 @@ func load_level(level_scene: PackedScene):
         current_level.queue_free()
     var level = level_scene.instantiate()
     add_child(level)
+
+func input_enabled() -> bool:
+    return Dialogic.current_timeline == null

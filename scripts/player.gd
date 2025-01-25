@@ -14,19 +14,17 @@ func _ready() -> void:
     nav_agent.max_speed = move_speed
     GameManager.player = self
 
-func input_enabled() -> bool:
-    return Dialogic.current_timeline == null
-
 func set_navigation_map(map: RID):
     nav_agent.set_navigation_map(map)
 
-func _input(event: InputEvent) -> void:
-    if !input_enabled():
+func world_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+    if !GameManager.input_enabled():
         return
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
             target_interactable = null
             set_target(event.position)
+            viewport.set_input_as_handled()
             
 func set_target(target: Vector2):
     nav_agent.target_position = target
@@ -58,7 +56,7 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
     #global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
 
 func _physics_process(delta: float) -> void:
-    if !input_enabled():
+    if !GameManager.input_enabled():
         return
     
     # Interaction
