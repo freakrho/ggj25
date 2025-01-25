@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bsr5w0eln7wpt"]
 
-[ext_resource type="Script" path="res://scenes/map.gd" id="1_p610a"]
+[ext_resource type="Script" path="res://scripts/map.gd" id="1_p610a"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="2_riasd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_n6qp5"]

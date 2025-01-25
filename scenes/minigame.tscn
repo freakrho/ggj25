@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://bs5neku7u1j3e"]
+
+[ext_resource type="Script" path="res://scripts/draggable.gd" id="1_0e3gc"]
+[ext_resource type="Script" path="res://scripts/slideable.gd" id="2_vmcd2"]
+
+[sub_resource type="Gradient" id="Gradient_73m6r"]
+offsets = PackedFloat32Array(0, 0.55102, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.418367, 0.418367, 0.418367, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3a4g1"]
+gradient = SubResource("Gradient_73m6r")
+fill_from = Vector2(0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7lgfr"]
+radius = 75.9539
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tge7i"]
+size = Vector2(100, 100)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ns8sl"]
+radius = 80.65
+
+[sub_resource type="Curve2D" id="Curve2D_l28xa"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -7, -1, 0, 0, 0, 0, 429, -1)
+}
+point_count = 2
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(575, 325)
+scale = Vector2(18.4688, 10.625)
+texture = SubResource("GradientTexture2D_3a4g1")
+
+[node name="Draggable" type="StaticBody2D" parent="."]
+position = Vector2(653, 357)
+input_pickable = true
+script = ExtResource("1_0e3gc")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Draggable"]
+shape = SubResource("CircleShape2D_7lgfr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Draggable"]
+texture = SubResource("PlaceholderTexture2D_tge7i")
+
+[node name="Slideable" type="Node2D" parent="." node_paths=PackedStringArray("path", "knob")]
+position = Vector2(263, 176)
+script = ExtResource("2_vmcd2")
+path = NodePath("Path2D")
+knob = NodePath("Knob")
+metadata/_edit_group_ = true
+
+[node name="Knob" type="StaticBody2D" parent="Slideable"]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slideable/Knob"]
+shape = SubResource("CircleShape2D_ns8sl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Slideable/Knob"]
+texture = SubResource("PlaceholderTexture2D_tge7i")
+
+[node name="Path2D" type="Path2D" parent="Slideable"]
+curve = SubResource("Curve2D_l28xa")
+
+[connection signal="input_event" from="Draggable" to="Draggable" method="_on_input_event"]
+[connection signal="input_event" from="Slideable/Knob" to="Slideable" method="_on_knob_input_event"]
