@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddin5jv8ogfjb"]
+[gd_scene load_steps=13 format=3 uid="uid://ddin5jv8ogfjb"]
 
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_6c0ec"]
 [ext_resource type="Script" path="res://scripts/levels/office.gd" id="1_vmnrm"]
 [ext_resource type="Texture2D" uid="uid://b2drdfwq51qe" path="res://Assets/sketch fondos/oficina.jpg" id="1_xg8lp"]
-[ext_resource type="PackedScene" uid="uid://d3bgbc0ry8hkr" path="res://scenes/levels/laundry.tscn" id="2_3tnn3"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="3_17ymn"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="4_3m7wp"]
 [ext_resource type="AudioStream" uid="uid://dy2t4o4pxmice" path="res://Assets/audio/music/office.ogg" id="6_bjbm3"]
@@ -26,10 +25,8 @@ size = Vector2(1978, 299)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nw2c"]
 size = Vector2(382, 678)
 
-[node name="Office" type="Node2D" node_paths=PackedStringArray("map", "minigames")]
+[node name="Office" type="Node2D" node_paths=PackedStringArray("minigames")]
 script = ExtResource("1_vmnrm")
-laundry_scene = ExtResource("2_3tnn3")
-map = NodePath("Map")
 minigames = [NodePath("CoffeeMinigame")]
 
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
@@ -85,5 +82,3 @@ autoplay = true
 
 [node name="CoffeeMinigame" parent="." instance=ExtResource("7_as3so")]
 visible = false
-
-[connection signal="Interaction" from="Map/EspressoMachine" to="." method="go_to_laundry"]
