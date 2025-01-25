@@ -5,10 +5,12 @@ class_name Player extends CharacterBody2D
 
 var moving := false
 var interactables: Array[Interactable] = []
+var target_interactable: Interactable
 
 func _ready() -> void:
     nav_agent.velocity_computed.connect(Callable(_on_velocity_computed))
     nav_agent.max_speed = move_speed
+    GameManager.player = self
     
 func set_navigation_map(map: RID):
     nav_agent.set_navigation_map(map)
@@ -25,6 +27,8 @@ func set_target(target: Vector2):
 func end_navigation():
     moving = false
     nav_agent.velocity = Vector2.ZERO
+    if target_interactable != null:
+        target_interactable.interact()
 
 func process_navigation(delta: float):
     # Do not query when the map has never synchronized and is empty.
@@ -57,6 +61,7 @@ func _physics_process(delta: float) -> void:
     
     var movement = Input.get_vector("move_left", "move_right", "move_up", "move_down")
     if movement.length_squared() > 0:
+        target_interactable = null
         end_navigation()
         velocity = movement * move_speed
     
@@ -69,3 +74,9 @@ func interactable_exited(interactable: Interactable):
     for i in range(interactables.size() - 1, -1, -1):
         if interactables[i] == interactable:
             interactables.remove_at(i)
+
+func go_to_and_interact(interactable: Interactable):
+    if target_interactable == interactable:
+        return
+    target_interactable = interactable
+    set_target(interactable.default_position.global_position)

@@ -6,7 +6,7 @@ var rel_position: Vector2
 func _ready() -> void:
     connect("input_event", _on_input_event)
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
     if event is InputEventMouseButton:
         if event.button_index != MOUSE_BUTTON_LEFT:
             return
@@ -16,6 +16,8 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
             
         elif not event.pressed and dragging:
             _end_dragging()
+        
+        viewport.set_input_as_handled()
 
 func _input(event: InputEvent) -> void:
     if not dragging:

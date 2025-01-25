@@ -74,14 +74,18 @@ shape = SubResource("RectangleShape2D_m0ai3")
 [node name="Player" parent="Map" instance=ExtResource("3_nurqy")]
 position = Vector2(803, 986)
 
-[node name="Interactable" type="Area2D" parent="Map"]
+[node name="WashingMachine" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position")]
+position = Vector2(1007, 827)
 script = ExtResource("5_5s6ab")
+default_position = NodePath("DefaultPosition")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Interactable"]
-position = Vector2(1012, 834)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/WashingMachine"]
 shape = SubResource("RectangleShape2D_47rg2")
+
+[node name="DefaultPosition" type="Node2D" parent="Map/WashingMachine"]
+position = Vector2(1, 167)
 
 [node name="WashingMachine" parent="." instance=ExtResource("6_2k7sd")]
 visible = false
 
-[connection signal="Interaction" from="Map/Interactable" to="WashingMachine" method="start_minigame"]
+[connection signal="Interaction" from="Map/WashingMachine" to="WashingMachine" method="start_minigame"]
