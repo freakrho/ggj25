@@ -72,7 +72,7 @@ rotation = 0.863548
 shape = SubResource("RectangleShape2D_m0ai3")
 
 [node name="Player" parent="Map" instance=ExtResource("3_nurqy")]
-position = Vector2(803, 986)
+position = Vector2(161, 1011)
 
 [node name="WashingMachine" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position")]
 position = Vector2(1007, 827)
