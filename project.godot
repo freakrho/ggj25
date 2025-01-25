@@ -30,7 +30,7 @@ directories/dch_directory={
 "world_character": "res://Timelines/world_character.dch"
 }
 directories/dtl_directory={
-"laundry": "res://Timelines/laundry.dtl",
+"laundry": "res://Timelines/laundry_day1.dtl",
 "morning": "res://Timelines/morning.dtl",
 "office_timeline": "res://Timelines/office_timeline.dtl"
 }
