@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddin5jv8ogfjb"]
+[gd_scene load_steps=13 format=3 uid="uid://ddin5jv8ogfjb"]
 
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_6c0ec"]
 [ext_resource type="Script" path="res://scripts/levels/office.gd" id="1_vmnrm"]
@@ -19,16 +19,21 @@ size = Vector2(1979, 955)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxw57"]
 size = Vector2(2097, 253)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs267"]
+size = Vector2(1978, 299)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nw2c"]
 size = Vector2(382, 678)
 
-[node name="Office" type="Node2D"]
+[node name="Office" type="Node2D" node_paths=PackedStringArray("minigames")]
 script = ExtResource("1_vmnrm")
+minigames = [NodePath("CoffeeMinigame")]
 
-[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map")]
+[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
 script = ExtResource("1_6c0ec")
 player = NodePath("Player")
 nav_map = NodePath("NavigationRegion2D")
+interactable_area = NodePath("InteractableArea")
 
 [node name="Background" type="Sprite2D" parent="Map"]
 texture = ExtResource("1_xg8lp")
@@ -50,6 +55,12 @@ shape = SubResource("RectangleShape2D_t143l")
 position = Vector2(896.5, 768.5)
 shape = SubResource("RectangleShape2D_nxw57")
 
+[node name="InteractableArea" type="Area2D" parent="Map"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/InteractableArea"]
+position = Vector2(979, 951.5)
+shape = SubResource("RectangleShape2D_vs267")
+
 [node name="Player" parent="Map" instance=ExtResource("3_17ymn")]
 position = Vector2(59, 986)
 
@@ -70,3 +81,4 @@ stream = ExtResource("6_bjbm3")
 autoplay = true
 
 [node name="CoffeeMinigame" parent="." instance=ExtResource("7_as3so")]
+visible = false
