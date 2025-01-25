@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=9 format=3 uid="uid://cgis0ivpts01i"]
+
+[ext_resource type="PackedScene" uid="uid://syki6k0e6aac" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_TextBubble/text_bubble_base.tscn" id="1_q7vl0"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_3ukxs"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="3_mfwag"]
+[ext_resource type="PackedScene" uid="uid://d2it0xiap3gnt" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Textbubble/text_bubble_layer.tscn" id="4_anpud"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="5_62idl"]
+
+[sub_resource type="Resource" id="Resource_d3qxp"]
+script = ExtResource("2_3ukxs")
+scene = ExtResource("1_q7vl0")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_urb5f"]
+script = ExtResource("2_3ukxs")
+scene = ExtResource("3_mfwag")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_2n4qo"]
+script = ExtResource("2_3ukxs")
+scene = ExtResource("4_anpud")
+overrides = {
+"text_color": "Color(0.75, 0.714111, 0.175781, 1)"
+}
+
+[resource]
+script = ExtResource("5_62idl")
+name = "Style_ui"
+layer_list = Array[String](["10", "11"])
+layer_info = {
+"": SubResource("Resource_d3qxp"),
+"10": SubResource("Resource_urb5f"),
+"11": SubResource("Resource_2n4qo")
+}
+base_overrides = {}
+layers = Array[ExtResource("2_3ukxs")]([])
+metadata/_latest_layer = "11"
