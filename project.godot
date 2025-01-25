@@ -24,11 +24,13 @@ GameManager="*res://scripts/game_manager.gd"
 
 directories/dch_directory={
 "oficinista1": "res://Timelines/oficinista1.dch",
+"oldlady": "res://Timelines/oldlady.dch",
 "playercharacter": "res://Timelines/playercharacter.dch",
 "ui_character": "res://Timelines/ui_character.dch",
 "world_character": "res://Timelines/world_character.dch"
 }
 directories/dtl_directory={
+"laundry": "res://Timelines/laundry.dtl",
 "morning": "res://Timelines/morning.dtl",
 "office_timeline": "res://Timelines/office_timeline.dtl"
 }
