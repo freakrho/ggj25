@@ -1,4 +1,11 @@
-world_character: *alarm sounds*
-ui_character: Use any button.
-world_character: A regular day in a regular city.
-world_character: We're all slaves to corporate work.
+playercharacter: The voices in my head say to use any button...?
+[wait time="0.8"]
+playercharacter: Well! this is my therapist's problem now!
+[wait time="0.2"]
+playercharacter: Now, onto regular day in a regular city...
+[wait time="0.2"]
+playercharacter: And a regular job...
+[wait time="0.2"]
+playercharacter: I guess we're all slaves to corporate work. Right, voices?
+[wait time="0.5"]
+playercharacter: *cue in laugh track*
