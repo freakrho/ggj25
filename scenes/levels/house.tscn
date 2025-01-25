@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3tssgy1npgi1"]
+
+[ext_resource type="Script" path="res://scripts/levels/house.gd" id="1_uqouy"]
+[ext_resource type="Script" path="res://scripts/map.gd" id="2_33otu"]
+[ext_resource type="PackedScene" uid="uid://ddin5jv8ogfjb" path="res://scenes/levels/office.tscn" id="2_raq3v"]
+[ext_resource type="Texture2D" uid="uid://c4ntm88xgt6dk" path="res://Assets/sketch fondos/casa.jpg" id="3_qgaci"]
+[ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="4_32ggl"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="5_5um0u"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jfggr"]
+vertices = PackedVector2Array(1881.81, 632, -19.6094, 632, -16.6875, 494, 1880.17, 494)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-30, 650, -26, 461, 1890, 480, 1892, 648)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvih8"]
+size = Vector2(1979, 955)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ft7d"]
+size = Vector2(2097, 253)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcr2h"]
+size = Vector2(274, 518)
+
+[node name="House" type="Node2D"]
+script = ExtResource("1_uqouy")
+office_scene = ExtResource("2_raq3v")
+
+[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map")]
+script = ExtResource("2_33otu")
+player = NodePath("Player")
+nav_map = NodePath("NavigationRegion2D")
+
+[node name="Background" type="Sprite2D" parent="Map"]
+texture = ExtResource("3_qgaci")
+centered = false
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
+position = Vector2(32, 428)
+navigation_polygon = SubResource("NavigationPolygon_jfggr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map/NavigationRegion2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D"]
+position = Vector2(910.5, 6.5)
+shape = SubResource("RectangleShape2D_lvih8")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Map/NavigationRegion2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D2"]
+position = Vector2(896.5, 768.5)
+shape = SubResource("RectangleShape2D_7ft7d")
+
+[node name="Player" parent="Map" instance=ExtResource("4_32ggl")]
+position = Vector2(487, 964)
+
+[node name="OutWay" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position")]
+position = Vector2(1007, 827)
+script = ExtResource("5_5um0u")
+default_position = NodePath("DefaultPosition")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/OutWay"]
+position = Vector2(877, -8)
+shape = SubResource("RectangleShape2D_vcr2h")
+
+[node name="DefaultPosition" type="Node2D" parent="Map/OutWay"]
+position = Vector2(1, 167)
+
+[connection signal="Interaction" from="Map/OutWay" to="." method="go_out"]

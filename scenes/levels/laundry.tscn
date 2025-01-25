@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://d3bgbc0ry8hkr"]
 
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_p33rd"]
+[ext_resource type="Script" path="res://scripts/levels/level.gd" id="1_p33rd"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="2_3471r"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="3_nurqy"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="4_2d4og"]

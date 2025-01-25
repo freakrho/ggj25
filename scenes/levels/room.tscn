@@ -1,16 +1,16 @@
 [gd_scene load_steps=17 format=3 uid="uid://bkg03mctf2jdw"]
 
-[ext_resource type="Script" path="res://scripts/room.gd" id="1_hy5vm"]
+[ext_resource type="Script" path="res://scripts/levels/room.gd" id="1_hy5vm"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="2_4ia1b"]
 [ext_resource type="PackedScene" uid="uid://d3bgbc0ry8hkr" path="res://scenes/levels/laundry.tscn" id="2_ex8ad"]
 [ext_resource type="Resource" path="res://Timelines/morning.dtl" id="2_jor4c"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="2_jtl1y"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="4_hlf8n"]
 
-[sub_resource type="Gradient" id="Gradient_vstpi"]
+[sub_resource type="Gradient" id="Gradient_kgiqw"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_c0knf"]
-gradient = SubResource("Gradient_vstpi")
+gradient = SubResource("Gradient_kgiqw")
 width = 1920
 height = 1080
 
@@ -34,12 +34,12 @@ size = Vector2(455, 254)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gs2m8"]
 size = Vector2(231, 658)
 
-[sub_resource type="Gradient" id="Gradient_nsh3v"]
+[sub_resource type="Gradient" id="Gradient_pyfox"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0.63, 0.45612, 0.1764, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2i4xp"]
-gradient = SubResource("Gradient_nsh3v")
+gradient = SubResource("Gradient_pyfox")
 width = 164
 height = 659
 

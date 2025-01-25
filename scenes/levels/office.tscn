@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddin5jv8ogfjb"]
+
+[ext_resource type="Script" path="res://scripts/map.gd" id="1_6c0ec"]
+[ext_resource type="Script" path="res://scripts/levels/office.gd" id="1_vmnrm"]
+[ext_resource type="Texture2D" uid="uid://b2drdfwq51qe" path="res://Assets/sketch fondos/oficina.jpg" id="1_xg8lp"]
+[ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="3_17ymn"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="4_3m7wp"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ypo5t"]
+vertices = PackedVector2Array(1882.88, 632, -19.0312, 632, -19.2812, 494, 1881.58, 494)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-29, 648, -31, -429, 1883, -425, 1893, 645)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t143l"]
+size = Vector2(1979, 955)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxw57"]
+size = Vector2(2097, 253)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nw2c"]
+size = Vector2(382, 678)
+
+[node name="Office" type="Node2D"]
+script = ExtResource("1_vmnrm")
+
+[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map")]
+script = ExtResource("1_6c0ec")
+player = NodePath("Player")
+nav_map = NodePath("NavigationRegion2D")
+
+[node name="Background" type="Sprite2D" parent="Map"]
+texture = ExtResource("1_xg8lp")
+centered = false
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
+position = Vector2(32, 428)
+navigation_polygon = SubResource("NavigationPolygon_ypo5t")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map/NavigationRegion2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D"]
+position = Vector2(910.5, 6.5)
+shape = SubResource("RectangleShape2D_t143l")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Map/NavigationRegion2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D2"]
+position = Vector2(896.5, 768.5)
+shape = SubResource("RectangleShape2D_nxw57")
+
+[node name="Player" parent="Map" instance=ExtResource("3_17ymn")]
+position = Vector2(59, 986)
+
+[node name="EspressoMachine" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position")]
+position = Vector2(1721, 894)
+script = ExtResource("4_3m7wp")
+default_position = NodePath("DefaultPos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/EspressoMachine"]
+position = Vector2(-16, -172)
+shape = SubResource("RectangleShape2D_7nw2c")
+
+[node name="DefaultPos" type="Node2D" parent="Map/EspressoMachine"]
+position = Vector2(-13, 103)
