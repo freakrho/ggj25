@@ -20,7 +20,7 @@ script = ExtResource("3_5kqop")
 accepted_coins = Array[int]([1, 2, 5])
 expected_amount = 3
 drop_area = NodePath("../CoinSlit")
-coin_positions = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4"), NodePath("../Marker2D5"), NodePath("../Marker2D6"), NodePath("../Marker2D7")]
+coin_positions = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4"), NodePath("../Marker2D5"), NodePath("../Marker2D6")]
 coin_1 = ExtResource("5_57m65")
 coin_2 = ExtResource("4_cya4m")
 coin_5 = ExtResource("4_xhln6")
@@ -37,25 +37,22 @@ position = Vector2(1586, 423)
 shape = SubResource("RectangleShape2D_okpda")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(1715, 957)
+position = Vector2(795, 885)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(1586, 845)
+position = Vector2(696, 948)
 
 [node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(1493, 966)
+position = Vector2(452, 976)
 
 [node name="Marker2D4" type="Marker2D" parent="."]
-position = Vector2(1373, 848)
+position = Vector2(519, 872)
 
 [node name="Marker2D5" type="Marker2D" parent="."]
-position = Vector2(1207, 986)
+position = Vector2(570, 981)
 
 [node name="Marker2D6" type="Marker2D" parent="."]
-position = Vector2(1494, 693)
-
-[node name="Marker2D7" type="Marker2D" parent="."]
-position = Vector2(1788, 776)
+position = Vector2(658, 836)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

@@ -11,6 +11,8 @@ func _ready() -> void:
     initial_parent = get_parent()
     initial_position = position
     input_event.connect(_on_input_event)
+    mouse_entered.connect(_on_mouse_entered)
+    mouse_exited.connect(_on_mouse_exited)
 
 func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
     if !GameManager.input_enabled():
@@ -18,6 +20,7 @@ func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> v
     if event is InputEventMouseButton:
         if event.button_index != MOUSE_BUTTON_LEFT:
             return
+        print("CHICL")
         if event.pressed and not dragging:
             _start_dragging(event.position)
         elif not event.pressed and dragging:
@@ -49,3 +52,10 @@ func reset():
         else:
             reparent(initial_parent)
     position = initial_position
+
+func _on_mouse_entered():
+    if GameManager.input_enabled():
+        Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+func _on_mouse_exited():
+    Input.set_default_cursor_shape(Input.CURSOR_ARROW)

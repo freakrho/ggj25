@@ -18,13 +18,13 @@ func ended_minigame(minigame: Minigame):
     close_minigame(minigame)
 
 func open_minigame(minigame: Minigame):
-    set_pause_subtree(map, true)
-    map.hide_map()
+    remove_child(map)
     add_child(minigame)
     minigame.show()
 
 func close_minigame(minigame: Minigame):
     set_pause_subtree(map, false)
+    add_child(map)
     map.show_map()
     remove_child(minigame)
 

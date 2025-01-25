@@ -4,11 +4,16 @@ signal Interaction
 
 @export var default_position: Node2D
 @export var dialogue: DialogueSettings
+@export var dialogues: Array[DialogueSettings]
+
+var last_dialogue: int = 0
 
 func _ready() -> void:
-    connect("body_entered", _on_body_entered)
-    connect("body_exited", _on_body_exited)
-    connect("input_event", _on_input_event)
+    body_entered.connect(_on_body_entered)
+    body_exited.connect(_on_body_exited)
+    input_event.connect(_on_input_event)
+    mouse_entered.connect(_on_mouse_entered)
+    mouse_exited.connect(_on_mouse_exited)
 
 
 func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
@@ -17,6 +22,13 @@ func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> v
             # Send player here and then interact
             GameManager.player.go_to_and_interact(self)
             viewport.set_input_as_handled()
+
+func _on_mouse_entered():
+    if GameManager.input_enabled():
+        Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+func _on_mouse_exited():
+    Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 func _on_body_entered(body: Node2D) -> void:
     if body is Player:
@@ -29,10 +41,15 @@ func _on_body_exited(body: Node2D) -> void:
 
 
 func interact():
-    if dialogue == null:
+    if dialogue == null and dialogues.size() == 0:
         do_interaction()
     else:
-        dialogue.start_dialogue()
+        if dialogue != null:
+            dialogue.start_dialogue()
+        else:
+            dialogues[last_dialogue].start_dialogue()
+            if last_dialogue < dialogues.size() - 1:
+                last_dialogue += 1
         Dialogic.timeline_ended.connect(ended_dialoge)
 
 

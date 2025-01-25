@@ -16,6 +16,8 @@ var current_coin: Coin
 func value_loaded() -> int:
     var value = 0
     for coin in taken_coins:
+        if coin == null:
+            continue
         value += coin.value
     return value
 

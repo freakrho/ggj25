@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvf421xljkeb4" path="res://Assets/Sprites/Moneda 1.png" id="2_j2as7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h42ai"]
-radius = 103.16
+radius = 52.0
 
 [node name="Coin1" type="Area2D"]
 position = Vector2(1663, 902)
@@ -14,6 +14,6 @@ script = ExtResource("1_sn4mh")
 shape = SubResource("CircleShape2D_h42ai")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-5.00004, -0.999995)
-scale = Vector2(0.76, 0.76)
+position = Vector2(-2.00004, 5.00679e-06)
+scale = Vector2(0.346667, 0.346667)
 texture = ExtResource("2_j2as7")
