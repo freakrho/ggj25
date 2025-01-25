@@ -1,9 +1,21 @@
-oficinista1: good morning!
+oficinista2: good morning!
 playercharacter: Hmmm...
-oficinista1: How was your weekend?
+oficinista2: How was your weekend?
 playercharacter: (...)
 - Why do you care?
 - It was okay I guess.
 - We don't know each other like that.
-oficinista1: Geez... okay!
+oficinista2: Geez... okay! Woke up on the wrong side of the bed, much?
+playercharacter: (I can't with these people!)
+[wait time="0.5"]
+oficinista1: Monica told me you didn't send the info she asked for.
+oficinista1: Could you get to that ASAP?
+playercharacter: (I swear I sent them!)
+playercharacter: Yes, sir.
+[wait time="0.2"]
+oficinista3: Forgot again, heh?
+oficinista3: I heard that time of the month makes women even more forgetful...
+playercharacter: Excuse me?
+oficinista3: Gosh don't get all cranky!!! It's a jooooooke.
+#coffee mini game
 
