@@ -1,8 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://d3bgbc0ry8hkr"]
+[gd_scene load_steps=30 format=3 uid="uid://d3bgbc0ry8hkr"]
 
-[ext_resource type="Script" path="res://scripts/laundry.gd" id="1_s8yjg"]
+[ext_resource type="Script" path="res://scripts/levels/laundry.gd" id="1_s8yjg"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="2_3471r"]
-[ext_resource type="PackedScene" uid="uid://bkg03mctf2jdw" path="res://scenes/levels/room.tscn" id="2_x4j86"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="3_nurqy"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="4_2d4og"]
 [ext_resource type="Resource" path="res://Timelines/laundry_day1_1.dtl" id="4_rh3bo"]
@@ -59,7 +58,6 @@ size = Vector2(194, 905)
 script = ExtResource("1_s8yjg")
 door = NodePath("Map/Door")
 washing_machine_minigame = NodePath("WashingMachine")
-room = ExtResource("2_x4j86")
 map = NodePath("Map")
 minigames = [NodePath("WashingMachine")]
 start_dialogue = NodePath("Map/Dialogues/StartDialogue")

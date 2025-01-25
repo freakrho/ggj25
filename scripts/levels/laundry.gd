@@ -2,7 +2,6 @@ extends Level
 
 @export var door: Interactable
 @export var washing_machine_minigame: Minigame
-@export var room: PackedScene
 
 func _ready() -> void:
     super()
@@ -14,4 +13,4 @@ func _on_ended(minigame: Minigame):
 
 
 func _on_door_interaction() -> void:
-    GameManager.load_level(room)
+    GameManager.load_level(LevelList.room)

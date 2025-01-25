@@ -1,7 +1,6 @@
 extends Level
 
 @export var start_dialog: DialogicTimeline
-@export var front_scene: PackedScene
 
 
 func _ready() -> void:
@@ -9,4 +8,4 @@ func _ready() -> void:
     Dialogic.start_timeline(start_dialog)
 
 func go_to_front():
-    GameManager.load_level(front_scene)
+    GameManager.load_level(LevelList.house)

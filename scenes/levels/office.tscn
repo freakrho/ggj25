@@ -82,3 +82,5 @@ autoplay = true
 
 [node name="CoffeeMinigame" parent="." instance=ExtResource("7_as3so")]
 visible = false
+
+[connection signal="Interaction" from="Map/EspressoMachine" to="." method="go_to_laundry"]

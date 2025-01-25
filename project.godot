@@ -21,6 +21,7 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 GameManager="*res://scripts/game_manager.gd"
 GlobalDialogueSettings="*res://scenes/global_dialogue_settings.tscn"
 SessionManager="*res://scripts/session/session_manager.gd"
+LevelList="*res://scenes/level_list.tscn"
 
 [dialogic]
 
