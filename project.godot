@@ -24,15 +24,17 @@ GameManager="*res://scripts/game_manager.gd"
 
 directories/dch_directory={
 "oficinista1": "res://Timelines/oficinista1.dch",
+"oldlady": "res://Timelines/oldlady.dch",
 "playercharacter": "res://Timelines/playercharacter.dch",
 "ui_character": "res://Timelines/ui_character.dch",
 "world_character": "res://Timelines/world_character.dch"
 }
 directories/dtl_directory={
+"laundry": "res://Timelines/laundry_day1.dtl",
 "morning": "res://Timelines/morning.dtl",
 "office_timeline": "res://Timelines/office_timeline.dtl"
 }
-layout/style_list=["res://Timelines/Style_dialogue.tres", "res://Timelines/Style_ui.tres", "res://Timelines/Style_world.tres", "res://Timelines/Style_pruebaui.tres", "res://Timelines/A.tres", "res://Timelines/B.tres"]
+layout/style_list=["res://Timelines/Style_dialogue.tres", "res://Timelines/TextbubbleLayer/CustomStyleUi/style_UItexts.tres", "res://Timelines/TextbubbleLayer/CustomStyleUi/style_worldtexts.tres"]
 layout/default_style="res://Timelines/Style_UI.tres"
 glossary/default_case_sensitive=true
 extensions_folder="res://addons/dialogic_additions"
