@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ddin5jv8ogfjb"]
+[gd_scene load_steps=30 format=3 uid="uid://ddin5jv8ogfjb"]
 
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_6c0ec"]
 [ext_resource type="Script" path="res://scripts/levels/office.gd" id="1_vmnrm"]
@@ -16,13 +16,14 @@
 [ext_resource type="Resource" path="res://Timelines/oficinista2.dch" id="6_xjkgk"]
 [ext_resource type="Resource" path="res://Timelines/oficinista3.dch" id="7_4sbuf"]
 [ext_resource type="PackedScene" uid="uid://boyvlj5d00fvw" path="res://scenes/coffee_minigame.tscn" id="7_as3so"]
+[ext_resource type="Resource" path="res://Timelines/office_day2.dtl" id="8_4u154"]
 [ext_resource type="Texture2D" uid="uid://bfkpn7mrd786b" path="res://addons/dialogic/Example Assets/portraits/Antonio/pl5.png" id="10_enh8s"]
 [ext_resource type="Texture2D" uid="uid://s2jsr1aqiu84" path="res://addons/dialogic/Example Assets/portraits/Antonio/pl5 blink.png" id="12_4b06i"]
 [ext_resource type="Texture2D" uid="uid://djqit26f4be4f" path="res://addons/dialogic/Example Assets/portraits/Princess/princess_blank.png" id="13_p1vpi"]
 [ext_resource type="Texture2D" uid="uid://csubxvpppnjvl" path="res://Assets/sketch fondos/oficina SIN TAZAS.jpg" id="13_tw138"]
-[ext_resource type="Texture2D" uid="uid://dbelvubgp5d1g" path="res://Assets/Sprites/Taza blanca.png" id="16_grqr0"]
-[ext_resource type="Texture2D" uid="uid://ds55mb1h4slr3" path="res://Assets/Sprites/Taza rosa.png" id="18_otb1j"]
-[ext_resource type="Texture2D" uid="uid://cgi6yxxqcdpnp" path="res://Assets/Sprites/Taza gris.png" id="20_aimxu"]
+[ext_resource type="Texture2D" uid="uid://cjks3i6x2yqur" path="res://Assets/Sprites/Taza blanca.png" id="16_grqr0"]
+[ext_resource type="Texture2D" uid="uid://84lmasm5vnej" path="res://Assets/Sprites/Taza rosa.png" id="18_otb1j"]
+[ext_resource type="Texture2D" uid="uid://bd0gmk00pvxfv" path="res://Assets/Sprites/Taza gris.png" id="20_aimxu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ypo5t"]
 vertices = PackedVector2Array(1882.88, 632, -19.0312, 632, -19.2812, 494, 1881.58, 494)
@@ -48,7 +49,7 @@ cup_owners = Array[ExtResource("2_l3b4e")]([ExtResource("5_fb3b3"), ExtResource(
 character_nodes = [NodePath("Map/OfficeWorker1"), NodePath("Map/OfficeWorker2"), NodePath("Map/OfficeWorker3")]
 map = NodePath("Map")
 minigames = [NodePath("CoffeeMinigame")]
-start_dialogue = [NodePath("StartDialogue1")]
+start_dialogue = [NodePath("StartDialogue1"), NodePath("StartDialogue2")]
 characters = [NodePath("Oficinista1"), NodePath("Oficinista2"), NodePath("Oficinista3")]
 
 [node name="StartDialogue1" type="Node" parent="."]
@@ -57,7 +58,7 @@ dialogue = ExtResource("3_hjkwb")
 
 [node name="StartDialogue2" type="Node" parent="."]
 script = ExtResource("2_4732g")
-dialogue = ExtResource("3_hjkwb")
+dialogue = ExtResource("8_4u154")
 
 [node name="Cup1Dialogue" type="Node" parent="."]
 script = ExtResource("2_4732g")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb8wn7b2wfs1a"]
+
+[ext_resource type="Texture2D" uid="uid://dj267x7axncu2" path="res://Assets/Sprites/Polly1.PNG" id="1_rkb3q"]
+[ext_resource type="Texture2D" uid="uid://c47eglyo4g7md" path="res://Assets/Sprites/Polly2.PNG" id="2_vecd2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h21g4"]
+animations = [{
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("1_rkb3q")
+}, {
+"duration": 6.0,
+"texture": ExtResource("2_vecd2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Oficinista2" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_h21g4")
+autoplay = "default"
+frame_progress = 0.762497

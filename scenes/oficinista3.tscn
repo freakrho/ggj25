@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://btotp558a0hvf"]
+
+[ext_resource type="Texture2D" uid="uid://c4txxhw5ae8nm" path="res://Assets/Sprites/Bobbert1.PNG" id="1_appjl"]
+[ext_resource type="Texture2D" uid="uid://cy67h4s7kqp4o" path="res://Assets/Sprites/Bobbert2.PNG" id="2_du1qc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cp1t"]
+animations = [{
+"frames": [{
+"duration": 6.0,
+"texture": ExtResource("1_appjl")
+}, {
+"duration": 6.0,
+"texture": ExtResource("2_du1qc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Oficinista3" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3cp1t")
+autoplay = "default"
+frame = 1
+frame_progress = 0.699238
