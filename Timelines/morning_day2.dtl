@@ -1,0 +1,4 @@
+[wait time="0.4"]
+[sound path="res://Assets/audio/sfx/alarma.ogg" volume="0.0"]
+playercharacter: Another day. Another struggle.
+if :
