@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://70ntrpgvha3s"]
+[gd_scene load_steps=10 format=3 uid="uid://70ntrpgvha3s"]
 
 [ext_resource type="Script" path="res://scripts/minigame.gd" id="1_5olix"]
 [ext_resource type="Script" path="res://scripts/load_exact_money_condition.gd" id="3_5kqop"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c08qxm8mq7phf" path="res://scenes/items/coin_1.tscn" id="5_57m65"]
 [ext_resource type="Texture2D" uid="uid://buu1lnyxtveca" path="res://Assets/sketch fondos/Fondo minigame lavanderia.jpg" id="6_e381j"]
 [ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="7_e27t5"]
+[ext_resource type="Theme" uid="uid://brjo2bdq6ntbc" path="res://Assets/ui_theme.tres" id="7_ujhy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okpda"]
 size = Vector2(168, 178)
@@ -84,13 +85,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("7_ujhy4")
 
 [node name="Button" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 82.0
-offset_top = 32.0
-offset_right = 202.0
-offset_bottom = 118.0
+layout_mode = 1
+offset_left = 69.0
+offset_top = 938.0
+offset_right = 225.0
+offset_bottom = 1031.0
 text = "Back"
 
 [node name="Label" type="Label" parent="."]

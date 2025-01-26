@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cteqwtv4qwlwb"]
+[gd_scene load_steps=6 format=3 uid="uid://cteqwtv4qwlwb"]
 
 [ext_resource type="Theme" uid="uid://brjo2bdq6ntbc" path="res://Assets/ui_theme.tres" id="1_4iff7"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="2_24wl3"]
 [ext_resource type="Texture2D" uid="uid://dleeh6fx7bq7b" path="res://Assets/Sprites/pause_icon.svg" id="3_m4ecu"]
 [ext_resource type="PackedScene" uid="uid://c4l85iycj3wst" path="res://scenes/buttons.tscn" id="4_u8fpw"]
+[ext_resource type="PackedScene" uid="uid://cnrygduquyv1t" path="res://scenes/full_screen_button.tscn" id="5_r3wcg"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("pause_panel")]
 process_mode = 3
@@ -54,6 +55,9 @@ text = "RESUME"
 [node name="ButtonCredits" parent="Pause/PanelContainer/VBoxContainer" index="1"]
 visible = true
 text = "MAIN MENU"
+
+[node name="FullScreenButton" parent="Pause" instance=ExtResource("5_r3wcg")]
+layout_mode = 1
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Pause/PanelContainer/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]

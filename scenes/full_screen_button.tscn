@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnrygduquyv1t"]
+
+[ext_resource type="Script" path="res://scripts/full_screen_button.gd" id="1_ywwin"]
+
+[node name="FullScreenButton" type="CheckButton"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -129.0
+offset_right = 198.0
+offset_bottom = -28.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "FULLSCREEN"
+script = ExtResource("1_ywwin")

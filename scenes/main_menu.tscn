@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjpyke7pckhb"]
+[gd_scene load_steps=9 format=3 uid="uid://bjpyke7pckhb"]
 
 [ext_resource type="Theme" uid="uid://brjo2bdq6ntbc" path="res://Assets/ui_theme.tres" id="1_88tnt"]
 [ext_resource type="Script" path="res://scripts/gui/main_menu.gd" id="2_116tc"]
 [ext_resource type="PackedScene" uid="uid://cteqwtv4qwlwb" path="res://scenes/pause_menu.tscn" id="3_4h20f"]
-[ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="3_wmcg5"]
+[ext_resource type="Texture2D" uid="uid://de7iq6wkoa0ll" path="res://Assets/sketch fondos/Pantalla inicio.jpg" id="4_etdmu"]
 [ext_resource type="PackedScene" uid="uid://c4l85iycj3wst" path="res://scenes/buttons.tscn" id="4_oavte"]
 [ext_resource type="AudioStream" uid="uid://bbqwawedn3q67" path="res://Assets/audio/music/Satie.ogg" id="6_odtfk"]
 [ext_resource type="PackedScene" uid="uid://j32de8e7mjxo" path="res://scenes/credits.tscn" id="7_n1iau"]
+[ext_resource type="PackedScene" uid="uid://cnrygduquyv1t" path="res://scenes/full_screen_button.tscn" id="8_mg4jl"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("credits")]
 process_mode = 3
@@ -28,20 +29,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_wmcg5")
+texture = ExtResource("4_etdmu")
 stretch_mode = 6
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.466667)
 
 [node name="PanelContainer" parent="." instance=ExtResource("4_oavte")]
 layout_mode = 1
+offset_left = -154.0
+offset_top = 18.0
+offset_right = 154.0
+offset_bottom = 401.0
 
 [node name="ButtonCredits" parent="PanelContainer/VBoxContainer" index="1"]
 visible = true
@@ -64,8 +60,18 @@ stream = ExtResource("6_odtfk")
 autoplay = true
 
 [node name="Credits" parent="." instance=ExtResource("7_n1iau")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
+offset_left = -589.0
+offset_top = -669.0
+offset_right = -66.0
+offset_bottom = -61.0
+
+[node name="FullScreenButton" parent="." instance=ExtResource("8_mg4jl")]
+layout_mode = 1
+offset_left = 34.0
+offset_top = -139.0
+offset_right = 326.0
+offset_bottom = -38.0
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonCredits" to="." method="_on_button_credits_pressed"]

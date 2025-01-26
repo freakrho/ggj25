@@ -1,58 +1,10 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://brjo2bdq6ntbc"]
 
 [ext_resource type="FontFile" uid="uid://vrrmdx83skor" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Regular.ttf" id="1_3v5a4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5iqs1"]
-content_margin_left = 20.0
-content_margin_top = 15.0
-content_margin_right = 20.0
-content_margin_bottom = 15.0
-bg_color = Color(0.6, 0.288, 0.288, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 12
-corner_radius_bottom_right = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m62a"]
-content_margin_left = 20.0
-content_margin_top = 15.0
-content_margin_right = 20.0
-content_margin_bottom = 15.0
-bg_color = Color(0.6, 0.366, 0.366, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 12
-corner_radius_bottom_right = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21jrt"]
-content_margin_left = 20.0
-content_margin_top = 15.0
-content_margin_right = 20.0
-content_margin_bottom = 15.0
-bg_color = Color(0.58, 0.352833, 0.3074, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 12
-corner_radius_bottom_right = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4ane"]
-content_margin_left = 20.0
-content_margin_top = 15.0
-content_margin_right = 20.0
-content_margin_bottom = 15.0
-bg_color = Color(0.6, 0.108, 0.108, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 12
-corner_radius_bottom_right = 12
+[ext_resource type="StyleBox" uid="uid://r3nesrtkhiiy" path="res://Assets/theme/button_focus.tres" id="2_udhdk"]
+[ext_resource type="StyleBox" uid="uid://di0rtj44bbrdb" path="res://Assets/theme/button_hover.tres" id="3_5r0dl"]
+[ext_resource type="StyleBox" uid="uid://6qks1jken7ds" path="res://Assets/theme/button_normal.tres" id="4_3a07d"]
+[ext_resource type="StyleBox" uid="uid://cc2l1u27vnv33" path="res://Assets/theme/button_pressed.tres" id="5_8kwwx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vb7sm"]
 content_margin_left = 25.0
@@ -75,10 +27,15 @@ corner_radius_bottom_left = 15
 [resource]
 Button/font_sizes/font_size = 53
 Button/fonts/font = ExtResource("1_3v5a4")
-Button/styles/focus = SubResource("StyleBoxFlat_5iqs1")
-Button/styles/hover = SubResource("StyleBoxFlat_4m62a")
-Button/styles/normal = SubResource("StyleBoxFlat_21jrt")
-Button/styles/pressed = SubResource("StyleBoxFlat_x4ane")
+Button/styles/focus = ExtResource("2_udhdk")
+Button/styles/hover = ExtResource("3_5r0dl")
+Button/styles/normal = ExtResource("4_3a07d")
+Button/styles/pressed = ExtResource("5_8kwwx")
+CheckButton/styles/focus = ExtResource("2_udhdk")
+CheckButton/styles/hover = ExtResource("3_5r0dl")
+CheckButton/styles/hover_pressed = ExtResource("5_8kwwx")
+CheckButton/styles/normal = ExtResource("4_3a07d")
+CheckButton/styles/pressed = ExtResource("5_8kwwx")
 Label/font_sizes/font_size = 30
 Label/fonts/font = ExtResource("1_3v5a4")
 Panel/styles/panel = SubResource("StyleBoxFlat_vb7sm")
