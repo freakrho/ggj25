@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://scripts/draggable_with_target.gd" id="12_b43f5"]
 [ext_resource type="Script" path="res://scripts/interactable_with_item.gd" id="12_rlqwm"]
 [ext_resource type="Script" path="res://scripts/set_coins_action.gd" id="13_56rco"]
-[ext_resource type="AudioStream" uid="uid://ciqm841wxtad1" path="res://Assets/audio/music/Satie_Y_Lavadoras.ogg" id="19_rpuax"]
+[ext_resource type="AudioStream" uid="uid://dbtcbbafvyvx5" path="res://Assets/audio/music/lavadora_x_satie.ogg" id="19_c0sgi"]
 [ext_resource type="AudioStream" uid="uid://ds28kdmskaeyb" path="res://Assets/audio/sfx/puerta_lavanderia.ogg" id="20_qjegn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_flylw"]
@@ -211,7 +211,7 @@ position = Vector2(191, -61)
 visible = false
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("19_rpuax")
+stream = ExtResource("19_c0sgi")
 autoplay = true
 
 [node name="DoorSound" type="AudioStreamPlayer2D" parent="."]
