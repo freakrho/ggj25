@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d3bgbc0ry8hkr"]
+[gd_scene load_steps=35 format=3 uid="uid://d3bgbc0ry8hkr"]
 
 [ext_resource type="Script" path="res://scripts/levels/laundry.gd" id="1_s8yjg"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="2_3471r"]
@@ -17,9 +17,10 @@
 [ext_resource type="Resource" path="res://Timelines/oldlady.dch" id="10_tmehj"]
 [ext_resource type="Texture2D" uid="uid://covcfxohmsth4" path="res://Assets/Sprites/Monedero.png" id="11_i2uyy"]
 [ext_resource type="Script" path="res://scripts/draggable_with_target.gd" id="12_b43f5"]
-[ext_resource type="PackedScene" uid="uid://bl4i02co3vqf8" path="res://scenes/oldlady.tscn" id="12_kksbh"]
+[ext_resource type="PackedScene" path="res://scenes/oldlady.tscn" id="12_kksbh"]
 [ext_resource type="Script" path="res://scripts/interactable_with_item.gd" id="12_rlqwm"]
 [ext_resource type="Script" path="res://scripts/set_coins_action.gd" id="13_56rco"]
+[ext_resource type="Texture2D" uid="uid://bv4ugrd0efcrx" path="res://Assets/Sprites/escritorio.png" id="17_tx0u6"]
 [ext_resource type="AudioStream" uid="uid://dbtcbbafvyvx5" path="res://Assets/audio/music/lavadora_x_satie.ogg" id="19_c0sgi"]
 [ext_resource type="AudioStream" uid="uid://ds28kdmskaeyb" path="res://Assets/audio/sfx/puerta_lavanderia.ogg" id="20_qjegn"]
 
@@ -111,7 +112,7 @@ texture = ExtResource("2_3471r")
 centered = false
 
 [node name="Oldlady" parent="Map" instance=ExtResource("12_kksbh")]
-position = Vector2(585, 632)
+position = Vector2(749, 625)
 scale = Vector2(0.44, 0.44)
 frame_progress = 0.672944
 
@@ -145,6 +146,10 @@ dialogues = [NodePath("../../Dialogues/TalkToReceptionist"), NodePath("../../Dia
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Oldlady/TalkToReceptionist"]
 position = Vector2(0, -45)
 shape = SubResource("RectangleShape2D_g1emx")
+
+[node name="Desk" type="Sprite2D" parent="Map"]
+position = Vector2(602, 782)
+texture = ExtResource("17_tx0u6")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
 position = Vector2(32, 428)
