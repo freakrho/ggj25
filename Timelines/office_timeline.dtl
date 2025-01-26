@@ -3,11 +3,7 @@ oficinista2: Gooooood morning!!
 playercharacter: ...
 oficinista2: How was your weekend?
 [wait time="0.5"]
-playercharacter: uhmm
-playercharacter:
-- Why do you care?
-- It was okay I guess.
-- We don't know each other like that!
+playercharacter: Why would I tell you?
 oficinista2: Geez... okay! Woke up on the wrong side of the bed, much?
 playercharacter: (I can't with these people!)
 [wait time="0.5"]
