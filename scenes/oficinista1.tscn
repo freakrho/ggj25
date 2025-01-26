@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2mrvb40x7x57"]
+
+[ext_resource type="Texture2D" uid="uid://bxdbi3eamu8t2" path="res://Assets/Sprites/Mike1.PNG" id="1_dglys"]
+[ext_resource type="Texture2D" uid="uid://b2it46susokaa" path="res://Assets/Sprites/Mike2.PNG" id="2_yeawx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1auv"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": ExtResource("1_dglys")
+}, {
+"duration": 6.0,
+"texture": ExtResource("2_yeawx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Oficinista1" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_f1auv")
+autoplay = "default"
+frame_progress = 0.605681
