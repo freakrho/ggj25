@@ -24,7 +24,8 @@ func open_minigame(minigame: Minigame):
 
 func close_minigame(minigame: Minigame):
     set_pause_subtree(map, false)
-    add_child(map)
+    if map.get_parent() == null:
+        add_child(map)
     map.show_map()
     remove_child(minigame)
 
