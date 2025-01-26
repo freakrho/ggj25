@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkg03mctf2jdw"]
+[gd_scene load_steps=17 format=3 uid="uid://bkg03mctf2jdw"]
 
 [ext_resource type="Script" path="res://scripts/levels/room.gd" id="1_hy5vm"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="2_4ia1b"]
 [ext_resource type="Script" path="res://scripts/dialogue_settings.gd" id="2_6bdyi"]
 [ext_resource type="Resource" path="res://Timelines/morning.dtl" id="2_jor4c"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="2_jtl1y"]
+[ext_resource type="Resource" path="res://Timelines/morning_day2.dtl" id="4_7bk0j"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="4_hlf8n"]
 [ext_resource type="Texture2D" uid="uid://dfxurf2q3cuwx" path="res://Assets/sketch fondos/casa interna.jpg" id="5_g4hwk"]
 
@@ -37,11 +38,15 @@ size = Vector2(270.5, 802)
 [node name="Room" type="Node2D" node_paths=PackedStringArray("map", "start_dialogue")]
 script = ExtResource("1_hy5vm")
 map = NodePath("Map")
-start_dialogue = [NodePath("StartDialogue")]
+start_dialogue = [NodePath("StartDialogue"), NodePath("StartDialogue2")]
 
 [node name="StartDialogue" type="Node" parent="."]
 script = ExtResource("2_6bdyi")
 dialogue = ExtResource("2_jor4c")
+
+[node name="StartDialogue2" type="Node" parent="."]
+script = ExtResource("2_6bdyi")
+dialogue = ExtResource("4_7bk0j")
 
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
 script = ExtResource("2_jtl1y")

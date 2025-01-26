@@ -26,5 +26,5 @@ if {oficinista3_dead} == true:
 	oficinista2: Girlie! Nostradamus called, he wanted his perfume back.
 	playercharacter: You mean Nosferatu?
 	oficinista2: Gosh, what a know-it-all!
-playercharacter: dialogo
+#playercharacter: dialogo
 label officeday2_dialogue1end
