@@ -1,3 +1,12 @@
-oldlady: Fancy seeing you here so soon!
-playercharacter: Dear, you must be renovating.
-playercharacter: You have a startling load of clothes to wash!
+if {day} == 2:
+	oldlady: Fancy seeing you here so soon!
+	playercharacter: Dear, you must be renovating.
+	playercharacter: You have a startling load of clothes to wash!
+if {day} == 3:
+	oldlady: Oh Gosh! 
+	oldlady: Why do the clothes have so many red stains?
+	oldlady: And how come they get so clean afterwards?
+	playercharacter: It's the remains of my victims.
+	playercharacter: And it could be your victims' as well!
+	playercharacter: I use and recommend Laundry Day to erase all trace of all who wronged us.
+
