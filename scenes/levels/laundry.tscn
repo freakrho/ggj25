@@ -126,7 +126,6 @@ shape = SubResource("RectangleShape2D_c81yn")
 
 [node name="SetCoinsAction" type="Node" parent="Map/Oldlady/InteractWithPurse"]
 script = ExtResource("13_56rco")
-coins = Array[int]([1, 1, 1, 1, 1])
 
 [node name="DefaultPosition" type="Marker2D" parent="Map/Oldlady/InteractWithPurse"]
 position = Vector2(-130, 419)

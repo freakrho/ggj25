@@ -17,10 +17,9 @@ independent_conditions = [NodePath("LoadExactMoneyCondition")]
 
 [node name="LoadExactMoneyCondition" type="Node" parent="." node_paths=PackedStringArray("drop_area", "coin_positions", "label")]
 script = ExtResource("3_5kqop")
-accepted_coins = Array[int]([1, 2, 5])
 expected_amount = 3
 drop_area = NodePath("../CoinSlit")
-coin_positions = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4"), NodePath("../Marker2D5"), NodePath("../Marker2D6")]
+coin_positions = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4"), NodePath("../Marker2D5"), NodePath("../Marker2D6"), NodePath("../Marker2D7"), NodePath("../Marker2D8"), NodePath("../Marker2D9"), NodePath("../Marker2D10"), NodePath("../Marker2D11"), NodePath("../Marker2D12"), NodePath("../Marker2D13"), NodePath("../Marker2D14")]
 coin_1 = ExtResource("5_57m65")
 coin_2 = ExtResource("4_cya4m")
 coin_5 = ExtResource("4_xhln6")
@@ -53,6 +52,30 @@ position = Vector2(570, 981)
 
 [node name="Marker2D6" type="Marker2D" parent="."]
 position = Vector2(658, 836)
+
+[node name="Marker2D7" type="Marker2D" parent="."]
+position = Vector2(582, 842)
+
+[node name="Marker2D8" type="Marker2D" parent="."]
+position = Vector2(614, 911)
+
+[node name="Marker2D9" type="Marker2D" parent="."]
+position = Vector2(714, 892)
+
+[node name="Marker2D10" type="Marker2D" parent="."]
+position = Vector2(529, 943)
+
+[node name="Marker2D11" type="Marker2D" parent="."]
+position = Vector2(472, 918)
+
+[node name="Marker2D12" type="Marker2D" parent="."]
+position = Vector2(517, 997)
+
+[node name="Marker2D13" type="Marker2D" parent="."]
+position = Vector2(639, 982)
+
+[node name="Marker2D14" type="Marker2D" parent="."]
+position = Vector2(756, 932)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
