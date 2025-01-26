@@ -1,9 +1,9 @@
 # Al interactuar con oldlady por 1ra vez
 oldlady: Nice to see you again, sweet heart! How was your day?
 playercharacter: (I hate small talk...)
-playercharacter: ...
-[wait time="0.4"]
-oldlady: ...
-[wait time="0.4"]
-playercharacter: ...
+playercharacter: [aa]...[aa=0.5]
+[wait time="0.3" hide_text="false"]
+oldlady: [aa]...[aa=0.5]
+[wait time="0.3" hide_text="false"]
+playercharacter: [aa]...[aa=0.5]
 oldlady: Bless your heart, Sugar. You may take any washing machine.
