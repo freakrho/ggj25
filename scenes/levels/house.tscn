@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3tssgy1npgi1"]
+[gd_scene load_steps=13 format=3 uid="uid://c3tssgy1npgi1"]
 
 [ext_resource type="Script" path="res://scripts/levels/house.gd" id="1_uqouy"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="2_33otu"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="4_32ggl"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="5_5um0u"]
 [ext_resource type="AudioStream" uid="uid://dhdlu31gdoujd" path="res://Assets/audio/sfx/puerta_uno.ogg" id="6_xttrd"]
+[ext_resource type="AudioStream" uid="uid://cc8s3kx6hs0jy" path="res://Assets/audio/sfx/calle.ogg" id="7_kxeh2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jfggr"]
 vertices = PackedVector2Array(1881.81, 632, -19.6094, 632, -16.6875, 494, 1880.17, 494)
@@ -75,6 +76,10 @@ position = Vector2(1, 167)
 
 [node name="DoorSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_xttrd")
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_kxeh2")
 autoplay = true
 
 [connection signal="Interaction" from="Map/OutWay" to="." method="go_out"]

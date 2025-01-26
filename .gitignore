@@ -2,3 +2,4 @@
 .godot/
 builds/
 build/
+*.keystore
