@@ -1,5 +1,8 @@
 extends MinigameCondition
 
+signal on_put_coin()
+signal on_reject()
+
 @export var accepted_coins: Array[int] = [ 1 ]
 @export var expected_amount: int = 5
 @export var drop_area: Area2D
@@ -64,9 +67,11 @@ func _on_body_entered(body: Node2D):
 func _on_dropped_coin():
     if current_coin.value in accepted_coins:
         _take_coin(current_coin)
+        on_put_coin.emit()
         return
     current_coin.dropped.disconnect(_on_dropped_coin)
     current_coin.reset()
+    on_reject.emit()
 
 func _take_coin(coin: Coin):
     taken_coins.append(coin)
