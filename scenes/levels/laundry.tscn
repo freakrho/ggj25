@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://d3bgbc0ry8hkr"]
+[gd_scene load_steps=36 format=3 uid="uid://d3bgbc0ry8hkr"]
 
 [ext_resource type="Script" path="res://scripts/levels/laundry.gd" id="1_s8yjg"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="2_3471r"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://scripts/set_coins_action.gd" id="13_56rco"]
 [ext_resource type="Texture2D" uid="uid://bv4ugrd0efcrx" path="res://Assets/Sprites/escritorio.png" id="17_tx0u6"]
 [ext_resource type="AudioStream" uid="uid://dbtcbbafvyvx5" path="res://Assets/audio/music/lavadora_x_satie.ogg" id="19_c0sgi"]
+[ext_resource type="SpriteFrames" uid="uid://b5pkpcnje1us0" path="res://Assets/Sprites/player_frames_with_bag.tres" id="19_g4v0u"]
 [ext_resource type="AudioStream" uid="uid://ds28kdmskaeyb" path="res://Assets/audio/sfx/puerta_lavanderia.ogg" id="20_qjegn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c81yn"]
@@ -184,6 +185,10 @@ shape = SubResource("RectangleShape2D_m0ai3")
 [node name="Player" parent="Map" instance=ExtResource("3_nurqy")]
 position = Vector2(161, 1011)
 
+[node name="AnimatedSprite2D" parent="Map/Player" index="3"]
+sprite_frames = ExtResource("19_g4v0u")
+frame_progress = 0.0
+
 [node name="WashingMachine" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position")]
 position = Vector2(1007, 827)
 script = ExtResource("5_5s6ab")
@@ -240,3 +245,5 @@ autoplay = true
 [connection signal="Interaction" from="Map/Oldlady/InteractWithPurse" to="Map/Oldlady/InteractWithPurse/SetCoinsAction" method="set_coins"]
 [connection signal="Interaction" from="Map/WashingMachine" to="WashingMachine" method="start_minigame"]
 [connection signal="Interaction" from="Map/Door" to="." method="_on_door_interaction"]
+
+[editable path="Map/Player"]

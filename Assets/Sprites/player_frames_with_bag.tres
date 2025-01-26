@@ -1,0 +1,35 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://b5pkpcnje1us0"]
+
+[ext_resource type="Texture2D" uid="uid://bhwyrervrv4ed" path="res://Assets/Sprites/Idlebag1.PNG" id="1_1pugn"]
+[ext_resource type="Texture2D" uid="uid://46n2tewgf1gp" path="res://Assets/Sprites/Idlebag2.PNG" id="2_egm5a"]
+[ext_resource type="Texture2D" uid="uid://ej0562hjdy51" path="res://Assets/Sprites/Walkbag1.PNG" id="3_fscty"]
+[ext_resource type="Texture2D" uid="uid://4eovfr478ghx" path="res://Assets/Sprites/Walkbag2.PNG" id="4_jvfkt"]
+[ext_resource type="Texture2D" uid="uid://ba4q7qoajrai3" path="res://Assets/Sprites/Walkbag3.PNG" id="5_p60wt"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1pugn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_egm5a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fscty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jvfkt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p60wt")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
