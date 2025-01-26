@@ -2,6 +2,11 @@ extends Control
 
 
 @export var pause_panel: PackedScene
+@export var credits: Control
+
+
+func _ready() -> void:
+    credits.hide()
 
 
 func _on_button_play_pressed() -> void:
@@ -11,7 +16,10 @@ func _on_button_play_pressed() -> void:
 
 
 func _on_button_credits_pressed() -> void:
-    pass # Replace with function body.
+    if credits.visible:
+        credits.hide()
+    else:
+        credits.show()
 
 
 func _on_button_quit_pressed() -> void:
