@@ -1,7 +1,17 @@
-# #el jugador eligió el mug3 para hacerse el cafe. cuando termina el minigame se reproduce este dialogo. oficinista3 aparece en escena
-oficinista3: DIALOGO DE BOBBERT EN CONSTRUCCION
-
-
-
+oficinista3: You know what's great about being a dad?
+oficinista3: And even better, being the best dad?
+oficinista3: You get these mugs with scientific facts on their labels.
+oficinista3: Mine, for example, shows a BETTER I am from any other dad.
+oficinista3: My kid told me mine is one of a kind. Limited edition.
+playercharacter: Sure...
+oficinista3: Here, let me show you.
+playercharacter: Sure...
+[wait time="0.2"]
+oficinista3: WHERE'S MY CUP???
+oficinista3: This is LITERALLY one of a kind!
+playercharacter: No it's not.
+oficinista3: Did YOU take mine?
+oficinista3: You did!! 
+oficinista3: You did it to fulfill your buiological need of motherhood!
 oficinista3: Human resources will hear about this!
-[wait time="0.7"]
+[wait time="0.7"]2
