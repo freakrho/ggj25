@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjpyke7pckhb"]
+[gd_scene load_steps=7 format=3 uid="uid://bjpyke7pckhb"]
 
 [ext_resource type="Theme" uid="uid://brjo2bdq6ntbc" path="res://Assets/ui_theme.tres" id="1_88tnt"]
 [ext_resource type="Script" path="res://scripts/gui/main_menu.gd" id="2_116tc"]
 [ext_resource type="PackedScene" uid="uid://cteqwtv4qwlwb" path="res://scenes/pause_menu.tscn" id="3_4h20f"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="3_wmcg5"]
 [ext_resource type="PackedScene" uid="uid://c4l85iycj3wst" path="res://scenes/buttons.tscn" id="4_oavte"]
+[ext_resource type="AudioStream" uid="uid://bbqwawedn3q67" path="res://Assets/audio/music/Satie.ogg" id="6_odtfk"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -52,6 +53,10 @@ offset_right = 464.0
 offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_odtfk")
+autoplay = true
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonCredits" to="." method="_on_button_credits_pressed"]
