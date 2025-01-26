@@ -52,11 +52,10 @@ button = NodePath("../../Sprite2D/Grinder")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Conditions/GrindBeans"]
 stream = ExtResource("8_hkkva")
 
-[node name="PutPortafilter" type="Node" parent="Conditions" node_paths=PackedStringArray("draggable", "slideable", "target", "depends_on")]
+[node name="PutPortafilter" type="Node" parent="Conditions" node_paths=PackedStringArray("draggable", "target", "depends_on")]
 script = ExtResource("5_sqles")
 reset_if_failed = true
 draggable = NodePath("../../Sprite2D/Portafilter")
-slideable = NodePath("")
 target = NodePath("../../Sprite2D/Target")
 depends_on = [NodePath("../GrindBeans")]
 
@@ -150,10 +149,11 @@ position = Vector2(473.608, 31.3722)
 scale = Vector2(0.144074, 0.144074)
 script = ExtResource("16_dqqoa")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Portafilter"]
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_6e3u5")
+
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Portafilter"]
 texture = ExtResource("17_3x4vo")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Portafilter"]
-shape = SubResource("CircleShape2D_6e3u5")
 
 [connection signal="on_complete" from="Conditions/GrindBeans" to="Conditions/GrindBeans/AudioStreamPlayer2D" method="play"]
