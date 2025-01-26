@@ -28,7 +28,7 @@ func on_selected(selectable: AreaSelectable) -> void:
         if choices[i] == selectable:
             cups_on_table[i].show()
         else:
-            if choices[i].get_parent() == null:
+            if characters[i] not in SessionManager.current.killed and choices[i].get_parent() == null:
                 cup_parent.add_child(choices[i])
             cups_on_table[i].hide()
 
