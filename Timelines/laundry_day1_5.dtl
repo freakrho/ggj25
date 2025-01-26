@@ -1,2 +1,9 @@
-# terminas el minijuego
-oldlady: See you soon!
+if {day} == 1:
+	oldlady: See you soon!
+if {day} == 2:
+	oldlady: Oh Gosh! 
+	oldlady: Why do the clothes have so many red stains?
+	oldlady: And how come they get so clean afterwards?
+	playercharacter: It's the remains of my victims.
+	playercharacter: And it could be your victims' as well!
+	playercharacter: I use and recommend Laundry Day to erase all trace of all who wronged us.
