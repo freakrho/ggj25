@@ -86,12 +86,12 @@ centered = false
 [node name="Mugs" type="Node2D" parent="Map"]
 position = Vector2(363, 685)
 
-[node name="Mug1" type="Sprite2D" parent="Map/Mugs"]
+[node name="Mug3" type="Sprite2D" parent="Map/Mugs"]
 position = Vector2(108, -47)
 scale = Vector2(0.455, 0.455)
 texture = ExtResource("10_1jef3")
 
-[node name="Mug3" type="Sprite2D" parent="Map/Mugs"]
+[node name="Mug1" type="Sprite2D" parent="Map/Mugs"]
 position = Vector2(316, -59)
 scale = Vector2(0.455, 0.455)
 texture = ExtResource("11_ibsaq")

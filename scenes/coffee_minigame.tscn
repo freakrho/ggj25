@@ -68,15 +68,15 @@ centered = false
 [node name="Cups" type="Node2D" parent="Sprite2D"]
 position = Vector2(454, 126)
 
-[node name="Coworker1" type="Area2D" parent="Sprite2D/Cups"]
+[node name="Coworker3" type="Area2D" parent="Sprite2D/Cups"]
 position = Vector2(274, 12)
 script = ExtResource("4_djsoj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Coworker1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Coworker3"]
 position = Vector2(-105.114, 68.2586)
 shape = SubResource("CircleShape2D_mgrav")
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Cups/Coworker1"]
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Cups/Coworker3"]
 position = Vector2(-120.987, 62.9673)
 rotation = -0.962263
 texture = ExtResource("11_a6a18")
@@ -94,15 +94,15 @@ position = Vector2(9, -48)
 rotation = -1.31678
 texture = ExtResource("12_c7hjf")
 
-[node name="Coworker3" type="Area2D" parent="Sprite2D/Cups"]
+[node name="Coworker1" type="Area2D" parent="Sprite2D/Cups"]
 position = Vector2(608, 167)
 script = ExtResource("4_djsoj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Coworker3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Coworker1"]
 position = Vector2(14, -70)
 shape = SubResource("CircleShape2D_mgrav")
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Cups/Coworker3"]
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Cups/Coworker1"]
 position = Vector2(2, -65)
 rotation = -1.40011
 texture = ExtResource("13_tglhb")
@@ -111,13 +111,13 @@ texture = ExtResource("13_tglhb")
 position = Vector2(1036, 874)
 
 [node name="Cup1" type="Sprite2D" parent="Sprite2D/CupsOnTable"]
-texture = ExtResource("11_a6a18")
+texture = ExtResource("13_tglhb")
 
 [node name="Cup2" type="Sprite2D" parent="Sprite2D/CupsOnTable"]
 texture = ExtResource("12_c7hjf")
 
 [node name="Cup3" type="Sprite2D" parent="Sprite2D/CupsOnTable"]
-texture = ExtResource("13_tglhb")
+texture = ExtResource("11_a6a18")
 
 [node name="Grinder" type="Button" parent="Sprite2D"]
 offset_left = 480.0
@@ -131,7 +131,6 @@ script = ExtResource("16_dqqoa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Portafilter"]
 position = Vector2(5, -5)
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_4eym8")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Portafilter"]
