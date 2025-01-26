@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="3_wmcg5"]
 [ext_resource type="PackedScene" uid="uid://c4l85iycj3wst" path="res://scenes/buttons.tscn" id="4_oavte"]
 [ext_resource type="AudioStream" uid="uid://bbqwawedn3q67" path="res://Assets/audio/music/Satie.ogg" id="6_odtfk"]
-[ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="7_0q1sy"]
+[ext_resource type="PackedScene" uid="uid://j32de8e7mjxo" path="res://scenes/credits.tscn" id="7_n1iau"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("credits")]
 process_mode = 3
@@ -63,72 +63,9 @@ grow_vertical = 2
 stream = ExtResource("6_odtfk")
 autoplay = true
 
-[node name="Credits" type="PanelContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -564.0
-offset_top = -667.0
-offset_right = -61.0
-offset_bottom = -59.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Credits"]
-layout_mode = 2
-alignment = 2
-
-[node name="Category" type="Label" parent="Credits/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("7_0q1sy")
-theme_override_font_sizes/font_size = 40
-text = "Words and Direction"
-uppercase = true
-
-[node name="Label" type="Label" parent="Credits/VBoxContainer"]
-layout_mode = 2
-text = "Cecilia \"heladitodelimón\" Bragunde"
-
-[node name="Category2" type="Label" parent="Credits/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("7_0q1sy")
-theme_override_font_sizes/font_size = 40
-text = "Art"
-uppercase = true
-
-[node name="Label2" type="Label" parent="Credits/VBoxContainer"]
-layout_mode = 2
-text = "Cecilia Marroche"
-
-[node name="Label3" type="Label" parent="Credits/VBoxContainer"]
-layout_mode = 2
-text = "Yamila Olivera"
-
-[node name="Category3" type="Label" parent="Credits/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("7_0q1sy")
-theme_override_font_sizes/font_size = 40
-text = "Audio"
-uppercase = true
-
-[node name="Label4" type="Label" parent="Credits/VBoxContainer"]
-layout_mode = 2
-text = "Lucas \"ET\" Rodríguez"
-
-[node name="Category4" type="Label" parent="Credits/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("7_0q1sy")
-theme_override_font_sizes/font_size = 40
-text = "Programming"
-uppercase = true
-
-[node name="Label5" type="Label" parent="Credits/VBoxContainer"]
-layout_mode = 2
-text = "Rodrigo \"Rho\" Perez"
+[node name="Credits" parent="." instance=ExtResource("7_n1iau")]
+layout_mode = 0
+anchors_preset = 0
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonCredits" to="." method="_on_button_credits_pressed"]

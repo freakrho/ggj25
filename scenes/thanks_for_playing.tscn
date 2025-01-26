@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://brb0gvt2pu4tt"]
+
+[ext_resource type="Theme" uid="uid://brjo2bdq6ntbc" path="res://Assets/ui_theme.tres" id="1_a1otj"]
+[ext_resource type="Script" path="res://scripts/thanks_for_playing.gd" id="1_osl75"]
+[ext_resource type="FontFile" uid="uid://b5c0p00x6g6u5" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Italic.ttf" id="2_fliiy"]
+[ext_resource type="Texture2D" uid="uid://c4ntm88xgt6dk" path="res://Assets/sketch fondos/casa.jpg" id="2_l60j6"]
+[ext_resource type="PackedScene" uid="uid://j32de8e7mjxo" path="res://scenes/credits.tscn" id="4_1dovn"]
+[ext_resource type="PackedScene" uid="uid://c4l85iycj3wst" path="res://scenes/buttons.tscn" id="6_jact3"]
+
+[node name="ThanksForPlaying" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_a1otj")
+script = ExtResource("1_osl75")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_l60j6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.321569)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 72.0
+offset_right = 909.0
+offset_bottom = 189.0
+theme_override_colors/font_color = Color(0.95, 0.19, 0.19, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_fliiy")
+theme_override_font_sizes/font_size = 99
+text = "Thanks for playing!"
+
+[node name="Credits" parent="." instance=ExtResource("4_1dovn")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.5
+offset_top = -304.0
+offset_right = 261.5
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" parent="." instance=ExtResource("6_jact3")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -269.0
+offset_top = -321.0
+offset_right = -43.0
+offset_bottom = -53.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ButtonPlay" parent="PanelContainer/VBoxContainer" index="0"]
+text = "MAIN MENU"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+
+[editable path="PanelContainer"]

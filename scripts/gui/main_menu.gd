@@ -10,6 +10,7 @@ func _ready() -> void:
 
 
 func _on_button_play_pressed() -> void:
+    SessionManager.new_session()
     GameManager.load_level(LevelList.room)
     get_tree().root.add_child(pause_panel.instantiate())
     queue_free()

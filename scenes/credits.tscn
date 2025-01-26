@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://j32de8e7mjxo"]
+
+[ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="1_cprf6"]
+
+[node name="Credits" type="PanelContainer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -564.0
+offset_top = -667.0
+offset_right = -61.0
+offset_bottom = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="Category" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_cprf6")
+theme_override_font_sizes/font_size = 40
+text = "Words and Direction"
+uppercase = true
+
+[node name="Ceci1" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Cecilia \"heladitodelimón\" Bragunde"
+
+[node name="Category2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_cprf6")
+theme_override_font_sizes/font_size = 40
+text = "Art"
+uppercase = true
+
+[node name="Ceci2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Cecilia Marroche"
+
+[node name="Yamila" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Yamila \"Angelitte\" Olivera"
+
+[node name="Category3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_cprf6")
+theme_override_font_sizes/font_size = 40
+text = "Audio"
+uppercase = true
+
+[node name="Lucas" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Lucas \"ET\" Rodríguez"
+
+[node name="Category4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_cprf6")
+theme_override_font_sizes/font_size = 40
+text = "Programming"
+uppercase = true
+
+[node name="Rho" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Rodrigo \"Rho\" Perez"

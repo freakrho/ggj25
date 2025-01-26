@@ -15,5 +15,6 @@ func input_enabled() -> bool:
     return Dialogic.current_timeline == null
 
 func go_to_main_menu():
-    current_level.queue_free()
+    if current_level != null and not current_level.free:
+        current_level.queue_free()
     get_tree().root.add_child(main_menu.instantiate())
