@@ -4,11 +4,11 @@ extends Control
 
 
 func _ready() -> void:
-    pause_panel.hide()
+    remove_child(pause_panel)
 
 
 func _on_button_play_pressed() -> void:
-    pause_panel.hide()
+    remove_child(pause_panel)
     get_tree().paused = false
 
 
@@ -22,5 +22,5 @@ func _on_button_quit_pressed() -> void:
 
 
 func _on_pause_button_pressed() -> void:
-    pause_panel.show()
+    add_child(pause_panel)
     get_tree().paused = true
