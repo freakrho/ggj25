@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bkg03mctf2jdw"]
+[gd_scene load_steps=25 format=3 uid="uid://bkg03mctf2jdw"]
 
 [ext_resource type="Script" path="res://scripts/levels/room.gd" id="1_hy5vm"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="2_4ia1b"]
@@ -8,7 +8,14 @@
 [ext_resource type="Resource" path="res://Timelines/morning_day2.dtl" id="4_7bk0j"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="4_hlf8n"]
 [ext_resource type="Texture2D" uid="uid://dfxurf2q3cuwx" path="res://Assets/sketch fondos/casa interna.jpg" id="5_g4hwk"]
+[ext_resource type="Script" path="res://scripts/character_pair.gd" id="5_vn563"]
+[ext_resource type="Resource" path="res://Timelines/oficinista1.dch" id="6_vkm6x"]
+[ext_resource type="Resource" path="res://Timelines/oficinista2.dch" id="7_mikqb"]
+[ext_resource type="Resource" path="res://Timelines/oficinista3.dch" id="8_5piup"]
 [ext_resource type="AudioStream" uid="uid://c8g2ay6g3vx5q" path="res://Assets/audio/sfx/bostezo.ogg" id="8_nyrdy"]
+[ext_resource type="Texture2D" uid="uid://cjks3i6x2yqur" path="res://Assets/Sprites/Taza blanca.png" id="10_1jef3"]
+[ext_resource type="Texture2D" uid="uid://bd0gmk00pvxfv" path="res://Assets/Sprites/Taza gris.png" id="11_ibsaq"]
+[ext_resource type="Texture2D" uid="uid://84lmasm5vnej" path="res://Assets/Sprites/Taza rosa.png" id="12_xdmtw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oc0q6"]
 vertices = PackedVector2Array(1876, 643.5, 306.117, 643.5, -23.7812, 633.992, -21.7188, 573.977, 187.32, 454, 1876, 454)
@@ -36,8 +43,9 @@ size = Vector2(1978, 299)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gs2m8"]
 size = Vector2(270.5, 802)
 
-[node name="Room" type="Node2D" node_paths=PackedStringArray("map", "start_dialogue")]
+[node name="Room" type="Node2D" node_paths=PackedStringArray("character_mugs", "map", "start_dialogue")]
 script = ExtResource("1_hy5vm")
+character_mugs = [NodePath("Mug1"), NodePath("Mug2"), NodePath("Mug3")]
 map = NodePath("Map")
 start_dialogue = [NodePath("StartDialogue"), NodePath("StartDialogue2")]
 
@@ -49,6 +57,21 @@ dialogue = ExtResource("2_jor4c")
 script = ExtResource("2_6bdyi")
 dialogue = ExtResource("4_7bk0j")
 
+[node name="Mug1" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("5_vn563")
+character = ExtResource("6_vkm6x")
+node = NodePath("../Map/Mugs/Mug1")
+
+[node name="Mug2" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("5_vn563")
+character = ExtResource("7_mikqb")
+node = NodePath("../Map/Mugs/Mug2")
+
+[node name="Mug3" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("5_vn563")
+character = ExtResource("8_5piup")
+node = NodePath("../Map/Mugs/Mug3")
+
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
 script = ExtResource("2_jtl1y")
 player = NodePath("Player")
@@ -58,6 +81,24 @@ interactable_area = NodePath("InteractableArea")
 [node name="Background" type="Sprite2D" parent="Map"]
 texture = ExtResource("5_g4hwk")
 centered = false
+
+[node name="Mugs" type="Node2D" parent="Map"]
+position = Vector2(363, 685)
+
+[node name="Mug1" type="Sprite2D" parent="Map/Mugs"]
+position = Vector2(108, -47)
+scale = Vector2(0.455, 0.455)
+texture = ExtResource("10_1jef3")
+
+[node name="Mug3" type="Sprite2D" parent="Map/Mugs"]
+position = Vector2(316, -59)
+scale = Vector2(0.455, 0.455)
+texture = ExtResource("11_ibsaq")
+
+[node name="Mug2" type="Sprite2D" parent="Map/Mugs"]
+position = Vector2(228, -44)
+scale = Vector2(0.455, 0.455)
+texture = ExtResource("12_xdmtw")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
 position = Vector2(32, 428)
