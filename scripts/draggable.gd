@@ -20,7 +20,6 @@ func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> v
     if event is InputEventMouseButton:
         if event.button_index != MOUSE_BUTTON_LEFT:
             return
-        print("CHICL")
         if event.pressed and not dragging:
             _start_dragging(event.position)
         elif not event.pressed and dragging:
@@ -56,6 +55,7 @@ func reset():
 func _on_mouse_entered():
     if GameManager.input_enabled():
         Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+        SoundManager.hover_player.play()
 
 func _on_mouse_exited():
     Input.set_default_cursor_shape(Input.CURSOR_ARROW)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfribeduqoyv0"]
+
+[ext_resource type="Script" path="res://scripts/sound_manager.gd" id="1_k8vnj"]
+[ext_resource type="AudioStream" uid="uid://ilp0ynpmg7eh" path="res://Assets/audio/sfx/Burbuja.ogg" id="2_cjoan"]
+[ext_resource type="AudioStream" uid="uid://bcl73k4dh50nu" path="res://Assets/audio/sfx/burbujas.ogg" id="3_o7hhd"]
+[ext_resource type="AudioStream" uid="uid://ebe8kn0qre47" path="res://Assets/audio/sfx/burbujas_2.ogg" id="4_tgvws"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y3inl"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("3_o7hhd")
+stream_1/stream = ExtResource("4_tgvws")
+stream_1/weight = 5.0
+
+[node name="SoundManager" type="Node" node_paths=PackedStringArray("hover_player", "interaction_player")]
+script = ExtResource("1_k8vnj")
+hover_player = NodePath("Hover")
+interaction_player = NodePath("Interaction")
+
+[node name="Hover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_cjoan")
+
+[node name="Interaction" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_y3inl")

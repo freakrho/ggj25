@@ -22,9 +22,11 @@ func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> v
             # Send player here and then interact
             GameManager.player.go_to_and_interact(self)
             viewport.set_input_as_handled()
+            SoundManager.interaction_player.play()
 
 func _on_mouse_entered():
     if GameManager.input_enabled():
+        SoundManager.hover_player.play()
         Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 func _on_mouse_exited():
