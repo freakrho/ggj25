@@ -43,10 +43,14 @@ script = ExtResource("1_vmnrm")
 cup_dialogues = [NodePath("Cup1Dialogue"), NodePath("Cup2Dialogue"), NodePath("Cup3Dialogue")]
 cup_owners = Array[ExtResource("2_l3b4e")]([ExtResource("5_fb3b3"), ExtResource("6_xjkgk"), ExtResource("7_4sbuf")])
 map = NodePath("Map")
-start_dialogue = NodePath("StartDialogue")
+start_dialogue = [NodePath("StartDialogue1")]
 characters = [NodePath("Oficinista1"), NodePath("Oficinista2"), NodePath("Oficinista3")]
 
-[node name="StartDialogue" type="Node" parent="."]
+[node name="StartDialogue1" type="Node" parent="."]
+script = ExtResource("2_4732g")
+dialogue = ExtResource("3_hjkwb")
+
+[node name="StartDialogue2" type="Node" parent="."]
 script = ExtResource("2_4732g")
 dialogue = ExtResource("3_hjkwb")
 

@@ -37,9 +37,9 @@ size = Vector2(270.5, 802)
 [node name="Room" type="Node2D" node_paths=PackedStringArray("map", "start_dialogue")]
 script = ExtResource("1_hy5vm")
 map = NodePath("Map")
-start_dialogue = NodePath("DialogueSettings")
+start_dialogue = [NodePath("StartDialogue")]
 
-[node name="DialogueSettings" type="Node" parent="."]
+[node name="StartDialogue" type="Node" parent="."]
 script = ExtResource("2_6bdyi")
 dialogue = ExtResource("2_jor4c")
 

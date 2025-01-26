@@ -2,7 +2,7 @@ class_name Level extends Node2D
 
 @export var map: Map
 @export var minigames: Array[Minigame]
-@export var start_dialogue: DialogueSettings
+@export var start_dialogue: Array[DialogueSettings]
 @export var characters: Array[CharacterPair]
 
 func _ready():
@@ -11,8 +11,8 @@ func _ready():
         minigame.hide()
         minigame.get_parent().remove_child(minigame)
         minigame.connect("Ended", ended_minigame)
-    if start_dialogue != null:
-        start_dialogue.start_dialogue()
+    if start_dialogue.size() > 0:
+        start_dialogue[min(start_dialogue.size() - 1, SessionManager.current.day)].start_dialogue()
 
 func ended_minigame(minigame: Minigame):
     close_minigame(minigame)
