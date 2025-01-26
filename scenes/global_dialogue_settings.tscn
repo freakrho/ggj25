@@ -6,3 +6,4 @@
 [node name="GlobalDialogueSettings" type="Node"]
 script = ExtResource("1_xd581")
 dialogue_style = ExtResource("2_2cl2m")
+final_day = 1

@@ -14,4 +14,7 @@ func _on_ended(minigame: Minigame):
 
 func _on_door_interaction() -> void:
     SessionManager.current.new_day()
-    GameManager.load_level(LevelList.room)
+    if SessionManager.current.day >= GlobalDialogueSettings.final_day:
+        GameManager.load_level(LevelList.final)
+    else:
+        GameManager.load_level(LevelList.room)

@@ -4,3 +4,4 @@ extends Node
 @export var laundry: PackedScene
 @export var office: PackedScene
 @export var room: PackedScene
+@export var final: PackedScene

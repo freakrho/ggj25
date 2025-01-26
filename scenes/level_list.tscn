@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://deijh6bfmf4eb"]
+[gd_scene load_steps=7 format=3 uid="uid://deijh6bfmf4eb"]
 
 [ext_resource type="Script" path="res://scripts/level_list.gd" id="1_aoqsf"]
 [ext_resource type="PackedScene" uid="uid://c3tssgy1npgi1" path="res://scenes/levels/house.tscn" id="2_d52d8"]
 [ext_resource type="PackedScene" uid="uid://d3bgbc0ry8hkr" path="res://scenes/levels/laundry.tscn" id="3_b0wlr"]
 [ext_resource type="PackedScene" uid="uid://ddin5jv8ogfjb" path="res://scenes/levels/office.tscn" id="4_fusbx"]
 [ext_resource type="PackedScene" uid="uid://bkg03mctf2jdw" path="res://scenes/levels/room.tscn" id="5_l17fl"]
+[ext_resource type="PackedScene" uid="uid://dfprowrlu6n2p" path="res://scenes/levels/final_scene.tscn" id="6_hnt0g"]
 
 [node name="LevelList" type="Node2D"]
 script = ExtResource("1_aoqsf")
@@ -12,3 +13,4 @@ house = ExtResource("2_d52d8")
 laundry = ExtResource("3_b0wlr")
 office = ExtResource("4_fusbx")
 room = ExtResource("5_l17fl")
+final = ExtResource("6_hnt0g")
