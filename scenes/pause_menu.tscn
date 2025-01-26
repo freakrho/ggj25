@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://cteqwtv4qwlwb"]
+
+[ext_resource type="Theme" uid="uid://brjo2bdq6ntbc" path="res://Assets/ui_theme.tres" id="1_4iff7"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="2_24wl3"]
+[ext_resource type="Texture2D" uid="uid://dleeh6fx7bq7b" path="res://Assets/Sprites/pause_icon.svg" id="3_m4ecu"]
+[ext_resource type="PackedScene" uid="uid://c4l85iycj3wst" path="res://scenes/buttons.tscn" id="4_u8fpw"]
+
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("pause_panel")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_4iff7")
+script = ExtResource("2_24wl3")
+pause_panel = NodePath("Pause")
+
+[node name="PauseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 25.0
+offset_right = 136.0
+offset_bottom = 119.0
+icon = ExtResource("3_m4ecu")
+
+[node name="Pause" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.443137)
+
+[node name="PanelContainer" parent="Pause" instance=ExtResource("4_u8fpw")]
+layout_mode = 1
+
+[node name="ButtonPlay" parent="Pause/PanelContainer/VBoxContainer" index="0"]
+text = "RESUME"
+
+[node name="ButtonCredits" parent="Pause/PanelContainer/VBoxContainer" index="1"]
+visible = true
+text = "MAIN MENU"
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Pause/PanelContainer/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="Pause/PanelContainer/VBoxContainer/ButtonCredits" to="." method="_on_button_main_menu_pressed"]
+[connection signal="pressed" from="Pause/PanelContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+
+[editable path="Pause/PanelContainer"]

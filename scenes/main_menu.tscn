@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjpyke7pckhb"]
+[gd_scene load_steps=6 format=3 uid="uid://bjpyke7pckhb"]
 
 [ext_resource type="Theme" uid="uid://brjo2bdq6ntbc" path="res://Assets/ui_theme.tres" id="1_88tnt"]
 [ext_resource type="Script" path="res://scripts/gui/main_menu.gd" id="2_116tc"]
+[ext_resource type="PackedScene" uid="uid://cteqwtv4qwlwb" path="res://scenes/pause_menu.tscn" id="3_4h20f"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="3_wmcg5"]
+[ext_resource type="PackedScene" uid="uid://c4l85iycj3wst" path="res://scenes/buttons.tscn" id="4_oavte"]
 
 [node name="MainMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_88tnt")
 script = ExtResource("2_116tc")
+pause_panel = ExtResource("3_4h20f")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -33,36 +37,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.466667)
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" parent="." instance=ExtResource("4_oavte")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -108.0
-offset_top = -110.5
-offset_right = 108.0
-offset_bottom = 110.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="ButtonPlay" type="Button" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "PLAY"
-
-[node name="ButtonCredits" type="Button" parent="PanelContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-text = "CREDITS"
-
-[node name="ButtonQuit" type="Button" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "QUIT"
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -80,3 +56,5 @@ grow_vertical = 2
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonCredits" to="." method="_on_button_credits_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+
+[editable path="PanelContainer"]
