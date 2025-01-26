@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/levels/room.gd" id="1_hy5vm"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="2_4ia1b"]
+[ext_resource type="Script" path="res://scripts/dialogue_settings.gd" id="2_6bdyi"]
 [ext_resource type="Resource" path="res://Timelines/morning.dtl" id="2_jor4c"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="2_jtl1y"]
-[ext_resource type="PackedScene" uid="uid://c3tssgy1npgi1" path="res://scenes/levels/house.tscn" id="3_ictdm"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="4_hlf8n"]
 
 [sub_resource type="Gradient" id="Gradient_kgiqw"]
@@ -46,10 +46,14 @@ gradient = SubResource("Gradient_pyfox")
 width = 164
 height = 659
 
-[node name="Room" type="Node2D"]
+[node name="Room" type="Node2D" node_paths=PackedStringArray("map", "start_dialogue")]
 script = ExtResource("1_hy5vm")
-start_dialog = ExtResource("2_jor4c")
-front_scene = ExtResource("3_ictdm")
+map = NodePath("Map")
+start_dialogue = NodePath("DialogueSettings")
+
+[node name="DialogueSettings" type="Node" parent="."]
+script = ExtResource("2_6bdyi")
+dialogue = ExtResource("2_jor4c")
 
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
 script = ExtResource("2_jtl1y")
@@ -112,6 +116,6 @@ position = Vector2(45, 247)
 texture = SubResource("GradientTexture2D_2i4xp")
 
 [node name="Player" parent="Map" instance=ExtResource("4_hlf8n")]
-position = Vector2(1355, 986)
+position = Vector2(1482, 986)
 
 [connection signal="Interaction" from="Map/Door" to="." method="go_to_front"]

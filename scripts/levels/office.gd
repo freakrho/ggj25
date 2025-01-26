@@ -19,4 +19,4 @@ func end_sequence():
 
 func go_to_laundry():
     Dialogic.timeline_ended.disconnect(go_to_laundry)
-    GameManager.load_level(LevelList.laundry)
+    GameManager.load_level.call_deferred(LevelList.laundry)

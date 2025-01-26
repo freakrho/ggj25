@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 @export var nav_agent: NavigationAgent2D
 @export var dialogue_character: DialogicCharacter
 @export var dialogue_marker: Node2D
+@export var animator: AnimatedSprite2D
 
 var moving := false
 var interactables: Array[Interactable] = []
@@ -13,6 +14,7 @@ func _ready() -> void:
     nav_agent.velocity_computed.connect(Callable(_on_velocity_computed))
     nav_agent.max_speed = move_speed
     GameManager.player = self
+    animator.play("idle")
 
 func set_navigation_map(map: RID):
     nav_agent.set_navigation_map(map)
@@ -55,8 +57,17 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
     velocity = safe_velocity
     #global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
 
+func _update_anim() -> void:
+    if velocity.length_squared() > 0:
+        animator.play("walk")
+        animator.flip_h = velocity.x < 0
+    else:
+        animator.play("idle")
+        animator.flip_h = false
+
 func _physics_process(delta: float) -> void:
     if !GameManager.input_enabled():
+        _update_anim()
         return
     
     # Interaction
@@ -74,6 +85,7 @@ func _physics_process(delta: float) -> void:
         end_navigation()
         velocity = movement * move_speed
     
+    _update_anim()
     move_and_slide()
 
 func interactable_entered(interactable: Interactable):
