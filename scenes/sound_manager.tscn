@@ -19,6 +19,7 @@ interaction_player = NodePath("Interaction")
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_cjoan")
+volume_db = -10.0
 
 [node name="Interaction" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_y3inl")

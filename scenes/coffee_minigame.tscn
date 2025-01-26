@@ -159,6 +159,7 @@ scale = Vector2(0.377979, 0.377979)
 position = Vector2(15.8738, 7.93701)
 shape = SubResource("RectangleShape2D_msvgv")
 
+[connection signal="Ended" from="." to="Conditions/ChooseCup" method="do_effect"]
 [connection signal="on_complete" from="Conditions/GrindBeans" to="Sprite2D/Portafilter/Sprite2D/Coffee" method="show"]
 [connection signal="on_pressed" from="Conditions/GrindBeans" to="Conditions/GrindBeans/AudioStreamPlayer2D" method="play"]
 [connection signal="on_drop" from="Conditions/PutPortafilter" to="Conditions/PutPortafilter/AudioStreamPlayer2D" method="play"]
