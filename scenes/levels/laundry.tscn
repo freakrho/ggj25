@@ -39,7 +39,7 @@ size = Vector2(396.067, 139)
 size = Vector2(455, 254)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47rg2"]
-size = Vector2(274, 518)
+size = Vector2(803, 518)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1emx"]
 size = Vector2(162, 538)
@@ -149,6 +149,7 @@ script = ExtResource("5_5s6ab")
 default_position = NodePath("DefaultPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/WashingMachine"]
+position = Vector2(307.5, 0)
 shape = SubResource("RectangleShape2D_47rg2")
 
 [node name="DefaultPosition" type="Node2D" parent="Map/WashingMachine"]

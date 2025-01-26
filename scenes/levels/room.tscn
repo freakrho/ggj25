@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bkg03mctf2jdw"]
+[gd_scene load_steps=16 format=3 uid="uid://bkg03mctf2jdw"]
 
 [ext_resource type="Script" path="res://scripts/levels/room.gd" id="1_hy5vm"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="2_4ia1b"]
@@ -6,27 +6,24 @@
 [ext_resource type="Resource" path="res://Timelines/morning.dtl" id="2_jor4c"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="2_jtl1y"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="4_hlf8n"]
-
-[sub_resource type="Gradient" id="Gradient_kgiqw"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_c0knf"]
-gradient = SubResource("Gradient_kgiqw")
-width = 1920
-height = 1080
+[ext_resource type="Texture2D" uid="uid://dfxurf2q3cuwx" path="res://Assets/sketch fondos/casa interna.jpg" id="5_g4hwk"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oc0q6"]
-vertices = PackedVector2Array(1854.93, 638.977, 15.1797, 638.008, 115.227, 494.953, 1716.5, 481.031)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-4, 648, 110, 485, 1721, 471, 1877, 649)])
+vertices = PackedVector2Array(1876, 643.5, 306.117, 643.5, -23.7812, 633.992, -21.7188, 573.977, 187.32, 454, 1876, 454)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-59, 643, -59, 437, 1937, 384, 1991, 702)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5wnj"]
-size = Vector2(1979, 955)
+size = Vector2(1979, 915)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hthul"]
 size = Vector2(2097, 253)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oxa1i"]
 size = Vector2(396.067, 139)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56hih"]
+size = Vector2(1038, 200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bf50c"]
 size = Vector2(455, 254)
@@ -35,16 +32,7 @@ size = Vector2(455, 254)
 size = Vector2(1978, 299)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gs2m8"]
-size = Vector2(231, 658)
-
-[sub_resource type="Gradient" id="Gradient_pyfox"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.63, 0.45612, 0.1764, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2i4xp"]
-gradient = SubResource("Gradient_pyfox")
-width = 164
-height = 659
+size = Vector2(270.5, 802)
 
 [node name="Room" type="Node2D" node_paths=PackedStringArray("map", "start_dialogue")]
 script = ExtResource("1_hy5vm")
@@ -62,7 +50,7 @@ nav_map = NodePath("NavigationRegion2D")
 interactable_area = NodePath("InteractableArea")
 
 [node name="Background" type="Sprite2D" parent="Map"]
-texture = SubResource("GradientTexture2D_c0knf")
+texture = ExtResource("5_g4hwk")
 centered = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
@@ -72,27 +60,41 @@ navigation_polygon = SubResource("NavigationPolygon_oc0q6")
 [node name="StaticBody2D" type="StaticBody2D" parent="Map/NavigationRegion2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D"]
-position = Vector2(910.5, 6.5)
+position = Vector2(910.5, -13.5)
 shape = SubResource("RectangleShape2D_i5wnj")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Map/NavigationRegion2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D2"]
-position = Vector2(896.5, 768.5)
+position = Vector2(932, 780)
 shape = SubResource("RectangleShape2D_hthul")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Map/NavigationRegion2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D3"]
-position = Vector2(-12.1729, 550.902)
-rotation = -0.925238
+position = Vector2(-1.99999, 471)
+rotation = -0.521062
 shape = SubResource("RectangleShape2D_oxa1i")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Map/NavigationRegion2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D5"]
+position = Vector2(-100, 537)
+rotation = -1.53642
+shape = SubResource("RectangleShape2D_oxa1i")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Map/NavigationRegion2D"]
+position = Vector2(940, 386)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D6"]
+position = Vector2(496, 55)
+shape = SubResource("RectangleShape2D_56hih")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Map/NavigationRegion2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/NavigationRegion2D/StaticBody2D4"]
-position = Vector2(1898, 491)
-rotation = 0.863548
+position = Vector2(2013, 534)
+rotation = 1.57079
 shape = SubResource("RectangleShape2D_bf50c")
 
 [node name="InteractableArea" type="Area2D" parent="Map"]
@@ -102,20 +104,18 @@ position = Vector2(979, 951.5)
 shape = SubResource("RectangleShape2D_y2n63")
 
 [node name="Door" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position")]
-position = Vector2(104, 744)
+position = Vector2(57, 655)
 script = ExtResource("2_4ia1b")
 default_position = NodePath("DefaultPos")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Door"]
+position = Vector2(19.75, -29)
 shape = SubResource("RectangleShape2D_gs2m8")
 
 [node name="DefaultPos" type="Node2D" parent="Map/Door"]
-position = Vector2(45, 247)
-
-[node name="Sprite2D" type="Sprite2D" parent="Map/Door"]
-texture = SubResource("GradientTexture2D_2i4xp")
+position = Vector2(99, 331)
 
 [node name="Player" parent="Map" instance=ExtResource("4_hlf8n")]
-position = Vector2(1482, 986)
+position = Vector2(1454, 1040)
 
 [connection signal="Interaction" from="Map/Door" to="." method="go_to_front"]

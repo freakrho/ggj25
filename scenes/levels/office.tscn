@@ -147,7 +147,7 @@ texture = ExtResource("10_enh8s")
 position = Vector2(55, -256)
 
 [node name="Player" parent="Map" instance=ExtResource("3_17ymn")]
-position = Vector2(59, 986)
+position = Vector2(150, 992)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_bjbm3")
