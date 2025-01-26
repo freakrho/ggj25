@@ -1,0 +1,14 @@
+if oficinista 1 is dead
+oficinista2: Hi girlie!
+oficinista3: You're wearing a little more confidence, eh?
+oficinista3: New clothes? They fit you well.
+playercharacter: Nope. Just the same old me.
+oficinista2: See! I told you.
+oficinista2: Those rags whe wears are always the same.
+oficinista2: And that sour face gives you away, def!
+playercharacter: Is this high school all over again?
+oficinista2: Did you just hear that? The nerve!
+oficinista3: She must be on that time of the month...
+#jump mug1
+if oficinista 2 is dead
+oficinista3: 
