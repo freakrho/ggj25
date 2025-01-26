@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bkg03mctf2jdw"]
+[gd_scene load_steps=18 format=3 uid="uid://bkg03mctf2jdw"]
 
 [ext_resource type="Script" path="res://scripts/levels/room.gd" id="1_hy5vm"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="2_4ia1b"]

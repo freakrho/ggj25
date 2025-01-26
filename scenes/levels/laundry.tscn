@@ -16,11 +16,17 @@
 [ext_resource type="Resource" path="res://Timelines/oldlady.dch" id="10_tmehj"]
 [ext_resource type="Texture2D" uid="uid://covcfxohmsth4" path="res://Assets/Sprites/Monedero.png" id="11_i2uyy"]
 [ext_resource type="Script" path="res://scripts/draggable_with_target.gd" id="12_b43f5"]
-[ext_resource type="PackedScene" uid="uid://bl4i02co3vqf8" path="res://scenes/oldlady.tscn" id="12_kksbh"]
+[ext_resource type="PackedScene" path="res://scenes/oldlady.tscn" id="12_kksbh"]
 [ext_resource type="Script" path="res://scripts/interactable_with_item.gd" id="12_rlqwm"]
 [ext_resource type="Script" path="res://scripts/set_coins_action.gd" id="13_56rco"]
 [ext_resource type="AudioStream" uid="uid://dbtcbbafvyvx5" path="res://Assets/audio/music/lavadora_x_satie.ogg" id="19_c0sgi"]
 [ext_resource type="AudioStream" uid="uid://ds28kdmskaeyb" path="res://Assets/audio/sfx/puerta_lavanderia.ogg" id="20_qjegn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c81yn"]
+size = Vector2(204, 305)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1emx"]
+size = Vector2(198, 628)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_flylw"]
 vertices = PackedVector2Array(1854.93, 638.977, 15.1797, 638.008, 115.227, 494.953, 1716.5, 481.031)
@@ -41,12 +47,6 @@ size = Vector2(455, 254)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47rg2"]
 size = Vector2(803, 518)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1emx"]
-size = Vector2(162, 538)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c81yn"]
-size = Vector2(166, 238)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3sem"]
 size = Vector2(1993, 299)
@@ -111,6 +111,36 @@ scale = Vector2(0.44, 0.44)
 frame_progress = 0.672944
 
 [node name="ReceptionistMarker" type="Marker2D" parent="Map/Oldlady"]
+position = Vector2(122.727, -370.455)
+
+[node name="InteractWithPurse" type="Area2D" parent="Map/Oldlady" node_paths=PackedStringArray("default_position", "dialogue")]
+position = Vector2(-36.3636, -152.273)
+scale = Vector2(2.27273, 2.27273)
+script = ExtResource("12_rlqwm")
+default_position = NodePath("DefaultPosition")
+dialogue = NodePath("../../Dialogues/DialogueWithPurse")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Oldlady/InteractWithPurse"]
+position = Vector2(6, -10.5)
+shape = SubResource("RectangleShape2D_c81yn")
+
+[node name="SetCoinsAction" type="Node" parent="Map/Oldlady/InteractWithPurse"]
+script = ExtResource("13_56rco")
+coins = Array[int]([1, 1, 1, 1, 1])
+
+[node name="DefaultPosition" type="Marker2D" parent="Map/Oldlady/InteractWithPurse"]
+position = Vector2(-130, 419)
+
+[node name="TalkToReceptionist" type="Area2D" parent="Map/Oldlady" node_paths=PackedStringArray("default_position", "dialogues")]
+position = Vector2(-29.5454, 265.909)
+scale = Vector2(2.27273, 2.27273)
+script = ExtResource("5_5s6ab")
+default_position = NodePath("../InteractWithPurse/DefaultPosition")
+dialogues = [NodePath("../../Dialogues/TalkToReceptionist"), NodePath("../../Dialogues/TalkToReceptionist2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Oldlady/TalkToReceptionist"]
+position = Vector2(0, -45)
+shape = SubResource("RectangleShape2D_g1emx")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
 position = Vector2(32, 428)
@@ -157,29 +187,6 @@ shape = SubResource("RectangleShape2D_47rg2")
 [node name="DefaultPosition" type="Node2D" parent="Map/WashingMachine"]
 position = Vector2(1, 167)
 
-[node name="TalkToReceptionist" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position", "dialogues")]
-position = Vector2(572, 749)
-script = ExtResource("5_5s6ab")
-default_position = NodePath("")
-dialogues = [NodePath("../Dialogues/TalkToReceptionist"), NodePath("../Dialogues/TalkToReceptionist2")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/TalkToReceptionist"]
-shape = SubResource("RectangleShape2D_g1emx")
-
-[node name="InteractWithPurse" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position", "dialogue")]
-position = Vector2(569, 565)
-script = ExtResource("12_rlqwm")
-default_position = NodePath("")
-dialogue = NodePath("../Dialogues/DialogueWithPurse")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/InteractWithPurse"]
-position = Vector2(6, 23)
-shape = SubResource("RectangleShape2D_c81yn")
-
-[node name="SetCoinsAction" type="Node" parent="Map/InteractWithPurse"]
-script = ExtResource("13_56rco")
-coins = Array[int]([1, 1, 1, 1, 1])
-
 [node name="InteractableArea" type="Area2D" parent="Map"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/InteractableArea"]
@@ -189,7 +196,7 @@ shape = SubResource("RectangleShape2D_m3sem")
 [node name="Purse" type="Area2D" parent="Map" node_paths=PackedStringArray("target")]
 position = Vector2(1770, 152)
 script = ExtResource("12_b43f5")
-target = NodePath("../InteractWithPurse")
+target = NodePath("../Oldlady/InteractWithPurse")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Purse"]
 shape = SubResource("CircleShape2D_0joxp")
@@ -221,6 +228,6 @@ autoplay = true
 stream = ExtResource("20_qjegn")
 autoplay = true
 
+[connection signal="Interaction" from="Map/Oldlady/InteractWithPurse" to="Map/Oldlady/InteractWithPurse/SetCoinsAction" method="set_coins"]
 [connection signal="Interaction" from="Map/WashingMachine" to="WashingMachine" method="start_minigame"]
-[connection signal="Interaction" from="Map/InteractWithPurse" to="Map/InteractWithPurse/SetCoinsAction" method="set_coins"]
 [connection signal="Interaction" from="Map/Door" to="." method="_on_door_interaction"]
