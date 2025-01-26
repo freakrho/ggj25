@@ -1,0 +1,85 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://brjo2bdq6ntbc"]
+
+[ext_resource type="FontFile" uid="uid://vrrmdx83skor" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Regular.ttf" id="1_3v5a4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5iqs1"]
+content_margin_left = 20.0
+content_margin_top = 15.0
+content_margin_right = 20.0
+content_margin_bottom = 15.0
+bg_color = Color(0.6, 0.288, 0.288, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m62a"]
+content_margin_left = 20.0
+content_margin_top = 15.0
+content_margin_right = 20.0
+content_margin_bottom = 15.0
+bg_color = Color(0.6, 0.366, 0.366, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21jrt"]
+content_margin_left = 20.0
+content_margin_top = 15.0
+content_margin_right = 20.0
+content_margin_bottom = 15.0
+bg_color = Color(0.58, 0.352833, 0.3074, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4ane"]
+content_margin_left = 20.0
+content_margin_top = 15.0
+content_margin_right = 20.0
+content_margin_bottom = 15.0
+bg_color = Color(0.6, 0.108, 0.108, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vb7sm"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0, 0, 0, 0.792157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27ewv"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(0, 0, 0, 0.603922)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[resource]
+Button/font_sizes/font_size = 53
+Button/fonts/font = ExtResource("1_3v5a4")
+Button/styles/focus = SubResource("StyleBoxFlat_5iqs1")
+Button/styles/hover = SubResource("StyleBoxFlat_4m62a")
+Button/styles/normal = SubResource("StyleBoxFlat_21jrt")
+Button/styles/pressed = SubResource("StyleBoxFlat_x4ane")
+Label/fonts/font = ExtResource("1_3v5a4")
+Panel/styles/panel = SubResource("StyleBoxFlat_vb7sm")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_27ewv")
+VBoxContainer/constants/separation = 22
