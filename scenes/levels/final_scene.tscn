@@ -1,48 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfprowrlu6n2p"]
+[gd_scene load_steps=4 format=3 uid="uid://dfprowrlu6n2p"]
 
 [ext_resource type="Script" path="res://scripts/levels/final_scene.gd" id="1_xgoej"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="2_05hm5"]
-[ext_resource type="Script" path="res://scripts/dialogue_settings.gd" id="2_li537"]
 [ext_resource type="PackedScene" uid="uid://brb0gvt2pu4tt" path="res://scenes/thanks_for_playing.tscn" id="2_s3aoi"]
-[ext_resource type="Resource" path="res://Timelines/morning.dtl" id="3_8fkap"]
-[ext_resource type="Script" path="res://scripts/map.gd" id="3_oknqu"]
-[ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="4_pigdv"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_8hjio"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixt30"]
-size = Vector2(1934, 1099)
-
-[node name="FinalScene" type="Node2D" node_paths=PackedStringArray("map", "start_dialogue")]
+[node name="FinalScene" type="Node2D"]
 script = ExtResource("1_xgoej")
 thanks_for_playing_scene = ExtResource("2_s3aoi")
-map = NodePath("Map")
-start_dialogue = [NodePath("DialogueSettings")]
-
-[node name="DialogueSettings" type="Node" parent="."]
-script = ExtResource("2_li537")
-dialogue = ExtResource("3_8fkap")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("2_05hm5")
 centered = false
-
-[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
-script = ExtResource("3_oknqu")
-player = NodePath("Player")
-nav_map = NodePath("NavigationRegion2D")
-interactable_area = NodePath("Area2D")
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
-navigation_polygon = SubResource("NavigationPolygon_8hjio")
-
-[node name="Player" parent="Map" instance=ExtResource("4_pigdv")]
-position = Vector2(759, 970)
-
-[node name="Area2D" type="Area2D" parent="Map"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Area2D"]
-position = Vector2(957, 539.5)
-shape = SubResource("RectangleShape2D_ixt30")
-
-[connection signal="on_end_dialogue" from="DialogueSettings" to="." method="end_game"]
