@@ -1,6 +1,7 @@
 class_name ChooseCupCondition extends MinigameCondition
 
 @export var choices: Array[AreaSelectable]
+@export var characters: Array[DialogicCharacter]
 
 
 func _ready():
@@ -9,4 +10,7 @@ func _ready():
 
 func on_selected(selectable: AreaSelectable) -> void:
     completed = true
-    SessionManager.current.selected_cup = selectable.name
+    for i in range(choices.size()):
+        if choices[i] == selectable:
+            SessionManager.current.kill(characters[i])
+            return

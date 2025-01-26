@@ -1,11 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://boyvlj5d00fvw"]
+[gd_scene load_steps=19 format=3 uid="uid://boyvlj5d00fvw"]
 
 [ext_resource type="Script" path="res://scripts/minigame.gd" id="1_gh2j6"]
 [ext_resource type="Texture2D" uid="uid://b2drdfwq51qe" path="res://Assets/sketch fondos/oficina.jpg" id="2_fbwkt"]
 [ext_resource type="Script" path="res://scripts/choose_cup_condition.gd" id="3_5wyyl"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/character.gd" id="3_gl1qj"]
 [ext_resource type="Script" path="res://scripts/minigame_conditions/press_button_condition.gd" id="4_acbkj"]
 [ext_resource type="Script" path="res://scripts/area_selectable.gd" id="4_djsoj"]
+[ext_resource type="Resource" path="res://Timelines/oficinista1.dch" id="4_g2ikv"]
+[ext_resource type="Resource" path="res://Timelines/oficinista2.dch" id="5_qw60j"]
 [ext_resource type="Script" path="res://scripts/drag_object_to_target_condition.gd" id="5_sqles"]
+[ext_resource type="Resource" path="res://Timelines/oficinista3.dch" id="6_bboit"]
 [ext_resource type="Script" path="res://scripts/slideable.gd" id="7_67bin"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mgrav"]
@@ -44,7 +48,8 @@ sorted_conditions = [NodePath("Conditions/ChooseCup"), NodePath("Conditions/Grin
 
 [node name="ChooseCup" type="Node" parent="Conditions" node_paths=PackedStringArray("choices")]
 script = ExtResource("3_5wyyl")
-choices = [NodePath("../../Sprite2D/Cups/Cup1"), NodePath("../../Sprite2D/Cups/Cup2"), NodePath("../../Sprite2D/Cups/Cup3")]
+choices = [NodePath("../../Sprite2D/Cups/Coworker1"), NodePath("../../Sprite2D/Cups/Coworker2"), NodePath("../../Sprite2D/Cups/Coworker3")]
+characters = Array[ExtResource("3_gl1qj")]([ExtResource("4_g2ikv"), ExtResource("5_qw60j"), ExtResource("6_bboit")])
 
 [node name="GrindBeans" type="Node" parent="Conditions" node_paths=PackedStringArray("button")]
 script = ExtResource("4_acbkj")
@@ -66,27 +71,27 @@ texture = ExtResource("2_fbwkt")
 position = Vector2(370.797, -290.288)
 scale = Vector2(0.377979, 0.377979)
 
-[node name="Cup1" type="Area2D" parent="Sprite2D/Cups"]
+[node name="Coworker1" type="Area2D" parent="Sprite2D/Cups"]
 position = Vector2(539, 109)
 script = ExtResource("4_djsoj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Cup1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Coworker1"]
 position = Vector2(5, -16)
 shape = SubResource("CircleShape2D_mgrav")
 
-[node name="Cup2" type="Area2D" parent="Sprite2D/Cups"]
+[node name="Coworker2" type="Area2D" parent="Sprite2D/Cups"]
 position = Vector2(795, 148)
 script = ExtResource("4_djsoj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Cup2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Coworker2"]
 position = Vector2(23, -45)
 shape = SubResource("CircleShape2D_mgrav")
 
-[node name="Cup3" type="Area2D" parent="Sprite2D/Cups"]
+[node name="Coworker3" type="Area2D" parent="Sprite2D/Cups"]
 position = Vector2(1048, 163)
 script = ExtResource("4_djsoj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Cup3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Coworker3"]
 position = Vector2(0, -57)
 shape = SubResource("CircleShape2D_mgrav")
 

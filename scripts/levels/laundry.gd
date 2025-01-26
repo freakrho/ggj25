@@ -13,4 +13,5 @@ func _on_ended(minigame: Minigame):
 
 
 func _on_door_interaction() -> void:
+    SessionManager.current.new_day()
     GameManager.load_level(LevelList.room)

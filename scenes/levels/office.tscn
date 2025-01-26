@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://ddin5jv8ogfjb"]
+[gd_scene load_steps=26 format=3 uid="uid://ddin5jv8ogfjb"]
 
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_6c0ec"]
 [ext_resource type="Script" path="res://scripts/levels/office.gd" id="1_vmnrm"]
 [ext_resource type="Texture2D" uid="uid://b2drdfwq51qe" path="res://Assets/sketch fondos/oficina.jpg" id="1_xg8lp"]
 [ext_resource type="Script" path="res://scripts/dialogue_settings.gd" id="2_4732g"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/character.gd" id="2_l3b4e"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="3_17ymn"]
 [ext_resource type="Resource" path="res://Timelines/office_timeline.dtl" id="3_hjkwb"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="4_3m7wp"]
@@ -37,13 +38,11 @@ size = Vector2(382, 678)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs267"]
 size = Vector2(1978, 299)
 
-[node name="Office" type="Node2D" node_paths=PackedStringArray("cup_1_dialogue", "cup_2_dialogue", "cup_3_dialogue", "map", "minigames", "start_dialogue", "characters")]
+[node name="Office" type="Node2D" node_paths=PackedStringArray("cup_dialogues", "map", "start_dialogue", "characters")]
 script = ExtResource("1_vmnrm")
-cup_1_dialogue = NodePath("Cup1Dialogue")
-cup_2_dialogue = NodePath("Cup2Dialogue")
-cup_3_dialogue = NodePath("Cup3Dialogue")
+cup_dialogues = [NodePath("Cup1Dialogue"), NodePath("Cup2Dialogue"), NodePath("Cup3Dialogue")]
+cup_owners = Array[ExtResource("2_l3b4e")]([ExtResource("5_fb3b3"), ExtResource("6_xjkgk"), ExtResource("7_4sbuf")])
 map = NodePath("Map")
-minigames = [NodePath("CoffeeMinigame")]
 start_dialogue = NodePath("StartDialogue")
 characters = [NodePath("Oficinista1"), NodePath("Oficinista2"), NodePath("Oficinista3")]
 
