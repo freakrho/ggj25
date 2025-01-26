@@ -1,13 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfprowrlu6n2p"]
 
 [ext_resource type="Script" path="res://scripts/levels/final_scene.gd" id="1_xgoej"]
-[ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="2_05hm5"]
 [ext_resource type="PackedScene" uid="uid://brb0gvt2pu4tt" path="res://scenes/thanks_for_playing.tscn" id="2_s3aoi"]
+[ext_resource type="Texture2D" uid="uid://cet8u0ch1kvyv" path="res://Assets/sketch fondos/Final fondo.jpg" id="3_j065k"]
 
 [node name="FinalScene" type="Node2D"]
 script = ExtResource("1_xgoej")
 thanks_for_playing_scene = ExtResource("2_s3aoi")
 
 [node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("2_05hm5")
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("3_j065k")
 centered = false

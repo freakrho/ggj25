@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://brb0gvt2pu4tt"]
+[gd_scene load_steps=8 format=3 uid="uid://brb0gvt2pu4tt"]
 
 [ext_resource type="Theme" uid="uid://brjo2bdq6ntbc" path="res://Assets/ui_theme.tres" id="1_a1otj"]
 [ext_resource type="Script" path="res://scripts/thanks_for_playing.gd" id="1_osl75"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ntm88xgt6dk" path="res://Assets/sketch fondos/casa.jpg" id="2_l60j6"]
 [ext_resource type="PackedScene" uid="uid://j32de8e7mjxo" path="res://scenes/credits.tscn" id="4_1dovn"]
 [ext_resource type="PackedScene" uid="uid://c4l85iycj3wst" path="res://scenes/buttons.tscn" id="6_jact3"]
+[ext_resource type="AudioStream" uid="uid://bbqwawedn3q67" path="res://Assets/audio/music/Satie.ogg" id="7_ml67l"]
 
 [node name="ThanksForPlaying" type="Control"]
 layout_mode = 3
@@ -75,6 +76,10 @@ grow_vertical = 0
 
 [node name="ButtonPlay" parent="PanelContainer/VBoxContainer" index="0"]
 text = "MAIN MENU"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ml67l")
+autoplay = true
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
