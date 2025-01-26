@@ -45,7 +45,10 @@ directories/dtl_directory={
 "laundry_day1_3": "res://Timelines/laundry_day1_3.dtl",
 "laundry_day1_4": "res://Timelines/laundry_day1_4.dtl",
 "laundry_day1_5": "res://Timelines/laundry_day1_5.dtl",
+"laundry_day2": "res://Timelines/laundry_day2.dtl",
 "morning": "res://Timelines/morning.dtl",
+"morning_day2": "res://Timelines/morning_day2.dtl",
+"office_day2": "res://Timelines/office_day2.dtl",
 "office_timeline": "res://Timelines/office_timeline.dtl"
 }
 layout/style_list=["res://Timelines/Style_dialogue.tres", "res://Timelines/Style_ui.tres", "res://Timelines/Style_world.tres", "res://Timelines/Style_pruebaui.tres", "res://Timelines/TextbubbleLayer/CustomStyleUi/style_worldtexts.tres", "res://Timelines/TextbubbleLayer/CustomStyleUi/style_UItexts.tres"]
