@@ -20,11 +20,11 @@ overrides = {}
 script = ExtResource("1_202j7")
 scene = ExtResource("4_jppwd")
 overrides = {
-"box_wobble_amount": "0.6",
+"box_corner_radius": "30.0",
+"box_wobble_amount": "0.8",
 "box_wobble_detail": "0.3",
-"box_wobble_speed": "1.1",
-"choices_layout_alignment": "1",
-"choices_layout_force_lines": "true",
+"box_wobble_speed": "1.2",
+"choices_layout_alignment": "0",
 "choices_text_color_focus": "Color(0.0898438, 0.0898438, 0.0898438, 1)",
 "choices_text_color_hover": "Color(0.441406, 0.374161, 0.441406, 1)",
 "choices_text_size": "20.0",
