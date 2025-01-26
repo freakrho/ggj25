@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/levels/house.gd" id="1_uqouy"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="2_33otu"]
-[ext_resource type="PackedScene" uid="uid://ddin5jv8ogfjb" path="res://scenes/levels/office.tscn" id="2_raq3v"]
 [ext_resource type="Texture2D" uid="uid://c4ntm88xgt6dk" path="res://Assets/sketch fondos/casa.jpg" id="3_qgaci"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="4_32ggl"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="5_5um0u"]
+[ext_resource type="AudioStream" uid="uid://dhdlu31gdoujd" path="res://Assets/audio/sfx/puerta_uno.ogg" id="6_xttrd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jfggr"]
 vertices = PackedVector2Array(1881.81, 632, -19.6094, 632, -16.6875, 494, 1880.17, 494)
@@ -26,7 +26,6 @@ size = Vector2(274, 518)
 
 [node name="House" type="Node2D"]
 script = ExtResource("1_uqouy")
-office_scene = ExtResource("2_raq3v")
 
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
 script = ExtResource("2_33otu")
@@ -73,5 +72,9 @@ shape = SubResource("RectangleShape2D_vcr2h")
 
 [node name="DefaultPosition" type="Node2D" parent="Map/OutWay"]
 position = Vector2(1, 167)
+
+[node name="DoorSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_xttrd")
+autoplay = true
 
 [connection signal="Interaction" from="Map/OutWay" to="." method="go_out"]

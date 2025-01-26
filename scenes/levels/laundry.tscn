@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d3bgbc0ry8hkr"]
+[gd_scene load_steps=32 format=3 uid="uid://d3bgbc0ry8hkr"]
 
 [ext_resource type="Script" path="res://scripts/levels/laundry.gd" id="1_s8yjg"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="2_3471r"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" path="res://scripts/draggable_with_target.gd" id="12_b43f5"]
 [ext_resource type="Script" path="res://scripts/interactable_with_item.gd" id="12_rlqwm"]
 [ext_resource type="Script" path="res://scripts/set_coins_action.gd" id="13_56rco"]
+[ext_resource type="AudioStream" uid="uid://ciqm841wxtad1" path="res://Assets/audio/music/Satie_Y_Lavadoras.ogg" id="19_rpuax"]
+[ext_resource type="AudioStream" uid="uid://ds28kdmskaeyb" path="res://Assets/audio/sfx/puerta_lavanderia.ogg" id="20_qjegn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_flylw"]
 vertices = PackedVector2Array(1854.93, 638.977, 15.1797, 638.008, 115.227, 494.953, 1716.5, 481.031)
@@ -207,6 +209,14 @@ position = Vector2(191, -61)
 
 [node name="WashingMachine" parent="." instance=ExtResource("6_2k7sd")]
 visible = false
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_rpuax")
+autoplay = true
+
+[node name="DoorSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_qjegn")
+autoplay = true
 
 [connection signal="Interaction" from="Map/WashingMachine" to="WashingMachine" method="start_minigame"]
 [connection signal="Interaction" from="Map/InteractWithPurse" to="Map/InteractWithPurse/SetCoinsAction" method="set_coins"]
