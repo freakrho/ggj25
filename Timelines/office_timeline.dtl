@@ -2,7 +2,9 @@ oficinista2: Gooooood morning!!
 [wait time="0.2"]
 playercharacter: ...
 oficinista2: How was your weekend?
-playercharacter: <Empty Text Event>
+[wait time="0.5"]
+playercharacter: uhmm
+playercharacter:
 - Why do you care?
 - It was okay I guess.
 - We don't know each other like that!

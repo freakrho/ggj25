@@ -1,8 +1,8 @@
-#el jugador eligió el mug1
+# #el jugador eligió el mug1
 oficinista1: Who took my mug?
 oficinista1: Don't you people know how expensive it is?
-oficinista1: It's a handmade titanium hyper-efficient coffee accellerator made by monks in the Tibet!
-playercharacter: Oh! I'm so sorry! 
+oficinista1: [speed=0.6] It's a handmade titanium hyper-efficient coffee accellerator made by monks in the Tibet! [speed]
+playercharacter: Oh! I'm so sorry!
 playercharacter: I just took the first one I saw.
 oficinista1: And you didn't see its magnificence from just looking at it?
 oficinista1: The other mugs WISH they had the rizz my Tibetan handmade titanium...

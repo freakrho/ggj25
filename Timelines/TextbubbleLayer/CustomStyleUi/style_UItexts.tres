@@ -45,8 +45,10 @@ overrides = {
 "box_color_use_global": "false",
 "next_indicator_enabled": "false",
 "next_indicator_show_on_questions": "false",
-"text_custom_color": "Color(0, 0.550781, 0.0473328, 1)",
-"text_use_global_color": "false"
+"text_custom_color": "Color(0.713631, 0.75, 0.0849609, 1)",
+"text_size": "22.0",
+"text_use_global_color": "false",
+"text_use_global_size": "false"
 }
 
 [sub_resource type="Resource" id="Resource_fc68d"]
