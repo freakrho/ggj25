@@ -23,8 +23,8 @@ if {oficinista2_dead} == true:
 if {oficinista3_dead} == true:
 	oficinista1: I knew there was a humid stench around.
 	oficinista1: And now here she is!
-	oficinista2: Girlie! Nostradamus called, he wanted his perfume back.
-	playercharacter: You mean Nosferatu?
+	oficinista2: Girlie! The Grinch called, he wanted his perfume back.
+	playercharacter: Well, it's a Christmas time story so I bet he smells like peppermint.
 	oficinista2: Gosh, what a know-it-all!
 #playercharacter: dialogo
 label officeday2_dialogue1end
