@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://boyvlj5d00fvw"]
+[gd_scene load_steps=22 format=3 uid="uid://boyvlj5d00fvw"]
 
 [ext_resource type="Script" path="res://scripts/minigame.gd" id="1_gh2j6"]
 [ext_resource type="Script" path="res://scripts/choose_cup_condition.gd" id="3_5wyyl"]
@@ -9,37 +9,13 @@
 [ext_resource type="Resource" path="res://Timelines/oficinista2.dch" id="5_qw60j"]
 [ext_resource type="Script" path="res://scripts/drag_object_to_target_condition.gd" id="5_sqles"]
 [ext_resource type="Resource" path="res://Timelines/oficinista3.dch" id="6_bboit"]
-[ext_resource type="Script" path="res://scripts/slideable.gd" id="7_67bin"]
+[ext_resource type="AudioStream" uid="uid://0b5xbuaxpwy4" path="res://Assets/audio/sfx/Molino_cafe.ogg" id="8_hkkva"]
 [ext_resource type="Texture2D" uid="uid://csubxvpppnjvl" path="res://Assets/sketch fondos/oficina SIN TAZAS.jpg" id="9_8ond8"]
-[ext_resource type="Texture2D" uid="uid://dbelvubgp5d1g" path="res://Assets/Sprites/Taza blanca.png" id="11_a6a18"]
-[ext_resource type="Texture2D" uid="uid://bhv6afq7qemax" path="res://Assets/Sprites/Moneda 2.png" id="12_bq2ms"]
-[ext_resource type="Texture2D" uid="uid://ds55mb1h4slr3" path="res://Assets/Sprites/Taza rosa.png" id="12_c7hjf"]
-[ext_resource type="Texture2D" uid="uid://cgi6yxxqcdpnp" path="res://Assets/Sprites/Taza gris.png" id="13_tglhb"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mgrav"]
-radius = 119.151
-
-[sub_resource type="Curve2D" id="Curve2D_ujweb"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 185, -2, 0, 0, 0, 0, 39, -2)
-}
-point_count = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjade"]
-size = Vector2(101, 43)
-
-[sub_resource type="Gradient" id="Gradient_385xs"]
-offsets = PackedFloat32Array(0, 0.992509)
-colors = PackedColorArray(0.12, 0.11628, 0.1128, 1, 0.33, 0.283745, 0.2343, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_4sfbx"]
-frequency = 0.0686
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k4ykw"]
-width = 77
-height = 37
-color_ramp = SubResource("Gradient_385xs")
-noise = SubResource("FastNoiseLite_4sfbx")
+[ext_resource type="Texture2D" uid="uid://cjks3i6x2yqur" path="res://Assets/Sprites/Taza blanca.png" id="11_a6a18"]
+[ext_resource type="Texture2D" uid="uid://84lmasm5vnej" path="res://Assets/Sprites/Taza rosa.png" id="12_c7hjf"]
+[ext_resource type="Texture2D" uid="uid://bd0gmk00pvxfv" path="res://Assets/Sprites/Taza gris.png" id="13_tglhb"]
+[ext_resource type="Script" path="res://scripts/draggable.gd" id="16_dqqoa"]
+[ext_resource type="Texture2D" uid="uid://ckqfdeqoanarc" path="res://Assets/Sprites/portafilter.png" id="17_3x4vo"]
 
 [sub_resource type="Gradient" id="Gradient_oabno"]
 offsets = PackedFloat32Array(1)
@@ -48,8 +24,14 @@ colors = PackedColorArray(0.784314, 0.784314, 0.784314, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vxxwt"]
 gradient = SubResource("Gradient_oabno")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hvr3x"]
-radius = 52.0384
+[sub_resource type="CircleShape2D" id="CircleShape2D_mgrav"]
+radius = 119.151
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msvgv"]
+size = Vector2(162, 57)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6e3u5"]
+radius = 137.052
 
 [node name="CoffeeMinigame" type="Node2D" node_paths=PackedStringArray("sorted_conditions")]
 script = ExtResource("1_gh2j6")
@@ -67,17 +49,26 @@ cups_on_table = [NodePath("../../Sprite2D/CupsOnTable/Cup1"), NodePath("../../Sp
 script = ExtResource("4_acbkj")
 button = NodePath("../../Sprite2D/Grinder")
 
-[node name="PutPortafilter" type="Node" parent="Conditions" node_paths=PackedStringArray("slideable", "target", "depends_on")]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Conditions/GrindBeans"]
+stream = ExtResource("8_hkkva")
+
+[node name="PutPortafilter" type="Node" parent="Conditions" node_paths=PackedStringArray("draggable", "slideable", "target", "depends_on")]
 script = ExtResource("5_sqles")
 reset_if_failed = true
-slideable = NodePath("../../Sprite2D/Portafilter")
-target = NodePath("../../Sprite2D/Portafilter/Target")
+draggable = NodePath("../../Sprite2D/Portafilter")
+slideable = NodePath("")
+target = NodePath("../../Sprite2D/Target")
 depends_on = [NodePath("../GrindBeans")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-626, 778)
 scale = Vector2(2.64565, 2.64565)
 texture = ExtResource("9_8ond8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(771.077, 7.57999)
+scale = Vector2(1.97553, 0.708072)
+texture = SubResource("GradientTexture2D_vxxwt")
 
 [node name="Cups" type="Node2D" parent="Sprite2D"]
 position = Vector2(370.797, -290.288)
@@ -126,20 +117,17 @@ scale = Vector2(1.10198, 1.10198)
 texture = ExtResource("13_tglhb")
 
 [node name="CupsOnTable" type="Node2D" parent="Sprite2D"]
-position = Vector2(13.6072, 7.93756)
+position = Vector2(765.407, 36.664)
 
 [node name="Cup1" type="Sprite2D" parent="Sprite2D/CupsOnTable"]
-position = Vector2(546.558, 66.1463)
 scale = Vector2(0.379092, 0.379092)
 texture = ExtResource("11_a6a18")
 
 [node name="Cup2" type="Sprite2D" parent="Sprite2D/CupsOnTable"]
-position = Vector2(546.558, 66.1463)
 scale = Vector2(0.379092, 0.379092)
 texture = ExtResource("12_c7hjf")
 
 [node name="Cup3" type="Sprite2D" parent="Sprite2D/CupsOnTable"]
-position = Vector2(546.558, 66.1463)
 scale = Vector2(0.379092, 0.379092)
 texture = ExtResource("13_tglhb")
 
@@ -149,39 +137,23 @@ offset_top = -22.0
 offset_right = 529.0
 offset_bottom = 13.0
 
-[node name="Portafilter" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("path", "knob")]
+[node name="Target" type="Area2D" parent="Sprite2D"]
 position = Vector2(757.092, -6.04767)
 scale = Vector2(0.377979, 0.377979)
-script = ExtResource("7_67bin")
-path = NodePath("Path2D")
-knob = NodePath("Area2D")
-max_delta = 200.0
 
-[node name="Path2D" type="Path2D" parent="Sprite2D/Portafilter"]
-curve = SubResource("Curve2D_ujweb")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Target"]
+position = Vector2(7.00012, -23)
+shape = SubResource("RectangleShape2D_msvgv")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D/Portafilter"]
-position = Vector2(140, -3)
+[node name="Portafilter" type="Area2D" parent="Sprite2D"]
+position = Vector2(473.608, 31.3722)
+scale = Vector2(0.144074, 0.144074)
+script = ExtResource("16_dqqoa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Portafilter/Area2D"]
-position = Vector2(4.5, -0.5)
-shape = SubResource("RectangleShape2D_fjade")
-debug_color = Color(0.291997, 0.587894, 0.626193, 0.42)
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Portafilter"]
+texture = ExtResource("17_3x4vo")
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Portafilter/Area2D"]
-texture = SubResource("NoiseTexture2D_k4ykw")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Portafilter"]
+shape = SubResource("CircleShape2D_6e3u5")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D/Portafilter/Area2D"]
-position = Vector2(107.5, 8.89188)
-scale = Vector2(2.17187, 0.965372)
-texture = SubResource("GradientTexture2D_vxxwt")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D/Portafilter/Area2D"]
-position = Vector2(36, -0.999979)
-scale = Vector2(0.139167, 0.139167)
-texture = ExtResource("12_bq2ms")
-
-[node name="Target" type="Area2D" parent="Sprite2D/Portafilter"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Portafilter/Target"]
-shape = SubResource("CircleShape2D_hvr3x")
+[connection signal="on_complete" from="Conditions/GrindBeans" to="Conditions/GrindBeans/AudioStreamPlayer2D" method="play"]

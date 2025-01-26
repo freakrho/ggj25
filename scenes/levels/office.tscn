@@ -17,13 +17,13 @@
 [ext_resource type="Resource" path="res://Timelines/oficinista3.dch" id="7_4sbuf"]
 [ext_resource type="PackedScene" uid="uid://boyvlj5d00fvw" path="res://scenes/coffee_minigame.tscn" id="7_as3so"]
 [ext_resource type="Resource" path="res://Timelines/office_day2.dtl" id="8_4u154"]
-[ext_resource type="Texture2D" uid="uid://bfkpn7mrd786b" path="res://addons/dialogic/Example Assets/portraits/Antonio/pl5.png" id="10_enh8s"]
-[ext_resource type="Texture2D" uid="uid://s2jsr1aqiu84" path="res://addons/dialogic/Example Assets/portraits/Antonio/pl5 blink.png" id="12_4b06i"]
-[ext_resource type="Texture2D" uid="uid://djqit26f4be4f" path="res://addons/dialogic/Example Assets/portraits/Princess/princess_blank.png" id="13_p1vpi"]
 [ext_resource type="Texture2D" uid="uid://csubxvpppnjvl" path="res://Assets/sketch fondos/oficina SIN TAZAS.jpg" id="13_tw138"]
 [ext_resource type="Texture2D" uid="uid://cjks3i6x2yqur" path="res://Assets/Sprites/Taza blanca.png" id="16_grqr0"]
+[ext_resource type="PackedScene" uid="uid://co7yxgp4l1ib4" path="res://scenes/oficinista1.tscn" id="17_hdo0m"]
 [ext_resource type="Texture2D" uid="uid://84lmasm5vnej" path="res://Assets/Sprites/Taza rosa.png" id="18_otb1j"]
+[ext_resource type="PackedScene" path="res://scenes/oficinista2.tscn" id="18_ve50t"]
 [ext_resource type="Texture2D" uid="uid://bd0gmk00pvxfv" path="res://Assets/Sprites/Taza gris.png" id="20_aimxu"]
+[ext_resource type="PackedScene" path="res://scenes/oficinista3.tscn" id="21_lhlcx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ypo5t"]
 vertices = PackedVector2Array(1882.88, 632, -19.0312, 632, -19.2812, 494, 1881.58, 494)
@@ -42,11 +42,12 @@ size = Vector2(382, 678)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs267"]
 size = Vector2(1978, 299)
 
-[node name="Office" type="Node2D" node_paths=PackedStringArray("cup_dialogues", "character_nodes", "map", "minigames", "start_dialogue", "characters")]
+[node name="Office" type="Node2D" node_paths=PackedStringArray("cup_dialogues", "cups", "character_nodes", "map", "minigames", "start_dialogue", "characters")]
 script = ExtResource("1_vmnrm")
 cup_dialogues = [NodePath("Cup1Dialogue"), NodePath("Cup2Dialogue"), NodePath("Cup3Dialogue")]
 cup_owners = Array[ExtResource("2_l3b4e")]([ExtResource("5_fb3b3"), ExtResource("6_xjkgk"), ExtResource("7_4sbuf")])
-character_nodes = [NodePath("Map/OfficeWorker1"), NodePath("Map/OfficeWorker2"), NodePath("Map/OfficeWorker3")]
+cups = [NodePath("Map/Oficinista1/Mug1"), NodePath("Map/Oficinista2/Mug2"), NodePath("Map/Oficinista3/Mug3")]
+character_nodes = [NodePath("Map/Oficinista1"), NodePath("Map/Oficinista2"), NodePath("Map/Oficinista3")]
 map = NodePath("Map")
 minigames = [NodePath("CoffeeMinigame")]
 start_dialogue = [NodePath("StartDialogue1"), NodePath("StartDialogue2")]
@@ -75,17 +76,17 @@ dialogue = ExtResource("6_eby6i")
 [node name="Oficinista1" type="Node" parent="." node_paths=PackedStringArray("node")]
 script = ExtResource("4_rjyj8")
 character = ExtResource("5_fb3b3")
-node = NodePath("../Map/OfficeWorker1/Marker2D")
+node = NodePath("../Map/Oficinista1/Oficinista1/Marker2D")
 
 [node name="Oficinista2" type="Node" parent="." node_paths=PackedStringArray("node")]
 script = ExtResource("4_rjyj8")
 character = ExtResource("6_xjkgk")
-node = NodePath("../Map/OfficeWorker2/Marker2D")
+node = NodePath("../Map/Oficinista2/Oficinista2/Marker2D")
 
 [node name="Oficinista3" type="Node" parent="." node_paths=PackedStringArray("node")]
 script = ExtResource("4_rjyj8")
 character = ExtResource("7_4sbuf")
-node = NodePath("../Map/OfficeWorker3/Marker2D")
+node = NodePath("../Map/Oficinista3/Oficinista3/Marker2D")
 
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
 script = ExtResource("1_6c0ec")
@@ -131,50 +132,56 @@ position = Vector2(-13, 103)
 position = Vector2(979, 951.5)
 shape = SubResource("RectangleShape2D_vs267")
 
-[node name="OfficeWorker1" type="Sprite2D" parent="Map"]
-position = Vector2(536.667, 666)
-scale = Vector2(0.822917, 0.822917)
-texture = ExtResource("12_4b06i")
+[node name="Oficinista1" type="Node2D" parent="Map"]
 
-[node name="Marker2D" type="Marker2D" parent="Map/OfficeWorker1"]
-position = Vector2(55, -256)
-
-[node name="Sprite2D" type="Sprite2D" parent="Map/OfficeWorker1"]
-position = Vector2(1208.3, -460.557)
+[node name="Mug1" type="Sprite2D" parent="Map/Oficinista1"]
+position = Vector2(1534, 289)
 rotation = -1.10821
-scale = Vector2(0.642333, 0.642333)
+scale = Vector2(0.528587, 0.528587)
 texture = ExtResource("16_grqr0")
 
-[node name="OfficeWorker2" type="Sprite2D" parent="Map"]
-position = Vector2(1060, 692)
-scale = Vector2(0.373712, 0.373712)
-texture = ExtResource("13_p1vpi")
+[node name="Oficinista1" parent="Map/Oficinista1" instance=ExtResource("17_hdo0m")]
+position = Vector2(631, 680)
+scale = Vector2(0.5, 0.5)
 
-[node name="Marker2D" type="Marker2D" parent="Map/OfficeWorker2"]
-position = Vector2(104.358, -719.806)
+[node name="Marker2D" type="Marker2D" parent="Map/Oficinista1/Oficinista1"]
+position = Vector2(134, -552)
+scale = Vector2(1.64583, 1.64583)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Map/OfficeWorker2"]
-position = Vector2(1527.91, -1064.99)
+[node name="Oficinista2" type="Node2D" parent="Map"]
+
+[node name="Oficinista2" parent="Map/Oficinista2" instance=ExtResource("18_ve50t")]
+position = Vector2(983, 695)
+scale = Vector2(0.5, 0.5)
+
+[node name="Marker2D" type="Marker2D" parent="Map/Oficinista2/Oficinista2"]
+position = Vector2(128, -384)
+scale = Vector2(2, 2)
+
+[node name="Mug2" type="Sprite2D" parent="Map/Oficinista2"]
+position = Vector2(1631, 294)
 rotation = -1.10821
-scale = Vector2(1.41442, 1.41442)
+scale = Vector2(0.528587, 0.528587)
 texture = ExtResource("18_otb1j")
 
-[node name="OfficeWorker3" type="Sprite2D" parent="Map"]
-position = Vector2(766, 659)
-scale = Vector2(0.822917, 0.822917)
-texture = ExtResource("10_enh8s")
+[node name="Oficinista3" type="Node2D" parent="Map"]
 
-[node name="Marker2D" type="Marker2D" parent="Map/OfficeWorker3"]
-position = Vector2(55, -256)
-
-[node name="Sprite2D3" type="Sprite2D" parent="Map/OfficeWorker3"]
-position = Vector2(1171.44, -432.608)
+[node name="Mug3" type="Sprite2D" parent="Map/Oficinista3"]
+position = Vector2(1730, 303)
 rotation = -1.28004
-scale = Vector2(0.642333, 0.642333)
+scale = Vector2(0.528587, 0.528587)
 texture = ExtResource("20_aimxu")
 
+[node name="Oficinista3" parent="Map/Oficinista3" instance=ExtResource("21_lhlcx")]
+position = Vector2(1324, 680)
+scale = Vector2(0.5, 0.5)
+
+[node name="Marker2D" type="Marker2D" parent="Map/Oficinista3/Oficinista3"]
+position = Vector2(116, -472)
+scale = Vector2(1.64583, 1.64583)
+
 [node name="Player" parent="Map" instance=ExtResource("3_17ymn")]
-position = Vector2(150, 992)
+position = Vector2(305, 1003)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_bjbm3")

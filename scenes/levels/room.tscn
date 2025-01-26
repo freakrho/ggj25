@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkg03mctf2jdw"]
+[gd_scene load_steps=17 format=3 uid="uid://bkg03mctf2jdw"]
 
 [ext_resource type="Script" path="res://scripts/levels/room.gd" id="1_hy5vm"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="2_4ia1b"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/map.gd" id="2_jtl1y"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="4_hlf8n"]
 [ext_resource type="Texture2D" uid="uid://dfxurf2q3cuwx" path="res://Assets/sketch fondos/casa interna.jpg" id="5_g4hwk"]
+[ext_resource type="AudioStream" uid="uid://c8g2ay6g3vx5q" path="res://Assets/audio/sfx/bostezo.ogg" id="8_nyrdy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oc0q6"]
 vertices = PackedVector2Array(1876, 643.5, 306.117, 643.5, -23.7812, 633.992, -21.7188, 573.977, 187.32, 454, 1876, 454)
@@ -117,5 +118,9 @@ position = Vector2(99, 331)
 
 [node name="Player" parent="Map" instance=ExtResource("4_hlf8n")]
 position = Vector2(1454, 1040)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_nyrdy")
+autoplay = true
 
 [connection signal="Interaction" from="Map/Door" to="." method="go_to_front"]

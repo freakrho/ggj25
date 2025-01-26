@@ -2,6 +2,7 @@ extends Level
 
 @export var cup_dialogues: Array[DialogueSettings]
 @export var cup_owners: Array[DialogicCharacter]
+@export var cups: Array[Node]
 @export var character_nodes: Array[Node]
 
 
@@ -20,6 +21,8 @@ func end_sequence():
     Dialogic.timeline_ended.connect(go_to_laundry)
     for i in range(cup_owners.size()):
         if cup_owners[i] == SessionManager.current.selected_for_killing:
+            # remove cup
+            cups[i].get_parent().remove_child(cups[i])
             cup_dialogues[i].start_dialogue()
 
 func go_to_laundry():
