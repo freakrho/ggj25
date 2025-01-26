@@ -46,7 +46,7 @@ size = Vector2(270.5, 802)
 [node name="Room" type="Node2D" node_paths=PackedStringArray("character_mugs", "map", "start_dialogue")]
 script = ExtResource("1_hy5vm")
 character_mugs = [NodePath("Mug1"), NodePath("Mug2"), NodePath("Mug3")]
-coins_per_day = Array[Array]([[5, 2], [2, 2, 5], [5, 5]])
+coins_per_day = Array[Array]([[2, 5], [5, 2, 2], [5, 5]])
 map = NodePath("Map")
 start_dialogue = [NodePath("StartDialogue"), NodePath("StartDialogue2")]
 
