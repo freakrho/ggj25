@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://boyvlj5d00fvw"]
+[gd_scene load_steps=15 format=3 uid="uid://boyvlj5d00fvw"]
 
 [ext_resource type="Script" path="res://scripts/minigame.gd" id="1_gh2j6"]
 [ext_resource type="Texture2D" uid="uid://b2drdfwq51qe" path="res://Assets/sketch fondos/oficina.jpg" id="2_fbwkt"]
@@ -17,11 +17,21 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w86d2"]
-size = Vector2(65, 33)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjade"]
-size = Vector2(64, 34)
+size = Vector2(78, 39)
+
+[sub_resource type="Gradient" id="Gradient_385xs"]
+offsets = PackedFloat32Array(0, 0.992509)
+colors = PackedColorArray(0.12, 0.11628, 0.1128, 1, 0.33, 0.283745, 0.2343, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4sfbx"]
+frequency = 0.0686
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k4ykw"]
+width = 77
+height = 37
+color_ramp = SubResource("Gradient_385xs")
+noise = SubResource("FastNoiseLite_4sfbx")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hvr3x"]
 radius = 52.0384
@@ -30,78 +40,85 @@ radius = 52.0384
 script = ExtResource("1_gh2j6")
 sorted_conditions = [NodePath("Conditions/ChooseCup"), NodePath("Conditions/GrindBeans"), NodePath("Conditions/PutPortafilter")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-981, 768)
-scale = Vector2(2.64565, 2.64565)
-texture = ExtResource("2_fbwkt")
-
 [node name="Conditions" type="Node" parent="."]
 
 [node name="ChooseCup" type="Node" parent="Conditions" node_paths=PackedStringArray("choices")]
 script = ExtResource("3_5wyyl")
-choices = [NodePath("../../Cups/Cup1"), NodePath("../../Cups/Cup2"), NodePath("../../Cups/Cup3")]
+choices = [NodePath("../../Sprite2D/Cups/Cup1"), NodePath("../../Sprite2D/Cups/Cup2"), NodePath("../../Sprite2D/Cups/Cup3")]
 
 [node name="GrindBeans" type="Node" parent="Conditions" node_paths=PackedStringArray("button")]
 script = ExtResource("4_acbkj")
-button = NodePath("../../Grinder")
+button = NodePath("../../Sprite2D/Grinder")
 
 [node name="PutPortafilter" type="Node" parent="Conditions" node_paths=PackedStringArray("slideable", "target", "depends_on")]
 script = ExtResource("5_sqles")
 reset_if_failed = true
-slideable = NodePath("../../Portafilter")
-target = NodePath("../../Portafilter/Target")
+slideable = NodePath("../../Sprite2D/Portafilter")
+target = NodePath("../../Sprite2D/Portafilter/Target")
 depends_on = [NodePath("../GrindBeans")]
 
-[node name="Cups" type="Node2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-627, 789)
+scale = Vector2(2.64565, 2.64565)
+texture = ExtResource("2_fbwkt")
 
-[node name="Cup1" type="Area2D" parent="Cups"]
+[node name="Cups" type="Node2D" parent="Sprite2D"]
+position = Vector2(370.797, -290.288)
+scale = Vector2(0.377979, 0.377979)
+
+[node name="Cup1" type="Area2D" parent="Sprite2D/Cups"]
 position = Vector2(539, 109)
 script = ExtResource("4_djsoj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cups/Cup1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Cup1"]
+position = Vector2(5, -16)
 shape = SubResource("CircleShape2D_mgrav")
 
-[node name="Cup2" type="Area2D" parent="Cups"]
+[node name="Cup2" type="Area2D" parent="Sprite2D/Cups"]
 position = Vector2(795, 148)
 script = ExtResource("4_djsoj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cups/Cup2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Cup2"]
+position = Vector2(23, -45)
 shape = SubResource("CircleShape2D_mgrav")
 
-[node name="Cup3" type="Area2D" parent="Cups"]
+[node name="Cup3" type="Area2D" parent="Sprite2D/Cups"]
 position = Vector2(1048, 163)
 script = ExtResource("4_djsoj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cups/Cup3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Cup3"]
+position = Vector2(0, -57)
 shape = SubResource("CircleShape2D_mgrav")
 
-[node name="Grinder" type="Button" parent="."]
-offset_left = 1469.0
-offset_top = 709.0
-offset_right = 1639.0
-offset_bottom = 1014.0
+[node name="Grinder" type="Button" parent="Sprite2D"]
+offset_left = 511.0
+offset_top = -22.0
+offset_right = 529.0
+offset_bottom = 13.0
 
-[node name="Portafilter" type="Node2D" parent="." node_paths=PackedStringArray("path", "knob")]
-position = Vector2(1022, 752)
+[node name="Portafilter" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("path", "knob")]
+position = Vector2(757.092, -6.04767)
+scale = Vector2(0.377979, 0.377979)
 script = ExtResource("7_67bin")
 path = NodePath("Path2D")
 knob = NodePath("Area2D")
 max_delta = 200.0
 
-[node name="Path2D" type="Path2D" parent="Portafilter"]
+[node name="Path2D" type="Path2D" parent="Sprite2D/Portafilter"]
 curve = SubResource("Curve2D_ujweb")
 
-[node name="Area2D" type="Area2D" parent="Portafilter"]
-position = Vector2(185, 0)
+[node name="Area2D" type="Area2D" parent="Sprite2D/Portafilter"]
+position = Vector2(140, -3)
 
-[node name="Sprite2D" type="Sprite2D" parent="Portafilter/Area2D"]
-texture = SubResource("PlaceholderTexture2D_w86d2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portafilter/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Portafilter/Area2D"]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_fjade")
 debug_color = Color(0.291997, 0.587894, 0.626193, 0.42)
 
-[node name="Target" type="Area2D" parent="Portafilter"]
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Portafilter/Area2D"]
+texture = SubResource("NoiseTexture2D_k4ykw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portafilter/Target"]
+[node name="Target" type="Area2D" parent="Sprite2D/Portafilter"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Portafilter/Target"]
 shape = SubResource("CircleShape2D_hvr3x")
