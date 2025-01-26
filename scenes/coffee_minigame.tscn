@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://boyvlj5d00fvw"]
+[gd_scene load_steps=25 format=3 uid="uid://boyvlj5d00fvw"]
 
 [ext_resource type="Script" path="res://scripts/minigame.gd" id="1_gh2j6"]
-[ext_resource type="Texture2D" uid="uid://b2drdfwq51qe" path="res://Assets/sketch fondos/oficina.jpg" id="2_fbwkt"]
 [ext_resource type="Script" path="res://scripts/choose_cup_condition.gd" id="3_5wyyl"]
 [ext_resource type="Script" path="res://addons/dialogic/Resources/character.gd" id="3_gl1qj"]
 [ext_resource type="Script" path="res://scripts/minigame_conditions/press_button_condition.gd" id="4_acbkj"]
@@ -11,18 +10,23 @@
 [ext_resource type="Script" path="res://scripts/drag_object_to_target_condition.gd" id="5_sqles"]
 [ext_resource type="Resource" path="res://Timelines/oficinista3.dch" id="6_bboit"]
 [ext_resource type="Script" path="res://scripts/slideable.gd" id="7_67bin"]
+[ext_resource type="Texture2D" uid="uid://csubxvpppnjvl" path="res://Assets/sketch fondos/oficina SIN TAZAS.jpg" id="9_8ond8"]
+[ext_resource type="Texture2D" uid="uid://dbelvubgp5d1g" path="res://Assets/Sprites/Taza blanca.png" id="11_a6a18"]
+[ext_resource type="Texture2D" uid="uid://bhv6afq7qemax" path="res://Assets/Sprites/Moneda 2.png" id="12_bq2ms"]
+[ext_resource type="Texture2D" uid="uid://ds55mb1h4slr3" path="res://Assets/Sprites/Taza rosa.png" id="12_c7hjf"]
+[ext_resource type="Texture2D" uid="uid://cgi6yxxqcdpnp" path="res://Assets/Sprites/Taza gris.png" id="13_tglhb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mgrav"]
-radius = 106.075
+radius = 119.151
 
 [sub_resource type="Curve2D" id="Curve2D_ujweb"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 185, -2, 0, 0, 0, 0, -1, 2)
+"points": PackedVector2Array(0, 0, 0, 0, 185, -2, 0, 0, 0, 0, 39, -2)
 }
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjade"]
-size = Vector2(78, 39)
+size = Vector2(101, 43)
 
 [sub_resource type="Gradient" id="Gradient_385xs"]
 offsets = PackedFloat32Array(0, 0.992509)
@@ -37,6 +41,13 @@ height = 37
 color_ramp = SubResource("Gradient_385xs")
 noise = SubResource("FastNoiseLite_4sfbx")
 
+[sub_resource type="Gradient" id="Gradient_oabno"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.784314, 0.784314, 0.784314, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vxxwt"]
+gradient = SubResource("Gradient_oabno")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_hvr3x"]
 radius = 52.0384
 
@@ -46,10 +57,11 @@ sorted_conditions = [NodePath("Conditions/ChooseCup"), NodePath("Conditions/Grin
 
 [node name="Conditions" type="Node" parent="."]
 
-[node name="ChooseCup" type="Node" parent="Conditions" node_paths=PackedStringArray("choices")]
+[node name="ChooseCup" type="Node" parent="Conditions" node_paths=PackedStringArray("choices", "cups_on_table")]
 script = ExtResource("3_5wyyl")
 choices = [NodePath("../../Sprite2D/Cups/Coworker1"), NodePath("../../Sprite2D/Cups/Coworker2"), NodePath("../../Sprite2D/Cups/Coworker3")]
 characters = Array[ExtResource("3_gl1qj")]([ExtResource("4_g2ikv"), ExtResource("5_qw60j"), ExtResource("6_bboit")])
+cups_on_table = [NodePath("../../Sprite2D/CupsOnTable/Cup1"), NodePath("../../Sprite2D/CupsOnTable/Cup2"), NodePath("../../Sprite2D/CupsOnTable/Cup3")]
 
 [node name="GrindBeans" type="Node" parent="Conditions" node_paths=PackedStringArray("button")]
 script = ExtResource("4_acbkj")
@@ -63,9 +75,9 @@ target = NodePath("../../Sprite2D/Portafilter/Target")
 depends_on = [NodePath("../GrindBeans")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-627, 789)
+position = Vector2(-626, 778)
 scale = Vector2(2.64565, 2.64565)
-texture = ExtResource("2_fbwkt")
+texture = ExtResource("9_8ond8")
 
 [node name="Cups" type="Node2D" parent="Sprite2D"]
 position = Vector2(370.797, -290.288)
@@ -79,6 +91,12 @@ script = ExtResource("4_djsoj")
 position = Vector2(5, -16)
 shape = SubResource("CircleShape2D_mgrav")
 
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Cups/Coworker1"]
+position = Vector2(-4, -20)
+rotation = -0.962263
+scale = Vector2(1.1486, 1.1486)
+texture = ExtResource("11_a6a18")
+
 [node name="Coworker2" type="Area2D" parent="Sprite2D/Cups"]
 position = Vector2(795, 148)
 script = ExtResource("4_djsoj")
@@ -87,13 +105,43 @@ script = ExtResource("4_djsoj")
 position = Vector2(23, -45)
 shape = SubResource("CircleShape2D_mgrav")
 
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Cups/Coworker2"]
+position = Vector2(9, -48)
+rotation = -1.0146
+scale = Vector2(1.19853, 1.19853)
+texture = ExtResource("12_c7hjf")
+
 [node name="Coworker3" type="Area2D" parent="Sprite2D/Cups"]
 position = Vector2(1048, 163)
 script = ExtResource("4_djsoj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Cups/Coworker3"]
-position = Vector2(0, -57)
+position = Vector2(14, -70)
 shape = SubResource("CircleShape2D_mgrav")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Cups/Coworker3"]
+position = Vector2(2, -65)
+rotation = -1.07937
+scale = Vector2(1.10198, 1.10198)
+texture = ExtResource("13_tglhb")
+
+[node name="CupsOnTable" type="Node2D" parent="Sprite2D"]
+position = Vector2(13.6072, 7.93756)
+
+[node name="Cup1" type="Sprite2D" parent="Sprite2D/CupsOnTable"]
+position = Vector2(546.558, 66.1463)
+scale = Vector2(0.379092, 0.379092)
+texture = ExtResource("11_a6a18")
+
+[node name="Cup2" type="Sprite2D" parent="Sprite2D/CupsOnTable"]
+position = Vector2(546.558, 66.1463)
+scale = Vector2(0.379092, 0.379092)
+texture = ExtResource("12_c7hjf")
+
+[node name="Cup3" type="Sprite2D" parent="Sprite2D/CupsOnTable"]
+position = Vector2(546.558, 66.1463)
+scale = Vector2(0.379092, 0.379092)
+texture = ExtResource("13_tglhb")
 
 [node name="Grinder" type="Button" parent="Sprite2D"]
 offset_left = 511.0
@@ -116,12 +164,22 @@ curve = SubResource("Curve2D_ujweb")
 position = Vector2(140, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Portafilter/Area2D"]
-position = Vector2(0, -0.5)
+position = Vector2(4.5, -0.5)
 shape = SubResource("RectangleShape2D_fjade")
 debug_color = Color(0.291997, 0.587894, 0.626193, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Portafilter/Area2D"]
 texture = SubResource("NoiseTexture2D_k4ykw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D/Portafilter/Area2D"]
+position = Vector2(107.5, 8.89188)
+scale = Vector2(2.17187, 0.965372)
+texture = SubResource("GradientTexture2D_vxxwt")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D/Portafilter/Area2D"]
+position = Vector2(36, -0.999979)
+scale = Vector2(0.139167, 0.139167)
+texture = ExtResource("12_bq2ms")
 
 [node name="Target" type="Area2D" parent="Sprite2D/Portafilter"]
 

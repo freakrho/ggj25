@@ -1,8 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://ddin5jv8ogfjb"]
+[gd_scene load_steps=29 format=3 uid="uid://ddin5jv8ogfjb"]
 
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_6c0ec"]
 [ext_resource type="Script" path="res://scripts/levels/office.gd" id="1_vmnrm"]
-[ext_resource type="Texture2D" uid="uid://b2drdfwq51qe" path="res://Assets/sketch fondos/oficina.jpg" id="1_xg8lp"]
 [ext_resource type="Script" path="res://scripts/dialogue_settings.gd" id="2_4732g"]
 [ext_resource type="Script" path="res://addons/dialogic/Resources/character.gd" id="2_l3b4e"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="3_17ymn"]
@@ -20,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://bfkpn7mrd786b" path="res://addons/dialogic/Example Assets/portraits/Antonio/pl5.png" id="10_enh8s"]
 [ext_resource type="Texture2D" uid="uid://s2jsr1aqiu84" path="res://addons/dialogic/Example Assets/portraits/Antonio/pl5 blink.png" id="12_4b06i"]
 [ext_resource type="Texture2D" uid="uid://djqit26f4be4f" path="res://addons/dialogic/Example Assets/portraits/Princess/princess_blank.png" id="13_p1vpi"]
+[ext_resource type="Texture2D" uid="uid://csubxvpppnjvl" path="res://Assets/sketch fondos/oficina SIN TAZAS.jpg" id="13_tw138"]
+[ext_resource type="Texture2D" uid="uid://dbelvubgp5d1g" path="res://Assets/Sprites/Taza blanca.png" id="16_grqr0"]
+[ext_resource type="Texture2D" uid="uid://ds55mb1h4slr3" path="res://Assets/Sprites/Taza rosa.png" id="18_otb1j"]
+[ext_resource type="Texture2D" uid="uid://cgi6yxxqcdpnp" path="res://Assets/Sprites/Taza gris.png" id="20_aimxu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ypo5t"]
 vertices = PackedVector2Array(1882.88, 632, -19.0312, 632, -19.2812, 494, 1881.58, 494)
@@ -38,11 +41,13 @@ size = Vector2(382, 678)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs267"]
 size = Vector2(1978, 299)
 
-[node name="Office" type="Node2D" node_paths=PackedStringArray("cup_dialogues", "map", "start_dialogue", "characters")]
+[node name="Office" type="Node2D" node_paths=PackedStringArray("cup_dialogues", "character_nodes", "map", "minigames", "start_dialogue", "characters")]
 script = ExtResource("1_vmnrm")
 cup_dialogues = [NodePath("Cup1Dialogue"), NodePath("Cup2Dialogue"), NodePath("Cup3Dialogue")]
 cup_owners = Array[ExtResource("2_l3b4e")]([ExtResource("5_fb3b3"), ExtResource("6_xjkgk"), ExtResource("7_4sbuf")])
+character_nodes = [NodePath("Map/OfficeWorker1"), NodePath("Map/OfficeWorker2"), NodePath("Map/OfficeWorker3")]
 map = NodePath("Map")
+minigames = [NodePath("CoffeeMinigame")]
 start_dialogue = [NodePath("StartDialogue1")]
 characters = [NodePath("Oficinista1"), NodePath("Oficinista2"), NodePath("Oficinista3")]
 
@@ -88,7 +93,7 @@ nav_map = NodePath("NavigationRegion2D")
 interactable_area = NodePath("InteractableArea")
 
 [node name="Background" type="Sprite2D" parent="Map"]
-texture = ExtResource("1_xg8lp")
+texture = ExtResource("13_tw138")
 centered = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
@@ -133,6 +138,12 @@ texture = ExtResource("12_4b06i")
 [node name="Marker2D" type="Marker2D" parent="Map/OfficeWorker1"]
 position = Vector2(55, -256)
 
+[node name="Sprite2D" type="Sprite2D" parent="Map/OfficeWorker1"]
+position = Vector2(1208.3, -460.557)
+rotation = -1.10821
+scale = Vector2(0.642333, 0.642333)
+texture = ExtResource("16_grqr0")
+
 [node name="OfficeWorker2" type="Sprite2D" parent="Map"]
 position = Vector2(1060, 692)
 scale = Vector2(0.373712, 0.373712)
@@ -141,6 +152,12 @@ texture = ExtResource("13_p1vpi")
 [node name="Marker2D" type="Marker2D" parent="Map/OfficeWorker2"]
 position = Vector2(104.358, -719.806)
 
+[node name="Sprite2D2" type="Sprite2D" parent="Map/OfficeWorker2"]
+position = Vector2(1527.91, -1064.99)
+rotation = -1.10821
+scale = Vector2(1.41442, 1.41442)
+texture = ExtResource("18_otb1j")
+
 [node name="OfficeWorker3" type="Sprite2D" parent="Map"]
 position = Vector2(766, 659)
 scale = Vector2(0.822917, 0.822917)
@@ -148,6 +165,12 @@ texture = ExtResource("10_enh8s")
 
 [node name="Marker2D" type="Marker2D" parent="Map/OfficeWorker3"]
 position = Vector2(55, -256)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Map/OfficeWorker3"]
+position = Vector2(1171.44, -432.608)
+rotation = -1.28004
+scale = Vector2(0.642333, 0.642333)
+texture = ExtResource("20_aimxu")
 
 [node name="Player" parent="Map" instance=ExtResource("3_17ymn")]
 position = Vector2(150, 992)
