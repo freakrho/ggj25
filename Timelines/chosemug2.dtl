@@ -1,4 +1,10 @@
-# #el jugador eligió el mug2 para hacerse el cafe. cuando termina el minigame se reproduce este dialogo. oficinista2 aparece en escena
+oficinista2: [i] "Don't talk to me before I had my coffee." [i]
+oficinista2: I saw that quote on Pinterest.
+oficinista2: Napoleon really was ahead of his time!
+oficinista2: I bet he had my little one in mind when he came up  with that.
+[wait time="0.4"]
+oficinista2: [lspeed=0.1]Wait... [lspeed] 
+[wait time="0.4"]
 oficinista2: [i][b]NNNNNOO[font_size={24}]OOOO[/font_size][b][i]
 oficinista2: [i]Where is my babyyyyy????[i]
 oficinista2: [i]My little treasure,[i] too good for this world!!
