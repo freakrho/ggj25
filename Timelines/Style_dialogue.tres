@@ -28,9 +28,9 @@ overrides = {
 "choices_text_color_focus": "Color(0.0898438, 0.0898438, 0.0898438, 1)",
 "choices_text_color_hover": "Color(0.441406, 0.374161, 0.441406, 1)",
 "choices_text_size": "20.0",
-"name_label_font_size": "20.0",
+"name_label_font_size": "25.0",
 "text_color": "Color(0.207031, 0.207031, 0.207031, 1)",
-"text_size": "22.0"
+"text_size": "30.0"
 }
 
 [resource]
