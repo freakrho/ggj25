@@ -2,7 +2,7 @@ class_name Session extends RefCounted
 
 var selected_for_killing: DialogicCharacter
 var killed: Array[DialogicCharacter]
-var coins: Array[int]
+var coins: Array
 var day: int
 
 func kill(character: DialogicCharacter):
