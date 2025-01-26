@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ddin5jv8ogfjb"]
+[gd_scene load_steps=27 format=3 uid="uid://ddin5jv8ogfjb"]
 
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_6c0ec"]
 [ext_resource type="Script" path="res://scripts/levels/office.gd" id="1_vmnrm"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" path="res://Timelines/oficinista2.dch" id="6_xjkgk"]
 [ext_resource type="Resource" path="res://Timelines/oficinista3.dch" id="7_4sbuf"]
 [ext_resource type="PackedScene" uid="uid://boyvlj5d00fvw" path="res://scenes/coffee_minigame.tscn" id="7_as3so"]
+[ext_resource type="Resource" path="res://Timelines/office_day2.dtl" id="7_ki7xk"]
 [ext_resource type="Texture2D" uid="uid://bfkpn7mrd786b" path="res://addons/dialogic/Example Assets/portraits/Antonio/pl5.png" id="10_enh8s"]
 [ext_resource type="Texture2D" uid="uid://s2jsr1aqiu84" path="res://addons/dialogic/Example Assets/portraits/Antonio/pl5 blink.png" id="12_4b06i"]
 [ext_resource type="Texture2D" uid="uid://djqit26f4be4f" path="res://addons/dialogic/Example Assets/portraits/Princess/princess_blank.png" id="13_p1vpi"]
@@ -43,7 +44,7 @@ script = ExtResource("1_vmnrm")
 cup_dialogues = [NodePath("Cup1Dialogue"), NodePath("Cup2Dialogue"), NodePath("Cup3Dialogue")]
 cup_owners = Array[ExtResource("2_l3b4e")]([ExtResource("5_fb3b3"), ExtResource("6_xjkgk"), ExtResource("7_4sbuf")])
 map = NodePath("Map")
-start_dialogue = [NodePath("StartDialogue1")]
+start_dialogue = [NodePath("StartDialogue1"), NodePath("StartDialogue2")]
 characters = [NodePath("Oficinista1"), NodePath("Oficinista2"), NodePath("Oficinista3")]
 
 [node name="StartDialogue1" type="Node" parent="."]
@@ -52,7 +53,7 @@ dialogue = ExtResource("3_hjkwb")
 
 [node name="StartDialogue2" type="Node" parent="."]
 script = ExtResource("2_4732g")
-dialogue = ExtResource("3_hjkwb")
+dialogue = ExtResource("7_ki7xk")
 
 [node name="Cup1Dialogue" type="Node" parent="."]
 script = ExtResource("2_4732g")
