@@ -1,5 +1,7 @@
 # le mostras el monedero
-playercharacter: I have these coins...
-oldlady: Oh my! You need change, again. \
+playercharacter: This is the money I have...
+oldlady: Oh my!
+oldlady: You don't have enough 1$! 
+oldlady: You need change! \
 I already told you to bring small coins!
 oldlady: Here you go, Honey.
