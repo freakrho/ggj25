@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8hagffjdh63g"
-path="res://.godot/imported/Taza Blanca.png-fd9dc362edd9b5af915ece6919e04865.ctex"
+uid="uid://bfmpcy5tkf061"
+path="res://.godot/imported/Button.PNG-ffdd6baf55035187cd4a7ef0758e9f0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Taza Blanca.png"
-dest_files=["res://.godot/imported/Taza Blanca.png-fd9dc362edd9b5af915ece6919e04865.ctex"]
+source_file="res://Assets/Sprites/Button.PNG"
+dest_files=["res://.godot/imported/Button.PNG-ffdd6baf55035187cd4a7ef0758e9f0f.ctex"]
 
 [params]
 
