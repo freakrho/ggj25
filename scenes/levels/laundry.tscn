@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d3bgbc0ry8hkr"]
+[gd_scene load_steps=34 format=3 uid="uid://d3bgbc0ry8hkr"]
 
 [ext_resource type="Script" path="res://scripts/levels/laundry.gd" id="1_s8yjg"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="2_3471r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/map.gd" id="4_2d4og"]
 [ext_resource type="Resource" path="res://Timelines/laundry_day1_1.dtl" id="4_rh3bo"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="5_5s6ab"]
+[ext_resource type="Resource" path="res://Timelines/laundry_day2.dtl" id="5_ffxg7"]
 [ext_resource type="Resource" path="res://Timelines/laundry_day1_4.dtl" id="5_n3xal"]
 [ext_resource type="PackedScene" uid="uid://70ntrpgvha3s" path="res://scenes/washing_machine.tscn" id="6_2k7sd"]
 [ext_resource type="Resource" path="res://Timelines/laundry_day1_5.dtl" id="6_km5qi"]
@@ -16,7 +17,7 @@
 [ext_resource type="Resource" path="res://Timelines/oldlady.dch" id="10_tmehj"]
 [ext_resource type="Texture2D" uid="uid://covcfxohmsth4" path="res://Assets/Sprites/Monedero.png" id="11_i2uyy"]
 [ext_resource type="Script" path="res://scripts/draggable_with_target.gd" id="12_b43f5"]
-[ext_resource type="PackedScene" path="res://scenes/oldlady.tscn" id="12_kksbh"]
+[ext_resource type="PackedScene" uid="uid://bl4i02co3vqf8" path="res://scenes/oldlady.tscn" id="12_kksbh"]
 [ext_resource type="Script" path="res://scripts/interactable_with_item.gd" id="12_rlqwm"]
 [ext_resource type="Script" path="res://scripts/set_coins_action.gd" id="13_56rco"]
 [ext_resource type="AudioStream" uid="uid://dbtcbbafvyvx5" path="res://Assets/audio/music/lavadora_x_satie.ogg" id="19_c0sgi"]
@@ -63,7 +64,7 @@ door = NodePath("Map/Door")
 washing_machine_minigame = NodePath("WashingMachine")
 map = NodePath("Map")
 minigames = [NodePath("WashingMachine")]
-start_dialogue = [NodePath("Map/Dialogues/StartDialogue")]
+start_dialogue = [NodePath("Map/Dialogues/StartDialogue"), NodePath("Map/Dialogues/StartDialogue2")]
 characters = [NodePath("Map/Characters/Receptionist")]
 
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
@@ -77,6 +78,10 @@ interactable_area = NodePath("InteractableArea")
 [node name="StartDialogue" type="Node" parent="Map/Dialogues"]
 script = ExtResource("7_us8la")
 dialogue = ExtResource("4_rh3bo")
+
+[node name="StartDialogue2" type="Node" parent="Map/Dialogues"]
+script = ExtResource("7_us8la")
+dialogue = ExtResource("5_ffxg7")
 
 [node name="TalkToReceptionist" type="Node" parent="Map/Dialogues"]
 script = ExtResource("7_us8la")
