@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_6c0ec"]
 [ext_resource type="Script" path="res://scripts/levels/office.gd" id="1_vmnrm"]
 [ext_resource type="Script" path="res://scripts/dialogue_settings.gd" id="2_4732g"]
-[ext_resource type="Script" path="res://addons/dialogic/Resources/character.gd" id="2_l3b4e"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="3_17ymn"]
 [ext_resource type="Resource" path="res://Timelines/office_timeline.dtl" id="3_hjkwb"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="4_3m7wp"]
@@ -18,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://boyvlj5d00fvw" path="res://scenes/coffee_minigame.tscn" id="7_as3so"]
 [ext_resource type="Resource" path="res://Timelines/office_day2.dtl" id="8_4u154"]
 [ext_resource type="Texture2D" uid="uid://csubxvpppnjvl" path="res://Assets/sketch fondos/oficina SIN TAZAS.jpg" id="13_tw138"]
+[ext_resource type="Script" path="res://scripts/killable_config.gd" id="13_w7qs2"]
 [ext_resource type="Texture2D" uid="uid://cjks3i6x2yqur" path="res://Assets/Sprites/Taza blanca.png" id="16_grqr0"]
 [ext_resource type="PackedScene" uid="uid://co7yxgp4l1ib4" path="res://scenes/oficinista1.tscn" id="17_hdo0m"]
 [ext_resource type="Texture2D" uid="uid://84lmasm5vnej" path="res://Assets/Sprites/Taza rosa.png" id="18_otb1j"]
@@ -42,12 +42,9 @@ size = Vector2(382, 678)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs267"]
 size = Vector2(1978, 299)
 
-[node name="Office" type="Node2D" node_paths=PackedStringArray("cup_dialogues", "cups", "character_nodes", "map", "minigames", "start_dialogue", "characters")]
+[node name="Office" type="Node2D" node_paths=PackedStringArray("killables", "map", "minigames", "start_dialogue", "characters")]
 script = ExtResource("1_vmnrm")
-cup_dialogues = [NodePath("Cup1Dialogue"), NodePath("Cup2Dialogue"), NodePath("Cup3Dialogue")]
-cup_owners = Array[ExtResource("2_l3b4e")]([ExtResource("5_fb3b3"), ExtResource("6_xjkgk"), ExtResource("7_4sbuf")])
-cups = [NodePath("Map/Oficinista3/Mug3"), NodePath("Map/Oficinista2/Mug2"), NodePath("Map/Oficinista1/Mug1")]
-character_nodes = [NodePath("Map/Oficinista1"), NodePath("Map/Oficinista2"), NodePath("Map/Oficinista3")]
+killables = [NodePath("KillableOficinista1"), NodePath("KillableOficinista2"), NodePath("KillableOficinista3")]
 map = NodePath("Map")
 minigames = [NodePath("CoffeeMinigame")]
 start_dialogue = [NodePath("StartDialogue1"), NodePath("StartDialogue2")]
@@ -87,6 +84,27 @@ node = NodePath("../Map/Oficinista2/Oficinista2/Marker2D")
 script = ExtResource("4_rjyj8")
 character = ExtResource("7_4sbuf")
 node = NodePath("../Map/Oficinista3/Oficinista3/Marker2D")
+
+[node name="KillableOficinista1" type="Node" parent="." node_paths=PackedStringArray("nodes_to_remove_when_dead", "nodes_to_remove_when_selected_for_killing", "dialogue")]
+script = ExtResource("13_w7qs2")
+character = ExtResource("5_fb3b3")
+nodes_to_remove_when_dead = [NodePath("../Map/Oficinista1")]
+nodes_to_remove_when_selected_for_killing = [NodePath("../Map/Mugs/Mug1")]
+dialogue = NodePath("../Cup1Dialogue")
+
+[node name="KillableOficinista2" type="Node" parent="." node_paths=PackedStringArray("nodes_to_remove_when_dead", "nodes_to_remove_when_selected_for_killing", "dialogue")]
+script = ExtResource("13_w7qs2")
+character = ExtResource("6_xjkgk")
+nodes_to_remove_when_dead = [NodePath("../Map/Oficinista2")]
+nodes_to_remove_when_selected_for_killing = [NodePath("../Map/Mugs/Mug2")]
+dialogue = NodePath("../Cup2Dialogue")
+
+[node name="KillableOficinista3" type="Node" parent="." node_paths=PackedStringArray("nodes_to_remove_when_dead", "nodes_to_remove_when_selected_for_killing", "dialogue")]
+script = ExtResource("13_w7qs2")
+character = ExtResource("7_4sbuf")
+nodes_to_remove_when_dead = [NodePath("../Map/Oficinista3")]
+nodes_to_remove_when_selected_for_killing = [NodePath("../Map/Mugs/Mug3")]
+dialogue = NodePath("../Cup3Dialogue")
 
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
 script = ExtResource("1_6c0ec")
@@ -132,13 +150,27 @@ position = Vector2(-13, 103)
 position = Vector2(979, 951.5)
 shape = SubResource("RectangleShape2D_vs267")
 
-[node name="Oficinista1" type="Node2D" parent="Map"]
+[node name="Mugs" type="Node2D" parent="Map"]
 
-[node name="Mug1" type="Sprite2D" parent="Map/Oficinista1"]
+[node name="Mug1" type="Sprite2D" parent="Map/Mugs"]
 position = Vector2(1730, 303)
 rotation = -1.28004
 scale = Vector2(0.528587, 0.528587)
 texture = ExtResource("20_aimxu")
+
+[node name="Mug2" type="Sprite2D" parent="Map/Mugs"]
+position = Vector2(1631, 294)
+rotation = -1.10821
+scale = Vector2(0.528587, 0.528587)
+texture = ExtResource("18_otb1j")
+
+[node name="Mug3" type="Sprite2D" parent="Map/Mugs"]
+position = Vector2(1534, 289)
+rotation = -1.10821
+scale = Vector2(0.528587, 0.528587)
+texture = ExtResource("16_grqr0")
+
+[node name="Oficinista1" type="Node2D" parent="Map"]
 
 [node name="Oficinista1" parent="Map/Oficinista1" instance=ExtResource("17_hdo0m")]
 position = Vector2(631, 680)
@@ -158,19 +190,7 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(128, -384)
 scale = Vector2(2, 2)
 
-[node name="Mug2" type="Sprite2D" parent="Map/Oficinista2"]
-position = Vector2(1631, 294)
-rotation = -1.10821
-scale = Vector2(0.528587, 0.528587)
-texture = ExtResource("18_otb1j")
-
 [node name="Oficinista3" type="Node2D" parent="Map"]
-
-[node name="Mug3" type="Sprite2D" parent="Map/Oficinista3"]
-position = Vector2(1534, 289)
-rotation = -1.10821
-scale = Vector2(0.528587, 0.528587)
-texture = ExtResource("16_grqr0")
 
 [node name="Oficinista3" parent="Map/Oficinista3" instance=ExtResource("21_lhlcx")]
 position = Vector2(1324, 680)

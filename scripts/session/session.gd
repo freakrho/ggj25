@@ -13,3 +13,7 @@ func new_day():
     day += 1
     var variables = Dialogic.get_subsystem("VAR")
     variables.set_variable("day", day)
+    selected_for_killing = null
+
+func is_dead(character: DialogicCharacter):
+    return character in killed
