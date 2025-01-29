@@ -19,12 +19,6 @@ func register_characters(layout):
     
     layout.register_character(GameManager.player.dialogue_character,
         GameManager.player.dialogue_marker)
-    
-    for character in SessionManager.current.killed:
-        var char_name = character.resource_path.get_file()
-        char_name = char_name.substr(0, len(char_name) - len(char_name.get_extension()) - 1)
-        var variables = Dialogic.get_subsystem("VAR")
-        variables.set_variable("%s_dead" % char_name, true)
 
 
 func _on_dialogue_end():
