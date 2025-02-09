@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3tssgy1npgi1"]
+[gd_scene load_steps=14 format=3 uid="uid://c3tssgy1npgi1"]
 
 [ext_resource type="Script" path="res://scripts/levels/house.gd" id="1_uqouy"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="2_33otu"]
 [ext_resource type="Texture2D" uid="uid://c4ntm88xgt6dk" path="res://Assets/sketch fondos/casa.jpg" id="3_qgaci"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="4_32ggl"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="5_5um0u"]
+[ext_resource type="Script" path="res://scripts/interactable_data.gd" id="6_vgutg"]
 [ext_resource type="AudioStream" uid="uid://dhdlu31gdoujd" path="res://Assets/audio/sfx/puerta_uno.ogg" id="6_xttrd"]
 [ext_resource type="AudioStream" uid="uid://cc8s3kx6hs0jy" path="res://Assets/audio/sfx/calle.ogg" id="7_kxeh2"]
 
@@ -25,8 +26,9 @@ size = Vector2(1978, 299)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcr2h"]
 size = Vector2(274, 518)
 
-[node name="House" type="Node2D"]
+[node name="House" type="Node2D" node_paths=PackedStringArray("map")]
 script = ExtResource("1_uqouy")
+map = NodePath("Map")
 
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("player", "nav_map", "interactable_area")]
 script = ExtResource("2_33otu")
@@ -73,6 +75,10 @@ shape = SubResource("RectangleShape2D_vcr2h")
 
 [node name="DefaultPosition" type="Node2D" parent="Map/OutWay"]
 position = Vector2(1, 167)
+
+[node name="InteractableData" type="Node" parent="Map/OutWay"]
+script = ExtResource("6_vgutg")
+action_text = "Go to work"
 
 [node name="DoorSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_xttrd")

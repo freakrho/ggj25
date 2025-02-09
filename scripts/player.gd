@@ -19,7 +19,7 @@ func _ready() -> void:
 func set_navigation_map(map: RID):
     nav_agent.set_navigation_map(map)
 
-func world_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+func world_input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
     if !GameManager.input_enabled():
         return
     if event is InputEventMouseButton:
@@ -27,7 +27,7 @@ func world_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) ->
             target_interactable = null
             set_target(event.position)
             viewport.set_input_as_handled()
-            
+
 func set_target(target: Vector2):
     nav_agent.target_position = target
     moving = true
@@ -38,14 +38,13 @@ func end_navigation():
     if target_interactable != null:
         target_interactable.interact()
 
-func process_navigation(delta: float):
+func process_navigation():
     # Do not query when the map has never synchronized and is empty.
     if NavigationServer2D.map_get_iteration_id(nav_agent.get_navigation_map()) == 0:
         return
     if nav_agent.is_navigation_finished():
         end_navigation()
         return
-    
     var next_path_position: Vector2 = nav_agent.get_next_path_position()
     var new_velocity: Vector2 = global_position.direction_to(next_path_position) * move_speed
     if nav_agent.avoidance_enabled:
@@ -65,26 +64,26 @@ func _update_anim() -> void:
         animator.play("idle")
         animator.flip_h = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
     if !GameManager.input_enabled():
         _update_anim()
         return
-    
+
     # Interaction
     if Input.is_action_just_pressed("interact"):
         for interactable in interactables:
             interactable.interact()
-    
+
     # Movement
     if moving:
-        process_navigation(delta)
-    
+        process_navigation()
+
     var movement = Input.get_vector("move_left", "move_right", "move_up", "move_down")
     if movement.length_squared() > 0:
         target_interactable = null
         end_navigation()
         velocity = movement * move_speed
-    
+
     _update_anim()
     move_and_slide()
 

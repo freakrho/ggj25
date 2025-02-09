@@ -7,7 +7,7 @@ func _ready() -> void:
     mouse_entered.connect(_on_mouse_entered)
     mouse_exited.connect(_on_mouse_exited)
 
-func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
             viewport.set_input_as_handled()

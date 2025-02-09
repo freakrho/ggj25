@@ -6,13 +6,19 @@ class_name Level extends Node2D
 @export var characters: Array[CharacterPair]
 
 func _ready():
-    GameManager.current_level = self
+    map.get_parent().remove_child(map)
+    GameManager.set_current_level(self)
+    setup_map.call_deferred()
     for minigame in minigames:
         minigame.hide()
         minigame.get_parent().remove_child(minigame)
         minigame.connect("Ended", ended_minigame)
     if start_dialogue.size() > 0:
         start_dialogue[min(start_dialogue.size() - 1, SessionManager.current.day)].start_dialogue()
+
+func setup_map():
+    add_child(map)
+    map.setup()
 
 func ended_minigame(minigame: Minigame):
     close_minigame(minigame)
@@ -41,4 +47,3 @@ func set_pause_subtree(root: Node, pause: bool) -> void:
 
     for setter in process_setters:
         root.propagate_call(setter, [!pause])
-    

@@ -5,3 +5,4 @@ extends Node
 @export var office: PackedScene
 @export var room: PackedScene
 @export var final: PackedScene
+@export var hud: PackedScene

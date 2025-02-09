@@ -7,6 +7,7 @@ signal Interaction
 @export var dialogues: Array[DialogueSettings]
 
 var last_dialogue: int = 0
+var interactable_data: InteractableData
 
 func _ready() -> void:
     body_entered.connect(_on_body_entered)
@@ -14,7 +15,9 @@ func _ready() -> void:
     input_event.connect(_on_input_event)
     mouse_entered.connect(_on_mouse_entered)
     mouse_exited.connect(_on_mouse_exited)
-
+    var children = find_children("*", "InteractableData") as Array[InteractableData]
+    if children.size() > 0:
+        interactable_data = children[0]
 
 func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
     if event is InputEventMouseButton:
@@ -28,9 +31,13 @@ func _on_mouse_entered():
     if GameManager.input_enabled():
         SoundManager.hover_player.play()
         Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+        if interactable_data != null:
+            interactable_data.show_action()
 
 func _on_mouse_exited():
     Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+    if interactable_data != null:
+        interactable_data.hide_action()
 
 func _on_body_entered(body: Node2D) -> void:
     if body is Player:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bkg03mctf2jdw"]
+[gd_scene load_steps=26 format=3 uid="uid://bkg03mctf2jdw"]
 
 [ext_resource type="Script" path="res://scripts/levels/room.gd" id="1_hy5vm"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="2_4ia1b"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cjks3i6x2yqur" path="res://Assets/Sprites/Taza blanca.png" id="10_1jef3"]
 [ext_resource type="Texture2D" uid="uid://bd0gmk00pvxfv" path="res://Assets/Sprites/Taza gris.png" id="11_ibsaq"]
 [ext_resource type="Texture2D" uid="uid://84lmasm5vnej" path="res://Assets/Sprites/Taza rosa.png" id="12_xdmtw"]
+[ext_resource type="Script" path="res://scripts/interactable_data.gd" id="15_f716n"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oc0q6"]
 vertices = PackedVector2Array(1876, 643.5, 306.117, 643.5, -23.7812, 633.992, -21.7188, 573.977, 187.32, 454, 1876, 454)
@@ -162,6 +163,10 @@ shape = SubResource("RectangleShape2D_gs2m8")
 
 [node name="DefaultPos" type="Node2D" parent="Map/Door"]
 position = Vector2(99, 331)
+
+[node name="InteractableData" type="Node" parent="Map/Door"]
+script = ExtResource("15_f716n")
+action_text = "Leave"
 
 [node name="Player" parent="Map" instance=ExtResource("4_hlf8n")]
 position = Vector2(1454, 1040)
