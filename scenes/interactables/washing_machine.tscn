@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://7h1b6x604pf8"]
+
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="1_mebjk"]
+[ext_resource type="Script" path="res://scripts/interactable_data.gd" id="2_3h3ao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47rg2"]
+size = Vector2(803, 518)
+
+[node name="WashingMachine" type="Area2D" node_paths=PackedStringArray("default_position")]
+position = Vector2(1007, 827)
+script = ExtResource("1_mebjk")
+default_position = NodePath("DefaultPosition")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(307.5, 0)
+shape = SubResource("RectangleShape2D_47rg2")
+
+[node name="DefaultPosition" type="Node2D" parent="."]
+position = Vector2(1, 167)
+
+[node name="InteractableData" type="Node" parent="."]
+script = ExtResource("2_3h3ao")
+action_text = "Washing machine"

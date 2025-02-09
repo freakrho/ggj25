@@ -1,11 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://d3bgbc0ry8hkr"]
+[gd_scene load_steps=35 format=3 uid="uid://d3bgbc0ry8hkr"]
 
 [ext_resource type="Script" path="res://scripts/levels/laundry.gd" id="1_s8yjg"]
 [ext_resource type="Texture2D" uid="uid://6mhvxe0em0cy" path="res://Assets/sketch fondos/lavanderia.jpg" id="2_3471r"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="3_nurqy"]
 [ext_resource type="Script" path="res://scripts/map.gd" id="4_2d4og"]
 [ext_resource type="Resource" path="res://Timelines/laundry_day1_1.dtl" id="4_rh3bo"]
-[ext_resource type="Script" path="res://scripts/interactable.gd" id="5_5s6ab"]
 [ext_resource type="Resource" path="res://Timelines/laundry_day2.dtl" id="5_ffxg7"]
 [ext_resource type="Resource" path="res://Timelines/laundry_day1_4.dtl" id="5_n3xal"]
 [ext_resource type="PackedScene" uid="uid://70ntrpgvha3s" path="res://scenes/washing_machine.tscn" id="6_2k7sd"]
@@ -20,16 +19,16 @@
 [ext_resource type="PackedScene" path="res://scenes/oldlady.tscn" id="12_kksbh"]
 [ext_resource type="Script" path="res://scripts/interactable_with_item.gd" id="12_rlqwm"]
 [ext_resource type="Script" path="res://scripts/set_coins_action.gd" id="13_56rco"]
+[ext_resource type="PackedScene" uid="uid://blbkj1yssw3cr" path="res://scenes/interactables/talk_to_receptionist.tscn" id="16_ypqox"]
 [ext_resource type="Texture2D" uid="uid://bv4ugrd0efcrx" path="res://Assets/Sprites/escritorio.png" id="17_tx0u6"]
 [ext_resource type="AudioStream" uid="uid://dbtcbbafvyvx5" path="res://Assets/audio/music/lavadora_x_satie.ogg" id="19_c0sgi"]
 [ext_resource type="SpriteFrames" uid="uid://b5pkpcnje1us0" path="res://Assets/Sprites/player_frames_with_bag.tres" id="19_g4v0u"]
+[ext_resource type="PackedScene" uid="uid://7h1b6x604pf8" path="res://scenes/interactables/washing_machine.tscn" id="20_8ecp5"]
 [ext_resource type="AudioStream" uid="uid://ds28kdmskaeyb" path="res://Assets/audio/sfx/puerta_lavanderia.ogg" id="20_qjegn"]
+[ext_resource type="PackedScene" uid="uid://b1hwcak38t0se" path="res://scenes/interactables/laundry_door.tscn" id="23_lnpy0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c81yn"]
 size = Vector2(204, 305)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1emx"]
-size = Vector2(198, 628)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_flylw"]
 vertices = PackedVector2Array(1854.93, 638.977, 15.1797, 638.008, 115.227, 494.953, 1716.5, 481.031)
@@ -48,17 +47,11 @@ size = Vector2(396.067, 139)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0ai3"]
 size = Vector2(455, 254)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_47rg2"]
-size = Vector2(803, 518)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3sem"]
 size = Vector2(1993, 299)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0joxp"]
 radius = 139.74
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_05y7j"]
-size = Vector2(194, 905)
 
 [node name="Laundry" type="Node2D" node_paths=PackedStringArray("door", "washing_machine_minigame", "map", "minigames", "start_dialogue", "characters")]
 script = ExtResource("1_s8yjg")
@@ -137,16 +130,9 @@ script = ExtResource("13_56rco")
 [node name="DefaultPosition" type="Marker2D" parent="Map/Oldlady/InteractWithPurse"]
 position = Vector2(-130, 419)
 
-[node name="TalkToReceptionist" type="Area2D" parent="Map/Oldlady" node_paths=PackedStringArray("default_position", "dialogues")]
-position = Vector2(-29.5454, 265.909)
-scale = Vector2(2.27273, 2.27273)
-script = ExtResource("5_5s6ab")
+[node name="TalkToReceptionist" parent="Map/Oldlady" node_paths=PackedStringArray("default_position", "dialogues") instance=ExtResource("16_ypqox")]
 default_position = NodePath("../InteractWithPurse/DefaultPosition")
 dialogues = [NodePath("../../Dialogues/TalkToReceptionist"), NodePath("../../Dialogues/TalkToReceptionist2")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Oldlady/TalkToReceptionist"]
-position = Vector2(0, -45)
-shape = SubResource("RectangleShape2D_g1emx")
 
 [node name="Desk" type="Sprite2D" parent="Map"]
 position = Vector2(602, 782)
@@ -189,17 +175,7 @@ position = Vector2(161, 1011)
 sprite_frames = ExtResource("19_g4v0u")
 frame_progress = 0.0
 
-[node name="WashingMachine" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position")]
-position = Vector2(1007, 827)
-script = ExtResource("5_5s6ab")
-default_position = NodePath("DefaultPosition")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/WashingMachine"]
-position = Vector2(307.5, 0)
-shape = SubResource("RectangleShape2D_47rg2")
-
-[node name="DefaultPosition" type="Node2D" parent="Map/WashingMachine"]
-position = Vector2(1, 167)
+[node name="WashingMachine" parent="Map" instance=ExtResource("20_8ecp5")]
 
 [node name="InteractableArea" type="Area2D" parent="Map"]
 
@@ -218,18 +194,7 @@ shape = SubResource("CircleShape2D_0joxp")
 [node name="Sprite2D" type="Sprite2D" parent="Map/Purse"]
 texture = ExtResource("11_i2uyy")
 
-[node name="Door" type="Area2D" parent="Map" node_paths=PackedStringArray("default_position", "dialogue")]
-position = Vector2(-11, 1079)
-script = ExtResource("5_5s6ab")
-default_position = NodePath("Marker2D")
-dialogue = NodePath("../Dialogues/GoodBye")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Door"]
-position = Vector2(87, -442.5)
-shape = SubResource("RectangleShape2D_05y7j")
-
-[node name="Marker2D" type="Marker2D" parent="Map/Door"]
-position = Vector2(191, -61)
+[node name="Door" parent="Map" instance=ExtResource("23_lnpy0")]
 
 [node name="WashingMachine" parent="." instance=ExtResource("6_2k7sd")]
 visible = false

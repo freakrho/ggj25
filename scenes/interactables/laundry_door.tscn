@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1hwcak38t0se"]
+
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="1_684rt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05y7j"]
+size = Vector2(194, 905)
+
+[node name="Door" type="Area2D" node_paths=PackedStringArray("default_position", "dialogue")]
+position = Vector2(-11, 1079)
+script = ExtResource("1_684rt")
+default_position = NodePath("Marker2D")
+dialogue = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(87, -442.5)
+shape = SubResource("RectangleShape2D_05y7j")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(191, -61)

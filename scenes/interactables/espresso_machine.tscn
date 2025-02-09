@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw715wsv5v1t1"]
+
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="1_i8kom"]
+[ext_resource type="Script" path="res://scripts/interactable_data.gd" id="2_d58xv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nw2c"]
+size = Vector2(382, 678)
+
+[node name="EspressoMachine" type="Area2D" node_paths=PackedStringArray("default_position")]
+position = Vector2(1721, 894)
+script = ExtResource("1_i8kom")
+default_position = NodePath("DefaultPos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16, -172)
+shape = SubResource("RectangleShape2D_7nw2c")
+
+[node name="DefaultPos" type="Node2D" parent="."]
+position = Vector2(-13, 103)
+
+[node name="InteractableData" type="Node" parent="."]
+script = ExtResource("2_d58xv")
+action_text = "Make coffee"
