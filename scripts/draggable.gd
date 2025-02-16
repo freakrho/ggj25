@@ -14,7 +14,7 @@ func _ready() -> void:
     mouse_entered.connect(_on_mouse_entered)
     mouse_exited.connect(_on_mouse_exited)
 
-func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
     if !GameManager.input_enabled():
         return
     if event is InputEventMouseButton:
@@ -24,7 +24,7 @@ func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> v
             _start_dragging(event.position)
         elif not event.pressed and dragging:
             _end_dragging()
-        
+
         viewport.set_input_as_handled()
 
 func _input(event: InputEvent) -> void:
@@ -39,9 +39,11 @@ func _input(event: InputEvent) -> void:
 func _start_dragging(mouse_pos: Vector2):
     dragging = true
     rel_position = global_position - mouse_pos
+    Input.set_default_cursor_shape(Input.CURSOR_DRAG)
 
 func _end_dragging():
     dragging = false
+    Input.set_default_cursor_shape(Input.CURSOR_ARROW)
     dropped.emit()
 
 func reset():

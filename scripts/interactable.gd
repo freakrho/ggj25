@@ -19,7 +19,7 @@ func _ready() -> void:
     if children.size() > 0:
         interactable_data = children[0]
 
-func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
             # Send player here and then interact
@@ -69,4 +69,3 @@ func do_interaction():
 func ended_dialoge():
     Dialogic.timeline_ended.disconnect(ended_dialoge)
     do_interaction()
-    

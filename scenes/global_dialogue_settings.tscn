@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://co3iibkqsyrdj"]
+[gd_scene load_steps=10 format=3 uid="uid://co3iibkqsyrdj"]
 
 [ext_resource type="Script" path="res://scripts/global_dialogue_settings.gd" id="1_xd581"]
 [ext_resource type="Resource" uid="uid://5qe64811own5" path="res://Timelines/Style_dialogue.tres" id="2_2cl2m"]
@@ -6,9 +6,16 @@
 [ext_resource type="Resource" path="res://Timelines/oficinista1.dch" id="4_4u4ey"]
 [ext_resource type="Resource" path="res://Timelines/oficinista2.dch" id="5_wetuw"]
 [ext_resource type="Resource" path="res://Timelines/oficinista3.dch" id="6_tg08c"]
+[ext_resource type="Texture2D" uid="uid://so0vre22lhpa" path="res://Assets/Sprites/hand_point.PNG" id="7_rdyvm"]
+[ext_resource type="Texture2D" uid="uid://33sju0ef8ygg" path="res://Assets/Sprites/hand_interact.PNG" id="8_2t6dx"]
+[ext_resource type="Texture2D" uid="uid://baln8g8vuo1fl" path="res://Assets/Sprites/hand_grab.PNG" id="9_7yxq0"]
 
 [node name="GlobalDialogueSettings" type="Node"]
 script = ExtResource("1_xd581")
 dialogue_style = ExtResource("2_2cl2m")
 final_day = 2
 killable_characters = Array[ExtResource("3_55l1o")]([ExtResource("4_4u4ey"), ExtResource("5_wetuw"), ExtResource("6_tg08c")])
+pointer_cursor = ExtResource("7_rdyvm")
+interact_cursor = ExtResource("8_2t6dx")
+grab_cursor = ExtResource("9_7yxq0")
+cursor_hotspot = Vector2(51, 0)
