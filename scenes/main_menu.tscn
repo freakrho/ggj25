@@ -61,10 +61,11 @@ autoplay = true
 
 [node name="Credits" parent="." instance=ExtResource("7_n1iau")]
 layout_mode = 1
-offset_left = -589.0
-offset_top = -669.0
-offset_right = -66.0
-offset_bottom = -61.0
+offset_left = -737.0
+offset_top = -611.0
+offset_right = 250.0
+offset_bottom = 172.0
+scale = Vector2(0.64, 0.64)
 
 [node name="FullScreenButton" parent="." instance=ExtResource("8_mg4jl")]
 layout_mode = 1
