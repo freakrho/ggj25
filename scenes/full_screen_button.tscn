@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cnrygduquyv1t"]
 
-[ext_resource type="Script" path="res://scripts/full_screen_button.gd" id="1_ywwin"]
+[ext_resource type="Script" uid="uid://cy15pw54kjsvd" path="res://scripts/full_screen_button.gd" id="1_ywwin"]
 
 [node name="FullScreenButton" type="CheckButton"]
 anchors_preset = 2

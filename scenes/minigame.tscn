@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://bs5neku7u1j3e"]
 
-[ext_resource type="Script" path="res://scripts/draggable.gd" id="1_0e3gc"]
-[ext_resource type="Script" path="res://scripts/minigame.gd" id="1_l17rx"]
-[ext_resource type="Script" path="res://scripts/slideable.gd" id="2_vmcd2"]
+[ext_resource type="Script" uid="uid://do71kk6v7p8d3" path="res://scripts/draggable.gd" id="1_0e3gc"]
+[ext_resource type="Script" uid="uid://cvtors0cu6ra7" path="res://scripts/minigame.gd" id="1_l17rx"]
+[ext_resource type="Script" uid="uid://d3wkcde7sern7" path="res://scripts/slideable.gd" id="2_vmcd2"]
 [ext_resource type="Texture2D" uid="uid://1es1ixchfied" path="res://addons/dialogic/Example Assets/portraits/rpg_portraits/base1.png" id="3_qlqll"]
-[ext_resource type="Script" path="res://scripts/minigame_condition.gd" id="4_1lu1q"]
+[ext_resource type="Script" uid="uid://dfwth207jciec" path="res://scripts/minigame_condition.gd" id="4_1lu1q"]
 [ext_resource type="Texture2D" uid="uid://vtajb1cdcso" path="res://addons/dialogic/Example Assets/portraits/rpg_portraits/base3.png" id="5_674ps"]
-[ext_resource type="Script" path="res://scripts/drag_object_to_target_condition.gd" id="5_snlul"]
+[ext_resource type="Script" uid="uid://du7yrw3vvy8wj" path="res://scripts/drag_object_to_target_condition.gd" id="5_snlul"]
 
 [sub_resource type="Gradient" id="Gradient_73m6r"]
 offsets = PackedFloat32Array(0, 0.55102, 1)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkhfd3w63u13k"]
 
 [ext_resource type="Theme" uid="uid://brjo2bdq6ntbc" path="res://Assets/ui_theme.tres" id="1_2t1kt"]
-[ext_resource type="Script" path="res://scripts/gui/hud.gd" id="2_3bvpl"]
+[ext_resource type="Script" uid="uid://51rbhhmlyis3" path="res://scripts/gui/hud.gd" id="2_3bvpl"]
 
 [node name="HUD" type="Control" node_paths=PackedStringArray("action_label")]
 layout_mode = 3

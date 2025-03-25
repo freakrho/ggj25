@@ -1,22 +1,22 @@
 {
 "@path": "res://addons/dialogic/Resources/character.gd",
 "@subpath": NodePath(""),
-"_translation_id": "",
-"color": Color(0.0156863, 0.0156863, 0.0156863, 1),
-"custom_info": {
+&"_translation_id": "",
+&"color": Color(0.0156863, 0.0156863, 0.0156863, 1),
+&"custom_info": {
 "prefix": "",
 "sound_mood_default": "",
 "sound_moods": {},
 "style": "Style_dialogue",
 "suffix": ""
 },
-"default_portrait": "oficinista1",
-"description": "",
-"display_name": "MIKE \"THE MIC\"",
-"mirror": false,
-"nicknames": [""],
-"offset": Vector2(0, 0),
-"portraits": {
+&"default_portrait": "oficinista1",
+&"description": "",
+&"display_name": "MIKE \"THE MIC\"",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {
 "oficinista1": {
 "export_overrides": {
 "image": ""
@@ -27,5 +27,5 @@
 "scene": ""
 }
 },
-"scale": 1.0
+&"scale": 1.0
 }

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://pmrb73ngf44c"]
 
-[ext_resource type="Script" path="res://Timelines/TextbubbleLayer/text_bubble_layer.gd" id="1_b37je"]
+[ext_resource type="Script" uid="uid://cbc7p2k23lw2v" path="res://Timelines/TextbubbleLayer/text_bubble_layer.gd" id="1_b37je"]
 
 [node name="TextBubbleLayer" type="Control"]
 layout_mode = 3

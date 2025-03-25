@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfprowrlu6n2p"]
 
-[ext_resource type="Script" path="res://scripts/levels/final_scene.gd" id="1_xgoej"]
+[ext_resource type="Script" uid="uid://drgdud018bsi" path="res://scripts/levels/final_scene.gd" id="1_xgoej"]
 [ext_resource type="PackedScene" uid="uid://brb0gvt2pu4tt" path="res://scenes/thanks_for_playing.tscn" id="2_s3aoi"]
 [ext_resource type="Texture2D" uid="uid://cet8u0ch1kvyv" path="res://Assets/sketch fondos/Final fondo.jpg" id="3_j065k"]
 [ext_resource type="AudioStream" uid="uid://cttth5yeh35qy" path="res://Assets/audio/music/cancion_final.ogg" id="4_4a6ev"]

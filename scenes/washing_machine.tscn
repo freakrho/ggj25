@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://70ntrpgvha3s"]
 
-[ext_resource type="Script" path="res://scripts/minigame.gd" id="1_5olix"]
-[ext_resource type="Script" path="res://scripts/load_exact_money_condition.gd" id="3_5kqop"]
+[ext_resource type="Script" uid="uid://cvtors0cu6ra7" path="res://scripts/minigame.gd" id="1_5olix"]
+[ext_resource type="Script" uid="uid://bxhmdeltjl1dv" path="res://scripts/load_exact_money_condition.gd" id="3_5kqop"]
 [ext_resource type="PackedScene" uid="uid://bn730ru38cghs" path="res://scenes/items/coin_2.tscn" id="4_cya4m"]
 [ext_resource type="PackedScene" uid="uid://chdvw1ijd7yin" path="res://scenes/items/coin_5.tscn" id="4_xhln6"]
 [ext_resource type="PackedScene" uid="uid://c08qxm8mq7phf" path="res://scenes/items/coin_1.tscn" id="5_57m65"]

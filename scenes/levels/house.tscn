@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c3tssgy1npgi1"]
 
-[ext_resource type="Script" path="res://scripts/levels/house.gd" id="1_uqouy"]
-[ext_resource type="Script" path="res://scripts/map.gd" id="2_33otu"]
+[ext_resource type="Script" uid="uid://cntanhadghbl1" path="res://scripts/levels/house.gd" id="1_uqouy"]
+[ext_resource type="Script" uid="uid://5ow8a8xgtk5m" path="res://scripts/map.gd" id="2_33otu"]
 [ext_resource type="Texture2D" uid="uid://c4ntm88xgt6dk" path="res://Assets/sketch fondos/casa.jpg" id="3_qgaci"]
 [ext_resource type="PackedScene" uid="uid://dew2tkovfm4td" path="res://scenes/player.tscn" id="4_32ggl"]
 [ext_resource type="PackedScene" uid="uid://di2lmafbqdiue" path="res://scenes/interactables/out_way.tscn" id="5_ycvr8"]
